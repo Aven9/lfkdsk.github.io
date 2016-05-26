@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      学习制作一门有趣的编程语言 － 序 | 若梦浮生 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="刘丰恺">
+    
+    
+
+    <meta name="description" content="你的问题在于读书太少，想的太多 —— 杨绛
+
+昨天惊闻杨绛先生去世，突然想到了几年前看到的杨绛先生的这句话。我觉得在计算机领域理论知识更是尤为重要，现在某乎上盛行的计算机理论知识（尤指算法）无用论当真特别可悲。在这里我觉得讨论科班非科班的人都是别有用心的，重要的问题在于这些基础的训练，而不是科班非科班，我们知道很多大神都不是计算机相关专业的，但是他们的基础的深厚程度，确是很多科班出身的人无法能及">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习制作一门有趣的编程语言 － 序 | 若梦浮生">
+<meta property="og:url" content="http://yoursite.com/2016/05/26/make-new-language-0/index.html">
+<meta property="og:site_name" content="若梦浮生">
+<meta property="og:description" content="你的问题在于读书太少，想的太多 —— 杨绛
+
+昨天惊闻杨绛先生去世，突然想到了几年前看到的杨绛先生的这句话。我觉得在计算机领域理论知识更是尤为重要，现在某乎上盛行的计算机理论知识（尤指算法）无用论当真特别可悲。在这里我觉得讨论科班非科班的人都是别有用心的，重要的问题在于这些基础的训练，而不是科班非科班，我们知道很多大神都不是计算机相关专业的，但是他们的基础的深厚程度，确是很多科班出身的人无法能及">
+<meta property="og:updated_time" content="2016-05-26T12:30:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习制作一门有趣的编程语言 － 序 | 若梦浮生">
+<meta name="twitter:description" content="你的问题在于读书太少，想的太多 —— 杨绛
+
+昨天惊闻杨绛先生去世，突然想到了几年前看到的杨绛先生的这句话。我觉得在计算机领域理论知识更是尤为重要，现在某乎上盛行的计算机理论知识（尤指算法）无用论当真特别可悲。在这里我觉得讨论科班非科班的人都是别有用心的，重要的问题在于这些基础的训练，而不是科班非科班，我们知道很多大神都不是计算机相关专业的，但是他们的基础的深厚程度，确是很多科班出身的人无法能及">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">若梦浮生</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/lfkdsk" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">学习制作一门有趣的编程语言 － 序</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-05-26" class="post-meta__date date">2016-05-26</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/编程语言/">编程语言</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <blockquote>
+<p>你的问题在于读书太少，想的太多 —— 杨绛</p>
+</blockquote>
+<p>昨天惊闻杨绛先生去世，突然想到了几年前看到的杨绛先生的这句话。我觉得在计算机领域理论知识更是尤为重要，现在某乎上盛行的计算机理论知识（尤指算法）无用论当真特别可悲。在这里我觉得讨论科班非科班的人都是别有用心的，重要的问题在于这些基础的训练，而不是科班非科班，我们知道很多大神都不是计算机相关专业的，但是他们的基础的深厚程度，确是很多科班出身的人无法能及的，所以说一切的问题还是要积累知识。</p>
+<p>这学期一直在学编译原理的课程，我实实在在的感觉到了这个课程和相关内容的有趣。尤其是我在学习之前试着自己不借助任何的理论去写一个解释器，竟然也命中了不少的知识，这让我感到很欣喜。所以呢就斗胆开了这个题目来试图逐步的实现一个自己的<code>实验性</code>语言，说了是<code>实验性语言</code>就是说并不能完成目前语言的工程性工作，但是在自己这个语言方面能够形成闭环。这门语言或许残缺，或许会遇到很多问题，而且很长时间都会依赖C语言，但是这是一个完整的、成型的、和朋友商议好的计划，一定会逐步的实现的。</p>
+<p>目前的计划:</p>
+<ul>
+<li><ol>
+<li>使用Lex和Yacc去实现逐步实现语言的雏形<br>Lex和Yacc是久经市场考验的工具，虽然有点陈旧但是资料丰富，简洁易懂，在编译器前端的实现上有很大优势。与此同时在编译器的后端比较复杂，我会先把代码转换成C，然后使用C的成型的编译链进行。</li>
+</ol>
+</li>
+<li><ol>
+<li>更换前端，采取手动构建的方式<br>有一些我想实现的功能如果使用Lex和Yacc可能不是那么方便，而且在知识性还有效率上，手动实现都是一个很有趣的工程。</li>
+</ol>
+</li>
+<li><ol>
+<li>希望能够实现一个编译器后端，可能是转机器码，可能写栈式虚拟机<br>这个目前还没有想好，也只是希望去做的。</li>
+</ol>
+</li>
+</ul>
+<p>愿杨绛先生一路走好。</p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/05/26/make-new-language-0/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"letian"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
