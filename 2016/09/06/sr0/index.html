@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="若梦浮生">
 <meta property="og:description" content="ArrayList &amp;#x548C; LinkedList &amp;#x662F;&amp;#x5728;&amp;#x5F00;&amp;#x53D1;&amp;#x8FC7;&amp;#x7A0B;&amp;#x4E2D; &amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;
 &amp;#x5206;&amp;#x522B;&amp;#x4EE3;&amp;#x8868;&amp;#x4E86;&amp;#x6570;&amp;#x7EC4">
-<meta property="og:updated_time" content="2016-09-08T01:01:59.000Z">
+<meta property="og:updated_time" content="2016-09-08T01:05:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="源码阅读0:ArrayList/LinkedList | 若梦浮生">
 <meta name="twitter:description" content="ArrayList &amp;#x548C; LinkedList &amp;#x662F;&amp;#x5728;&amp;#x5F00;&amp;#x53D1;&amp;#x8FC7;&amp;#x7A0B;&amp;#x4E2D; &amp;#x5E38;&amp;#x7528;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;
@@ -240,9 +240,10 @@ classes that you can use:
 <p>&#x6765;&#x91CD;&#x65B0;&#x62F7;&#x8D1D;&#xFF0C;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E9B;SubList&#x7684;&#x65B9;&#x6CD5;&#xFF0C;restrainAll&#x65B9;&#x6CD5;&#x3002;</p>
 <p>&#x53E6;&#x5916;&#x5C31;&#x662F;&#xFF1A;</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">transient</span> Object[] elementData; <span class="comment">// non-private to simplify nested class access</span></span><br></pre></td></tr></table></figure>
-<p>&#x7528;transient&#x6765;&#x6807;&#x793A;&#x5B9E;&#x9645;&#x5B58;&#x50A8;&#x7684;&#x6CDB;&#x578B;&#x5BF9;&#x8C61; &#xFF0C;&#x8FD9;&#x6837;&#x6CDB;&#x578B;&#x6570;&#x7EC4;&#x7684;&#x7A7A;&#x4F59;&#x4F4D;&#x7F6E;&#x5C31;&#x4E0D;&#x4F1A;&#x88AB;&#x7CFB;&#x7EDF;&#x4FDD;&#x62A4;&#xFF0C;&#x4E0D;&#x53C2;&#x4E0E;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x52A8;&#x4F5C;&#x3002;</p>
-<p>&#x53E6;&#x5916;ArrayList&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5E76;&#x53D1;&#x5BB9;&#x5668;</p>
-
+<p>&#x7528;transient&#x6765;&#x6807;&#x793A;&#x5B9E;&#x9645;&#x5B58;&#x50A8;&#x7684;&#x6CDB;&#x578B;&#x5BF9;&#x8C61; &#xFF0C;&#x8FD9;&#x6837;&#x6CDB;&#x578B;&#x6570;&#x7EC4;&#x7684;&#x5C31;&#x4E0D;&#x4F1A;&#x88AB;&#x7CFB;&#x7EDF;&#x4FDD;&#x62A4;&#xFF0C;&#x4E0D;&#x53C2;&#x4E0E;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x52A8;&#x4F5C;&#x3002;</p>
+<p>&#x53E6;&#x5916;ArrayList&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5E76;&#x53D1;&#x5BB9;&#x5668;&#xFF0C;&#x6240;&#x4EE5;&#x590D;&#x6742;&#x7684;&#x7EBF;&#x7A0B;&#x95EE;&#x9898;&#x4E2D;&#x4E0D;&#x8981;&#x4F7F;&#x7528;ArrayList&#x3002;</p>
+<h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><p>LinkedList&#x662F;&#x4F7F;&#x7528;&#x94FE;&#x8868;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;</p>
+<h3 id="&#x6700;&#x5C0F;&#x5B9E;&#x73B0;-1"><a href="#&#x6700;&#x5C0F;&#x5B9E;&#x73B0;-1" class="headerlink" title="&#x6700;&#x5C0F;&#x5B9E;&#x73B0;"></a>&#x6700;&#x5C0F;&#x5B9E;&#x73B0;</h3>
   </section>
 
   
