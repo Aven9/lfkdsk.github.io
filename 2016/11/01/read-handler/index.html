@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Handler - Message - Looper多线程的数据交换 | 若梦浮生 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="刘丰恺">
+    
+    
+
+    <meta name="description" content="Handler - Message - Looper &amp;#x8BF4;&amp;#x8D77;&amp;#x6765;&amp;#x4E5F;&amp;#x5C31;&amp;#x662F;&amp;#x8FD9;&amp;#x4E48;&amp;#x4E00;&amp;#x56DE;&amp;#x4E8B;&amp;#xFF0C;Looper&amp;#x5B9E;&amp;#x73B0;&amp;#x5728;Thread&amp;#x4E2D;&amp;#x8D1F;&amp;#x8D23;&amp;#x4E0D;&amp;#x65AD;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Handler - Message - Looper多线程的数据交换 | 若梦浮生">
+<meta property="og:url" content="http://yoursite.com/2016/11/01/read-handler/index.html">
+<meta property="og:site_name" content="若梦浮生">
+<meta property="og:description" content="Handler - Message - Looper &amp;#x8BF4;&amp;#x8D77;&amp;#x6765;&amp;#x4E5F;&amp;#x5C31;&amp;#x662F;&amp;#x8FD9;&amp;#x4E48;&amp;#x4E00;&amp;#x56DE;&amp;#x4E8B;&amp;#xFF0C;Looper&amp;#x5B9E;&amp;#x73B0;&amp;#x5728;Thread&amp;#x4E2D;&amp;#x8D1F;&amp;#x8D23;&amp;#x4E0D;&amp;#x65AD;&amp;">
+<meta property="og:updated_time" content="2016-10-31T16:29:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Handler - Message - Looper多线程的数据交换 | 若梦浮生">
+<meta name="twitter:description" content="Handler - Message - Looper &amp;#x8BF4;&amp;#x8D77;&amp;#x6765;&amp;#x4E5F;&amp;#x5C31;&amp;#x662F;&amp;#x8FD9;&amp;#x4E48;&amp;#x4E00;&amp;#x56DE;&amp;#x4E8B;&amp;#xFF0C;Looper&amp;#x5B9E;&amp;#x73B0;&amp;#x5728;Thread&amp;#x4E2D;&amp;#x8D1F;&amp;#x8D23;&amp;#x4E0D;&amp;#x65AD;&amp;">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">若梦浮生</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/lfkdsk" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">Handler - Message - Looper多线程的数据交换</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-11-01" class="post-meta__date date">2016-11-01</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/源码阅读/">源码阅读</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>Handler - Message - Looper &#x8BF4;&#x8D77;&#x6765;&#x4E5F;&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x4E00;&#x56DE;&#x4E8B;&#xFF0C;Looper&#x5B9E;&#x73B0;&#x5728;Thread&#x4E2D;&#x8D1F;&#x8D23;&#x4E0D;&#x65AD;&#x7684;&#x5FAA;&#x73AF;&#x76D1;&#x542C;&#x5904;&#x7406;Message&#xFF0C;&#x8981;&#x4E0D;&#x7136;Thread&#x8FD0;&#x884C;&#x5B8C;&#x5C31;&#x81EA;&#x5DF1;&#x5173;&#x4E86;&#x3002;&#x5F53;&#x4F60;&#x4E0D;&#x9700;&#x8981;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EF;&#x4EE5;&#x628A;Looper&#x5173;&#x4E86;&#xFF0C;&#x7EBF;&#x7A0B;&#x5C31;&#x81EA;&#x52A8;&#x8FD0;&#x884C;&#x5B8C;&#x4E86;&#x3002;</p>
+<h2 id="Message"><a href="#Message" class="headerlink" title="Message"></a>Message</h2><p>&#x5B9E;&#x73B0;&#x4E86;&#x5E8F;&#x5217;&#x5316;&#x63A5;&#x53E3;&#xFF0C;what&#x533A;&#x5206;&#x7C7B;&#x578B;&#xFF0C;arg&#x7684;&#x53C2;&#x6570;&#x4F7F;&#x7528;&#x7B80;&#x5355;&#x7684;&#x6574;&#x5F62;&#xFF0C;obj&#x5B58;&#x50A8;&#x5BF9;&#x8C61;,data&#x5B58;&#x50A8;&#x4E00;&#x4E2A;bundle&#xFF0C;target&#x662F;&#x4E00;&#x4E2A;Handler&#x3002;&#x5269;&#x4E0B;&#x7684;&#x5C31;&#x662F;&#x641E;&#x4E86;&#x4E2A;&#x5BF9;&#x8C61;&#x6C60;&#x56DE;&#x6536;Message&#xFF0C;&#x6240;&#x4EE5;&#x624D;&#x4F1A;&#x63A8;&#x8350;&#x7528;Message.obtain()&#x6765;&#x65B0;&#x5EFA;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4ECE;&#x56DE;&#x6536;&#x6C60;&#x91CC;&#x62FF;&#x4E1C;&#x897F;&#x3002;</p>
+<p>&#x603B;&#x4E4B;&#x6CA1;&#x4EC0;&#x4E48;&#x597D;&#x8BF4;&#x7684;&#x3002;</p>
+<h2 id="Looper"><a href="#Looper" class="headerlink" title="Looper"></a>Looper</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LooperThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>{</span><br><span class="line">    <span class="keyword">public</span> Handler mHandler;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">        Looper.prepare();</span><br><span class="line">  </span><br><span class="line">        mHandler = <span class="keyword">new</span> Handler() {</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>{</span><br><span class="line">                <span class="comment">// process incoming messages here</span></span><br><span class="line">            }</span><br><span class="line">        };</span><br><span class="line">  </span><br><span class="line">        Looper.loop();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x6CE8;&#x91CA;&#x91CC;&#x9762;&#x7ED9;&#x51FA;&#x4E86;&#x7C7B;&#x4F3C;&#x8FD9;&#x6837;&#x7684;demo&#xFF0C;&#x6211;&#x4EEC;&#x53D1;&#x73B0;Looper&#x7684;&#x4F7F;&#x7528;&#x90FD;&#x662F;&#x9759;&#x6001;&#x7C7B;&#x7684;&#x8C03;&#x7528;&#x3002;&#x91CC;&#x9762;&#x4F7F;&#x7528;&#x4E86;ThreadLocal&#x5B58;&#x50A8;&#x533A;&#x5206;&#x5404;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;Looper&#x3002;&#x91CC;&#x9762;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;MessageQueue&#xFF08;&#x6D88;&#x606F;&#x961F;&#x5217;&#xFF09;&#x4E3A;Message&#x4EFB;&#x52A1;&#x8FDB;&#x884C;&#x7F16;&#x961F;&#x3002;&#x4ED6;&#x53EB;&#x961F;&#x5217;&#x4F46;&#x5176;&#x5B9E;&#x662F;&#x4E2A;&#x5355;&#x94FE;&#x8868;&#x3002;&#x6211;&#x4EEC;&#x6CE8;&#x610F;&#x5230;enqueueMessage&#xFF08;&#x2026;&#xFF09;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x4E2A;&#x5355;&#x94FE;&#x8868;&#x6309;&#x7167;&#x65F6;&#x95F4;&#x7684;&#x63D2;&#x5165;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p>&#x6838;&#x5FC3;&#x7684;loop();&#x4E2D;&#x8C03;&#x7528;&#x4E86;<code>msg.target.dispatchMessage(msg);</code>&#x53BB;&#x5904;&#x7406;Message&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x81EA;&#x52A8;&#x5173;&#x8054;&#x4E86;Message&#x7684;Handler&#x3002;</p>
+<p>&#x9ED8;&#x8BA4;&#x7684;Thread&#x90FD;&#x8981;&#x6709;Looper&#x624D;&#x80FD;&#x7528;Handler&#xFF0C;&#x9664;&#x4E86;&#x4E3B;&#x7EBF;&#x7A0B;&#xFF0C;&#x56E0;&#x4E3A;&#x4E3B;&#x7EBF;&#x7A0B;&#x5728;ActivityThread&#x4E2D;&#x542F;&#x52A8;&#x4E86;Looper&#x3002;  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Looper.prepareMainLooper();</span><br></pre></td></tr></table></figure>
+<h2 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h2><p>&#x6E90;&#x7801;&#x4E2D;&#x63D0;&#x5230;&#x4E86;Handler&#x7684;&#x4E24;&#x79CD;&#x4F5C;&#x7528;&#xFF0C;&#x6D88;&#x606F;&#x8C03;&#x5EA6;&#x548C;&#x7EBF;&#x7A0B;&#x901A;&#x4FE1;&#x3002;</p>
+<p>&#x6240;&#x8C13;&#x7684;&#x6D88;&#x606F;&#x8C03;&#x5EA6;&#x5C31;&#x662F;&#x4E00;&#x7CFB;&#x5217;&#x7684;post&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x8D77;&#x5230;&#x5EF6;&#x65F6;&#x6216;&#x8005;&#x5B9A;&#x65F6;&#x5904;&#x7406;&#x7684;&#x5DE5;&#x4F5C;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">sendMessageAtTime</span><span class="params">(Message msg, <span class="keyword">long</span> uptimeMillis)</span> </span>{</span><br><span class="line">       MessageQueue queue = mQueue;</span><br><span class="line">       <span class="keyword">if</span> (queue == <span class="keyword">null</span>) {</span><br><span class="line">           RuntimeException e = <span class="keyword">new</span> RuntimeException(</span><br><span class="line">                   <span class="keyword">this</span> + <span class="string">&quot; sendMessageAtTime() called with no mQueue&quot;</span>);</span><br><span class="line">           Log.w(<span class="string">&quot;Looper&quot;</span>, e.getMessage(), e);</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       }</span><br><span class="line">       <span class="keyword">return</span> enqueueMessage(queue, msg, uptimeMillis);</span><br><span class="line">   }</span><br></pre></td></tr></table></figure>
+<p>&#x7136;&#x800C;&#x5F52;&#x6839;&#x7ED3;&#x5E95;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x6307;&#x5B9A;&#x65F6;&#x95F4;&#x7684;&#x53D1;&#x9001;Message&#xFF0C;&#x800C;&#x5B9E;&#x9645;&#x4E0A;&#x8FD8;&#x662F;&#x7528;&#x4E86;MessageQueue&#x8FDB;&#x884C;&#x4E86;&#x6D88;&#x606F;&#x7F16;&#x961F;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">sendMessageAtFrontOfQueue</span><span class="params">(Message msg)</span> </span>{</span><br><span class="line">    MessageQueue queue = mQueue;</span><br><span class="line">    <span class="keyword">if</span> (queue == <span class="keyword">null</span>) {</span><br><span class="line">        RuntimeException e = <span class="keyword">new</span> RuntimeException(</span><br><span class="line">            <span class="keyword">this</span> + <span class="string">&quot; sendMessageAtTime() called with no mQueue&quot;</span>);</span><br><span class="line">        Log.w(<span class="string">&quot;Looper&quot;</span>, e.getMessage(), e);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> enqueueMessage(queue, msg, <span class="number">0</span>);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x6D88;&#x606F;&#x7F6E;&#x9876;&#x4E5F;&#x4E0D;&#x8FC7;&#x5C31;&#x662F;&#x63D2;&#x5230;&#x4E86;&#x94FE;&#x8868;&#x5934;&#x8FDB;&#x884C;&#x7ACB;&#x5373;&#x5904;&#x7406;&#x800C;&#x5DF2;&#x3002;</p>
+<p>&#x503C;&#x5F97;&#x77A9;&#x76EE;&#x7684;&#x662F;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Handle system messages here.</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dispatchMessage</span><span class="params">(Message msg)</span> </span>{</span><br><span class="line">    <span class="keyword">if</span> (msg.callback != <span class="keyword">null</span>) {</span><br><span class="line">        handleCallback(msg);</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">        <span class="keyword">if</span> (mCallback != <span class="keyword">null</span>) {</span><br><span class="line">            <span class="keyword">if</span> (mCallback.handleMessage(msg)) {</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        handleMessage(msg);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x5C31;&#x662F;&#x521A;&#x624D;Message&#x8C03;&#x7528;&#x7684;&#x90A3;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x9996;&#x5148;&#x5224;&#x65AD;&#x4E86;&#x4E00;&#x4E0B;msg&#x5E26;&#x6CA1;&#x5E26;&#x81EA;&#x5DF1;&#x7684;callback&#xFF0C;msg&#x7684;callback&#x662F;&#x4E00;&#x4E2A;Runnable&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x6DFB;&#x52A0;&#x8981;&#x5904;&#x7406;&#x7684;&#x4E1C;&#x897F;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5462;&#x5C31;&#x770B;&#x770B;mCallback&#x6709;&#x6CA1;&#x6709;&#xFF0C;mCallback&#x662F;&#x4E00;&#x4E2A;Callback&#x63A5;&#x53E3;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;handleMessage()&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F60;&#x5728;&#x4F7F;&#x7528;Handler&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x6765;&#x5BF9;Message&#x505A;&#x4E00;&#x4E9B;&#x5904;&#x7406;&#x3002;&#x5982;&#x679C;&#x8FD8;&#x6CA1;&#x6709;&#x5C31;&#x4F1A;&#x4F20;&#x5230;Handler&#x7EE7;&#x627F;&#x7C7B;&#x7684;handlerMessage()&#x4E2D;&#x3002;</p>
+<p>Handler&#xFF0D;Message&#xFF0D;Looper&#x673A;&#x5236;&#x662F;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x591A;&#x7EBF;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x901A;&#x4FE1;&#x95EE;&#x9898;&#x800C;&#x521B;&#x7ACB;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;View&#x4E3A;&#x4E86;&#x5FEB;&#x901F;&#x7ED8;&#x5236;&#x90FD;&#x4E0D;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4E3B;&#x7EBF;&#x7A0B;&#x53EA;&#x80FD;&#x8D1F;&#x8D23;UI&#xFF0C;&#x90A3;&#x8FD8;&#x8981;&#x505A;&#x5F88;&#x591A;&#x590D;&#x6742;&#x7684;&#x5DE5;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x9700;&#x8981;&#x5B50;&#x7EBF;&#x7A0B;&#x6765;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x4E8B;&#x60C5;&#x4E86;&#x3002;</p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/11/01/read-handler/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"lfkdsk"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
