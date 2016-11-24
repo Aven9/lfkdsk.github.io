@@ -2,23 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
     
-
-    <title>
-      编译原理：状态机相关的三种算法 | 若梦浮生 
-    </title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    
-      <meta name="author" content="刘丰恺">
-    
-    
-
+    <title>编译原理：状态机相关的三种算法 | 若梦浮生</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="&amp;#x6709;&amp;#x7A77;&amp;#x81EA;&amp;#x52A8;&amp;#x673A;&amp;#x4E3A;&amp;#x4E86;&amp;#x5B9E;&amp;#x73B0;&amp;#x5BF9;&amp;#x4E8E;&amp;#x6B63;&amp;#x89C4;&amp;#x5F0F;&amp;#xFF08;&amp;#x53EF;&amp;#x7406;&amp;#x89E3;&amp;#x4E3A;&amp;#x6B63;&amp;#x5219;&amp;#x8868;&amp;#x8FBE;&amp;#x5F0F;&amp;#xFF09;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编译原理：状态机相关的三种算法 | 若梦浮生">
+<meta property="og:title" content="编译原理：状态机相关的三种算法">
 <meta property="og:url" content="http://yoursite.com/2016/07/04/learnparser1/index.html">
 <meta property="og:site_name" content="若梦浮生">
 <meta property="og:description" content="&amp;#x6709;&amp;#x7A77;&amp;#x81EA;&amp;#x52A8;&amp;#x673A;&amp;#x4E3A;&amp;#x4E86;&amp;#x5B9E;&amp;#x73B0;&amp;#x5BF9;&amp;#x4E8E;&amp;#x6B63;&amp;#x89C4;&amp;#x5F0F;&amp;#xFF08;&amp;#x53EF;&amp;#x7406;&amp;#x89E3;&amp;#x4E3A;&amp;#x6B63;&amp;#x5219;&amp;#x8868;&amp;#x8FBE;&amp;#x5F0F;&amp;#xFF09;">
@@ -28,198 +17,208 @@
 <meta property="og:image" content="http://yoursite.com/2016/07/04/learnparser1/graph_a*.png">
 <meta property="og:updated_time" content="2016-07-20T05:40:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="编译原理：状态机相关的三种算法 | 若梦浮生">
+<meta name="twitter:title" content="编译原理：状态机相关的三种算法">
 <meta name="twitter:description" content="&amp;#x6709;&amp;#x7A77;&amp;#x81EA;&amp;#x52A8;&amp;#x673A;&amp;#x4E3A;&amp;#x4E86;&amp;#x5B9E;&amp;#x73B0;&amp;#x5BF9;&amp;#x4E8E;&amp;#x6B63;&amp;#x89C4;&amp;#x5F0F;&amp;#xFF08;&amp;#x53EF;&amp;#x7406;&amp;#x89E3;&amp;#x4E3A;&amp;#x6B63;&amp;#x5219;&amp;#x8868;&amp;#x8FBE;&amp;#x5F0F;&amp;#xFF09;">
 <meta name="twitter:image" content="http://yoursite.com/2016/07/04/learnparser1/graph_a.png">
     
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
     
     
-      <link rel="icon" type="image/x-icon" href="/favicon.png">
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
     
-    <link rel="stylesheet" href="/css/uno.css">
-    <link rel="stylesheet" href="/css/highlight.css">
-    <link rel="stylesheet" href="/css/archive.css">
-    <link rel="stylesheet" href="/css/china-social-icon.css">
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
 
 </head>
+
 <body>
-
-    <span class="mobile btn-mobile-menu">
-        <i class="icon icon-list btn-mobile-menu__icon"></i>
-        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
-    </span>
-
-    
-
-<header class="panel-cover panel-cover--collapsed">
-
-
-  <div class="panel-main">
-
-  
-    <div class="panel-main__inner panel-inverted">
-    <div class="panel-main__content">
-
-        
-
-        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">若梦浮生</a></h1>
-        <hr class="panel-cover__divider" />
-
-        
-
-        <div class="navigation-wrapper">
-
-          <nav class="cover-navigation cover-navigation--primary">
-            <ul class="navigation">
-
-              
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">若梦浮生</span>
+            </a>
+            <nav id="main-nav">
                 
-                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
-              
+                    <a class="main-nav-link" href="/.">Home</a>
                 
-                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
-              
+                    <a class="main-nav-link" href="/archives">Archives</a>
                 
-                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
-              
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/justwe.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
 
-            </ul>
-          </nav>
-
-          <!-- ----------------------------
-To add a new social icon simply duplicate one of the list items from below
-and change the class in the <i> tag to match the desired social network
-and then add your link to the <a>. Here is a full list of social network
-classes that you can use:
-
-    icon-social-500px
-    icon-social-behance
-    icon-social-delicious
-    icon-social-designer-news
-    icon-social-deviant-art
-    icon-social-digg
-    icon-social-dribbble
-    icon-social-facebook
-    icon-social-flickr
-    icon-social-forrst
-    icon-social-foursquare
-    icon-social-github
-    icon-social-google-plus
-    icon-social-hi5
-    icon-social-instagram
-    icon-social-lastfm
-    icon-social-linkedin
-    icon-social-medium
-    icon-social-myspace
-    icon-social-path
-    icon-social-pinterest
-    icon-social-rdio
-    icon-social-reddit
-    icon-social-skype
-    icon-social-spotify
-    icon-social-stack-overflow
-    icon-social-steam
-    icon-social-stumbleupon
-    icon-social-treehouse
-    icon-social-tumblr
-    icon-social-twitter
-    icon-social-vimeo
-    icon-social-xbox
-    icon-social-yelp
-    icon-social-youtube
-    icon-social-zerply
-    icon-mail
-
--------------------------------->
-
-<!-- add social info here -->
-
-
-
-<nav class="cover-navigation navigation--social">
-  <ul class="navigation">
-
-    
-      <!-- Github -->
-      <li class="navigation__item">
-        <a href="https://github.com/lfkdsk" title="Huno on GitHub">
-          <i class='icon icon-social-github'></i>
-          <span class="label">GitHub</span>
-        </a>
-      </li>
-    
-
-    <!-- China social icon -->
-    <!--
-    
-      <li class="navigation__item">
-        <a href="" title="">
-          <i class='icon cs-icon-douban'></i>
-          <span class="label">Douban</span>
-        </a>
-      </li>
-
-      <li class="navigation__item">
-        <a href="" title="">
-          <i class='icon cs-icon-weibo'></i>
-          <span class="label">Weibo</span>
-        </a>
-      </li>
-
-    -->
-
-
-
-  </ul>
-</nav>
-
-
-
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
 
-      </div>
-
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
     </div>
 
-    <div class="panel-cover--overlay"></div>
-  </div>
+                </td>
+            </tr>
+        </table>
+    </div>
 </header>
 
-    <div class="content-wrapper">
-        <div class="content-wrapper__inner entry">
+        <div class="outer">
             
+                
 
-<article class="post-container post-container--single">
-
-  <header class="post-header">
-    
-    <h1 class="post-title">编译原理：状态机相关的三种算法</h1>
-
-    
-
-    <div class="post-meta">
-      <time datetime="2016-07-04" class="post-meta__date date">2016-07-04</time> 
-
-      <span class="post-meta__tags tags">
-
-          
-
-          
-             &#8226; 标签:
-            <font class="tags">
-              <a class="tags-link" href="/tags/编译原理/">编译原理</a>
-            </font>
-          
-
-      </span>
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/justwe.png" />
+            <h2 id="name">lfkdsk</h2>
+            <h3 id="title">Android Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Dalian, China</span>
+            <a id="follow" target="_blank" href="https://github.com/lfkdsk/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                18
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                12
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
     </div>
+</aside>
+
+            
+            <section id="main"><article id="post-learnparser1" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
     
+        <h1 class="article-title" itemprop="name">
+            编译原理：状态机相关的三种算法
+        </h1>
     
 
-  </header>
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/07/04/learnparser1/">
+            <time datetime="2016-07-04T15:39:38.000Z" itemprop="datePublished">2016-07-04</time>
+        </a>
+    </div>
 
-  <section id="post-content" class="article-content post">
-    <h3 id="&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;"><a href="#&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;" class="headerlink" title="&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;"></a>&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;</h3><p>&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;&#x5BF9;&#x4E8E;&#x6B63;&#x89C4;&#x5F0F;&#xFF08;&#x53EF;&#x7406;&#x89E3;&#x4E3A;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF09;&#x7684;&#x8BC6;&#x522B;&#xFF0C;&#x6211;&#x4EEC;&#x63D0;&#x51FA;&#x4E86;&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#x7406;&#x8BBA;&#xFF0C;&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#x63A5;&#x53D7;&#x6B63;&#x89C4;&#x5F0F;&#x7684;&#x5B9A;&#x4E49;&#x7B26;&#xFF0C;&#x5E76;&#x4E0D;&#x65AD;&#x7684;&#x8BC6;&#x522B;&#x7B26;&#x53F7;&#xFF0C;&#x79FB;&#x52A8;&#x5230;&#x65B0;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x5982;&#x679C;&#x51FA;&#x73B0;&#x4E86;&#x8BC6;&#x522B;&#x9519;&#x8BEF;&#x5C31;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/编译原理/">编译原理</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;"><a href="#&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;" class="headerlink" title="&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;"></a>&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;</h3><p>&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;&#x5BF9;&#x4E8E;&#x6B63;&#x89C4;&#x5F0F;&#xFF08;&#x53EF;&#x7406;&#x89E3;&#x4E3A;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF09;&#x7684;&#x8BC6;&#x522B;&#xFF0C;&#x6211;&#x4EEC;&#x63D0;&#x51FA;&#x4E86;&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#x7406;&#x8BBA;&#xFF0C;&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#x63A5;&#x53D7;&#x6B63;&#x89C4;&#x5F0F;&#x7684;&#x5B9A;&#x4E49;&#x7B26;&#xFF0C;&#x5E76;&#x4E0D;&#x65AD;&#x7684;&#x8BC6;&#x522B;&#x7B26;&#x53F7;&#xFF0C;&#x79FB;&#x52A8;&#x5230;&#x65B0;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x5982;&#x679C;&#x51FA;&#x73B0;&#x4E86;&#x8BC6;&#x522B;&#x9519;&#x8BEF;&#x5C31;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
 <p>&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#x5305;&#x542B;&#x786E;&#x5B9A;&#x7684;&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#xFF08;DFA&#xFF09;&#xFF0C;&#x548C;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#xFF08;NFA&#xFF09;&#x3002;&#x4E24;&#x8005;&#x7684;&#x4E3B;&#x8981;&#x533A;&#x522B;&#x5728;&#x4E8E;&#xFF0C;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x662F;&#x5426;&#x901A;&#x8FC7;&#x540C;&#x6837;&#x7684;&#x7B26;&#x53F7;&#x8F93;&#x5165;&#x80FD;&#x8FBE;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x72B6;&#x6001;&#x3002;&#x5982;&#x679C;&#x80FD;&#x5C31;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#xFF0C;&#x53CD;&#x4E4B;&#x5C31;&#x662F;&#x786E;&#x5B9A;&#x7684;&#x3002;&#x53E6;&#x5916;&#xFF1A;NFA&#x8FD8;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x7A7A;&#x5B57;&#x4E32;&#x5DF2;&#x8FBE;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x72B6;&#x6001;&#x3002;</p>
 <h3 id="&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7B97;&#x6CD5;"><a href="#&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7B97;&#x6CD5;" class="headerlink" title="&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7B97;&#x6CD5;"></a>&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7B97;&#x6CD5;</h3><p>&#x8FD9;&#x5176;&#x4E2D;&#x6709;&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7B97;&#x6CD5;&#xFF1A;</p>
 <h4 id="&#x6B63;&#x89C4;&#x5F0F;-gt-NFA-Thompson&#x7B97;&#x6CD5;"><a href="#&#x6B63;&#x89C4;&#x5F0F;-gt-NFA-Thompson&#x7B97;&#x6CD5;" class="headerlink" title="&#x6B63;&#x89C4;&#x5F0F; =&gt; NFA Thompson&#x7B97;&#x6CD5;"></a>&#x6B63;&#x89C4;&#x5F0F; =&gt; NFA Thompson&#x7B97;&#x6CD5;</h4><p>&#x8FD9;&#x4E2A;&#x7B97;&#x6CD5;&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E9B;&#x6A21;&#x7248;&#x53BB;&#x5BF9;&#x5E94;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x7684;&#x7B26;&#x53F7;&#xFF0C;&#x53EA;&#x8981;&#x8BB0;&#x4F4F;&#x6A21;&#x7248;&#xFF0C;&#x5C31;&#x80FD;&#x63A8;&#x51FA;&#x76F8;&#x5E94;&#x7684;NFA&#x3002;</p>
@@ -240,78 +239,316 @@ classes that you can use:
 </ol>
 <p>&#x628A;&#x5BF9;&#x5E94;&#x7684;&#x6B63;&#x89C4;&#x5F0F;&#x6309;&#x7167;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x9010;&#x5C42;&#x5206;&#x89E3;&#xFF0C;&#x5C31;&#x80FD;&#x5F97;&#x5230;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;NFA&#x4E86;&#x3002;</p>
 
-  </section>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
-  
-  
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
 
-<section class="post-comments">
-
-    <div class="ds-thread" data-thread-key="2016/07/04/learnparser1/"></div>
-
-    <script type="text/javascript">
-      var duoshuoQuery = {short_name:"lfkdsk"};
-      (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] 
-        || document.getElementsByTagName('body')[0]).appendChild(ds);
-      })();
-    </script> 
-
-</section>
 
 
+</div>
+
+            
+    
+        <a href="http://yoursite.com/2016/07/04/learnparser1/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/07/04/learnparser1/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/07/11/dfa-auto-suggestion/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    使用DFA做文本编辑器的自动提示
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/07/03/learnparser/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">编译原理：First|Follow集的求法</div>
+        </a>
+    
+</nav>
+
+
+    
 </article>
 
 
-            <footer class="footer">
-
-    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
     
-</footer>
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/15/the-end-ofx/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/15/the-end-ofx/" class="title">写在学伴叁的边上</a></p>
+                            <p class="item-date"><time datetime="2016-11-15T04:19:15.000Z" itemprop="datePublished">2016-11-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/10/know-cpp-again/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/10/know-cpp-again/" class="title">Cpp Tips</a></p>
+                            <p class="item-date"><time datetime="2016-11-10T07:11:30.000Z" itemprop="datePublished">2016-11-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/01/read-handler/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/01/read-handler/" class="title">Handler - Message - Looper多线程的数据交换</a></p>
+                            <p class="item-date"><time datetime="2016-10-31T16:27:38.000Z" itemprop="datePublished">2016-11-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/08/how-to-solve-co/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/09/08/how-to-solve-co/" class="title">如何处理游戏中的碰撞事件</a></p>
+                            <p class="item-date"><time datetime="2016-09-08T08:04:42.000Z" itemprop="datePublished">2016-09-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/06/androidTips1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/09/06/androidTips1/" class="title">AndroidTips1:从View源码学习点击事件的模拟</a></p>
+                            <p class="item-date"><time datetime="2016-09-06T11:32:07.000Z" itemprop="datePublished">2016-09-06</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
         </div>
     </div>
 
-    <!-- js files -->
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/main.js"></script>
-    <script src="/js/scale.fix.js"></script>
     
-
+        
     
-
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript"> 
-        $(document).ready(function(){
-            MathJax.Hub.Config({ 
-                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
-            });
-        });
-    </script>
-
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
 
     
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AndroidTips/">AndroidTips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android：动态生成ID/">Android：动态生成ID</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interesting/">Interesting!</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏编程/">游戏编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/源码阅读/">源码阅读</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程语言/">编程语言</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编译原理/">编译原理</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动机/">自动机</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
 
-    <script src="/js/awesome-toc.min.js"></script>
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/AndroidTips/" style="font-size: 10px;">AndroidTips</a> <a href="/tags/Android：动态生成ID/" style="font-size: 10px;">Android：动态生成ID</a> <a href="/tags/Interesting/" style="font-size: 10px;">Interesting!</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/游戏编程/" style="font-size: 10px;">游戏编程</a> <a href="/tags/源码阅读/" style="font-size: 15px;">源码阅读</a> <a href="/tags/编程语言/" style="font-size: 20px;">编程语言</a> <a href="/tags/编译原理/" style="font-size: 15px;">编译原理</a> <a href="/tags/自动机/" style="font-size: 10px;">自动机</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 刘丰恺<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
     <script>
-        $(document).ready(function(){
-            $.awesome_toc({
-                overlay: true,
-                contentId: "post-content",
-            });
-        });
-    </script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2016/07/04/learnparser1/';
+        
+        this.page.identifier = 'learnparser1';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
 
 
     
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
     
-    <!--kill ie6 -->
-<!--[if IE 6]>
-  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
-<![endif]-->
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
 
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
 </body>
 </html>

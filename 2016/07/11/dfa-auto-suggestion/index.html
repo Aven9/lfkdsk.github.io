@@ -2,221 +2,220 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
     
-
-    <title>
-      使用DFA做文本编辑器的自动提示 | 若梦浮生 
-    </title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    
-      <meta name="author" content="刘丰恺">
-    
-    
-
+    <title>使用DFA做文本编辑器的自动提示 | 若梦浮生</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="&amp;#x4E4B;&amp;#x524D;&amp;#x770B;&amp;#x9F99;&amp;#x4E66;&amp;#x7684;&amp;#x65F6;&amp;#x5019;&amp;#xFF0C;&amp;#x9F99;&amp;#x4E66;&amp;#x63D0;&amp;#x5230;&amp;#x53EF;&amp;#x4EE5;&amp;#x5728;&amp;#x7F16;&amp;#x8BD1;&amp;#x5668;&amp;#x91CC;&amp;#x7528;&amp;#x52A8;&amp;#x6001;&amp;#x7684;&amp;#x751F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用DFA做文本编辑器的自动提示 | 若梦浮生">
+<meta property="og:title" content="使用DFA做文本编辑器的自动提示">
 <meta property="og:url" content="http://yoursite.com/2016/07/11/dfa-auto-suggestion/index.html">
 <meta property="og:site_name" content="若梦浮生">
 <meta property="og:description" content="&amp;#x4E4B;&amp;#x524D;&amp;#x770B;&amp;#x9F99;&amp;#x4E66;&amp;#x7684;&amp;#x65F6;&amp;#x5019;&amp;#xFF0C;&amp;#x9F99;&amp;#x4E66;&amp;#x63D0;&amp;#x5230;&amp;#x53EF;&amp;#x4EE5;&amp;#x5728;&amp;#x7F16;&amp;#x8BD1;&amp;#x5668;&amp;#x91CC;&amp;#x7528;&amp;#x52A8;&amp;#x6001;&amp;#x7684;&amp;#x751F;">
 <meta property="og:image" content="http://yoursite.com/2016/07/11/dfa-auto-suggestion/psb.png">
 <meta property="og:updated_time" content="2016-07-11T00:49:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用DFA做文本编辑器的自动提示 | 若梦浮生">
+<meta name="twitter:title" content="使用DFA做文本编辑器的自动提示">
 <meta name="twitter:description" content="&amp;#x4E4B;&amp;#x524D;&amp;#x770B;&amp;#x9F99;&amp;#x4E66;&amp;#x7684;&amp;#x65F6;&amp;#x5019;&amp;#xFF0C;&amp;#x9F99;&amp;#x4E66;&amp;#x63D0;&amp;#x5230;&amp;#x53EF;&amp;#x4EE5;&amp;#x5728;&amp;#x7F16;&amp;#x8BD1;&amp;#x5668;&amp;#x91CC;&amp;#x7528;&amp;#x52A8;&amp;#x6001;&amp;#x7684;&amp;#x751F;">
 <meta name="twitter:image" content="http://yoursite.com/2016/07/11/dfa-auto-suggestion/psb.png">
     
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
     
     
-      <link rel="icon" type="image/x-icon" href="/favicon.png">
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
     
-    <link rel="stylesheet" href="/css/uno.css">
-    <link rel="stylesheet" href="/css/highlight.css">
-    <link rel="stylesheet" href="/css/archive.css">
-    <link rel="stylesheet" href="/css/china-social-icon.css">
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
 
 </head>
+
 <body>
-
-    <span class="mobile btn-mobile-menu">
-        <i class="icon icon-list btn-mobile-menu__icon"></i>
-        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
-    </span>
-
-    
-
-<header class="panel-cover panel-cover--collapsed">
-
-
-  <div class="panel-main">
-
-  
-    <div class="panel-main__inner panel-inverted">
-    <div class="panel-main__content">
-
-        
-
-        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">若梦浮生</a></h1>
-        <hr class="panel-cover__divider" />
-
-        
-
-        <div class="navigation-wrapper">
-
-          <nav class="cover-navigation cover-navigation--primary">
-            <ul class="navigation">
-
-              
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">若梦浮生</span>
+            </a>
+            <nav id="main-nav">
                 
-                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
-              
+                    <a class="main-nav-link" href="/.">Home</a>
                 
-                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
-              
+                    <a class="main-nav-link" href="/archives">Archives</a>
                 
-                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
-              
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/justwe.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
 
-            </ul>
-          </nav>
-
-          <!-- ----------------------------
-To add a new social icon simply duplicate one of the list items from below
-and change the class in the <i> tag to match the desired social network
-and then add your link to the <a>. Here is a full list of social network
-classes that you can use:
-
-    icon-social-500px
-    icon-social-behance
-    icon-social-delicious
-    icon-social-designer-news
-    icon-social-deviant-art
-    icon-social-digg
-    icon-social-dribbble
-    icon-social-facebook
-    icon-social-flickr
-    icon-social-forrst
-    icon-social-foursquare
-    icon-social-github
-    icon-social-google-plus
-    icon-social-hi5
-    icon-social-instagram
-    icon-social-lastfm
-    icon-social-linkedin
-    icon-social-medium
-    icon-social-myspace
-    icon-social-path
-    icon-social-pinterest
-    icon-social-rdio
-    icon-social-reddit
-    icon-social-skype
-    icon-social-spotify
-    icon-social-stack-overflow
-    icon-social-steam
-    icon-social-stumbleupon
-    icon-social-treehouse
-    icon-social-tumblr
-    icon-social-twitter
-    icon-social-vimeo
-    icon-social-xbox
-    icon-social-yelp
-    icon-social-youtube
-    icon-social-zerply
-    icon-mail
-
--------------------------------->
-
-<!-- add social info here -->
-
-
-
-<nav class="cover-navigation navigation--social">
-  <ul class="navigation">
-
-    
-      <!-- Github -->
-      <li class="navigation__item">
-        <a href="https://github.com/lfkdsk" title="Huno on GitHub">
-          <i class='icon icon-social-github'></i>
-          <span class="label">GitHub</span>
-        </a>
-      </li>
-    
-
-    <!-- China social icon -->
-    <!--
-    
-      <li class="navigation__item">
-        <a href="" title="">
-          <i class='icon cs-icon-douban'></i>
-          <span class="label">Douban</span>
-        </a>
-      </li>
-
-      <li class="navigation__item">
-        <a href="" title="">
-          <i class='icon cs-icon-weibo'></i>
-          <span class="label">Weibo</span>
-        </a>
-      </li>
-
-    -->
-
-
-
-  </ul>
-</nav>
-
-
-
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
 
-      </div>
-
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
     </div>
 
-    <div class="panel-cover--overlay"></div>
-  </div>
+                </td>
+            </tr>
+        </table>
+    </div>
 </header>
 
-    <div class="content-wrapper">
-        <div class="content-wrapper__inner entry">
+        <div class="outer">
             
+                
 
-<article class="post-container post-container--single">
-
-  <header class="post-header">
-    
-    <h1 class="post-title">使用DFA做文本编辑器的自动提示</h1>
-
-    
-
-    <div class="post-meta">
-      <time datetime="2016-07-11" class="post-meta__date date">2016-07-11</time> 
-
-      <span class="post-meta__tags tags">
-
-          
-
-          
-             &#8226; 标签:
-            <font class="tags">
-              <a class="tags-link" href="/tags/自动机/">自动机</a>
-            </font>
-          
-
-      </span>
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/justwe.png" />
+            <h2 id="name">lfkdsk</h2>
+            <h3 id="title">Android Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Dalian, China</span>
+            <a id="follow" target="_blank" href="https://github.com/lfkdsk/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                18
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                12
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
     </div>
+</aside>
+
+            
+            <section id="main"><article id="post-dfa-auto-suggestion" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
     
+        <h1 class="article-title" itemprop="name">
+            使用DFA做文本编辑器的自动提示
+        </h1>
     
 
-  </header>
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/07/11/dfa-auto-suggestion/">
+            <time datetime="2016-07-10T23:59:17.000Z" itemprop="datePublished">2016-07-11</time>
+        </a>
+    </div>
 
-  <section id="post-content" class="article-content post">
-    <p>&#x4E4B;&#x524D;&#x770B;&#x9F99;&#x4E66;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9F99;&#x4E66;&#x63D0;&#x5230;&#x53EF;&#x4EE5;&#x5728;&#x7F16;&#x8BD1;&#x5668;&#x91CC;&#x7528;&#x52A8;&#x6001;&#x7684;&#x751F;&#x6210;&#x7684;NFA&#x81EA;&#x52A8;&#x673A;&#x6765;&#x52A8;&#x6001;&#x5339;&#x914D;&#x81EA;&#x5DF1;&#x7684;&#x8F93;&#x5165;&#x4E32;&#xFF0C;NFA&#x7684;&#x7B80;&#x5355;&#x5B9E;&#x73B0;&#x5176;&#x5B9E;&#x5199;&#x8D77;&#x6765;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x662F;&#x5B9E;&#x9645;&#x51ED;&#x611F;&#x89C9;&#x5199;&#x5B8C;&#x4E4B;&#x540E;&#xFF0C;&#x5374;&#x89C9;&#x5F97;&#x5E76;&#x4E0D;&#x662F;&#x975E;&#x5E38;&#x7684;&#x597D;&#x7528;&#xFF0C;&#x5728;&#x5904;&#x7406;&#x81EA;&#x5DF1;&#x5DF2;&#x7ECF;&#x8F93;&#x5165;&#x8FC7;&#x7684;&#x4E32;&#xFF0C;&#x5982;&#x679C;&#x8FD8;&#x8981;&#x5904;&#x7406;&#x7A7A;&#x4E32;&#x548C;&#x4E00;&#x4E2A;&#x7B26;&#x53F7;&#x5BF9;&#x5E94;&#x591A;&#x79CD;&#x8DEF;&#x5F84;&#x5C31;&#x52BF;&#x5FC5;&#x6D89;&#x53CA;&#x56DE;&#x6EAF;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x5C31;&#x52A8;&#x6001;&#x751F;&#x6210;&#x4E86;&#x4E00;&#x4E2A;DFA&#xFF0C;&#x5E94;&#x8BE5;&#x4E0D;&#x662F;&#x6700;&#x7B80;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x80FD;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#x3002;</p>
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/自动机/">自动机</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>&#x4E4B;&#x524D;&#x770B;&#x9F99;&#x4E66;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9F99;&#x4E66;&#x63D0;&#x5230;&#x53EF;&#x4EE5;&#x5728;&#x7F16;&#x8BD1;&#x5668;&#x91CC;&#x7528;&#x52A8;&#x6001;&#x7684;&#x751F;&#x6210;&#x7684;NFA&#x81EA;&#x52A8;&#x673A;&#x6765;&#x52A8;&#x6001;&#x5339;&#x914D;&#x81EA;&#x5DF1;&#x7684;&#x8F93;&#x5165;&#x4E32;&#xFF0C;NFA&#x7684;&#x7B80;&#x5355;&#x5B9E;&#x73B0;&#x5176;&#x5B9E;&#x5199;&#x8D77;&#x6765;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x662F;&#x5B9E;&#x9645;&#x51ED;&#x611F;&#x89C9;&#x5199;&#x5B8C;&#x4E4B;&#x540E;&#xFF0C;&#x5374;&#x89C9;&#x5F97;&#x5E76;&#x4E0D;&#x662F;&#x975E;&#x5E38;&#x7684;&#x597D;&#x7528;&#xFF0C;&#x5728;&#x5904;&#x7406;&#x81EA;&#x5DF1;&#x5DF2;&#x7ECF;&#x8F93;&#x5165;&#x8FC7;&#x7684;&#x4E32;&#xFF0C;&#x5982;&#x679C;&#x8FD8;&#x8981;&#x5904;&#x7406;&#x7A7A;&#x4E32;&#x548C;&#x4E00;&#x4E2A;&#x7B26;&#x53F7;&#x5BF9;&#x5E94;&#x591A;&#x79CD;&#x8DEF;&#x5F84;&#x5C31;&#x52BF;&#x5FC5;&#x6D89;&#x53CA;&#x56DE;&#x6EAF;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x5C31;&#x52A8;&#x6001;&#x751F;&#x6210;&#x4E86;&#x4E00;&#x4E2A;DFA&#xFF0C;&#x5E94;&#x8BE5;&#x4E0D;&#x662F;&#x6700;&#x7B80;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x80FD;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#x3002;</p>
 <h3 id="DFA&#x72B6;&#x6001;"><a href="#DFA&#x72B6;&#x6001;" class="headerlink" title="DFA&#x72B6;&#x6001;"></a>DFA&#x72B6;&#x6001;</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> sample;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Dfa &#x72B6;&#x6001;</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@author</span> liufengkai</span><br><span class="line"> *         Created by liufengkai on 16/7/10.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DfaState</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">DfaState</span>&gt; </span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> DFA_ID_COUNT = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * state id</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> stateId;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * transition set</span><br><span class="line">     * char / set of dfaState</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;Integer, DfaState&gt; transitionSet;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> DfaState parentState;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer parentInput;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x6784;&#x9020;&#x65B9;&#x6CD5;</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> input       &#x8F93;&#x5165;&#x4E32;</span><br><span class="line">     * <span class="doctag">@param</span> parentState &#x7236;&#x8282;&#x70B9;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DfaState</span><span class="params">(Integer input, DfaState parentState)</span> </span>{</span><br><span class="line">        <span class="keyword">this</span>.parentInput = input;</span><br><span class="line">        <span class="keyword">this</span>.parentState = parentState;</span><br><span class="line">        <span class="keyword">this</span>.stateId = DFA_ID_COUNT++;</span><br><span class="line">        <span class="keyword">this</span>.transitionSet = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x6DFB;&#x52A0;&#x4E00;&#x6761;&#x8F6C;&#x79FB;&#x8BED;&#x53E5;</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> input &#x8F93;&#x5165;&#x5B57;&#x7B26;</span><br><span class="line">     * <span class="doctag">@param</span> state &#x4E0B;&#x4E00;&#x4E2A;&#x72B6;&#x6001;</span><br><span class="line">     * <span class="doctag">@return</span> &#x8FD4;&#x56DE;&#x6DFB;&#x52A0;&#x72B6;&#x6001;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DfaState <span class="title">addTransition</span><span class="params">(<span class="keyword">int</span> input, DfaState state)</span> </span>{</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!transitionSet.containsKey(input)) {</span><br><span class="line">            transitionSet.put(input, state);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DfaState <span class="title">getTransitionInput</span><span class="params">(<span class="keyword">int</span> input)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> getTransitionSet().get(input);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getStateId</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> stateId;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getTotalNumber</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> DFA_ID_COUNT;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;Integer, DfaState&gt; <span class="title">getTransitionSet</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> transitionSet;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DfaState <span class="title">getParentState</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> parentState;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(DfaState o)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getParentInput</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> parentInput;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x6253;&#x5370;&#x72B6;&#x6001;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printState</span><span class="params">()</span> </span>{</span><br><span class="line">        System.out.println(<span class="string">&quot;state : &quot;</span> + getStateId());</span><br><span class="line">        <span class="keyword">for</span> (Integer integer : transitionSet.keySet()) {</span><br><span class="line">            System.out.println(<span class="string">&quot;symbol: &quot;</span> +</span><br><span class="line">                    (<span class="keyword">char</span>) integer.intValue() + <span class="string">&quot; to :&quot;</span> +</span><br><span class="line">                    transitionSet.get(integer).getStateId());</span><br><span class="line">            transitionSet.get(integer).printState();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x8FD4;&#x56DE;&#x7ED3;&#x675F;&#x72B6;&#x6001;</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> list &#x4F20;&#x5165;&#x7ED3;&#x675F;&#x72B6;&#x6001;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">returnEndList</span><span class="params">(ArrayList&lt;DfaState&gt; list)</span> </span>{</span><br><span class="line">        <span class="keyword">for</span> (Integer key : transitionSet.keySet()) {</span><br><span class="line">            DfaState cur = transitionSet.get(key);</span><br><span class="line">            <span class="keyword">if</span> (cur.getTransitionSet().isEmpty()) {</span><br><span class="line">                list.add(cur);</span><br><span class="line">            } <span class="keyword">else</span> {</span><br><span class="line">                cur.returnEndList(list);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>DFAState&#x5B9A;&#x4E49;&#x4E86;&#x5F88;&#x591A;&#x57FA;&#x7840;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6BD4;&#x5982;&#x6BCF;&#x4E2A;&#x72B6;&#x6001;&#x90FD;&#x6709;&#x552F;&#x4E00;&#x7684;ID&#x503C;&#x4E0E;&#x4E4B;&#x5BF9;&#x5E94;&#xFF0C;&#x867D;&#x7136;&#x662F;&#x4E00;&#x4E2A;DFA&#x4F46;&#x662F;&#x63D2;&#x5165;&#x7684;&#x8FC7;&#x7A0B;&#x662F;&#x53D1;&#x73B0;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4E0D;&#x540C;&#x624D;&#x5206;&#x53C9;&#xFF0C;&#x7531;&#x6B64;&#x770B;&#x6765;&#x6BCF;&#x4E2A;&#x72B6;&#x6001;&#x90FD;&#x5E94;&#x8BE5;&#x6709;&#x552F;&#x4E00;&#x7684;&#x7236;&#x8282;&#x70B9;&#x4E0E;&#x4E4B;&#x5BF9;&#x5E94;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E2A;Map&#x6765;&#x8BB0;&#x5F55;&#x6211;&#x4EEC;&#x6709;&#x54EA;&#x4E9B;&#x8DEF;&#x5F84;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x6765;&#x9012;&#x5F52;&#x67E5;&#x627E;&#x7EC8;&#x7ED3;&#x8282;&#x70B9;&#xFF0C;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6765;&#x5012;&#x5E8F;&#x67E5;&#x627E;&#x9884;&#x6D4B;&#x5206;&#x6790;&#x51FA;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x8FD9;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x6548;&#x7387;&#x5F88;&#x9AD8;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4E4B;&#x540E;&#x4E5F;&#x4F1A;&#x88AB;&#x66FF;&#x6362;&#x3002;</p>
 <h3 id="DFABuilder&#x521B;&#x5EFA;DFA"><a href="#DFABuilder&#x521B;&#x5EFA;DFA" class="headerlink" title="DFABuilder&#x521B;&#x5EFA;DFA"></a>DFABuilder&#x521B;&#x5EFA;DFA</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> sample;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Created by liufengkai on 16/7/10.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DfaBuilder</span> </span>{</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * NFA &#x72B6;&#x6001;&#x673A;&#x7684;&#x8D77;&#x59CB;&#x72B6;&#x6001;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> DfaState startState = <span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x72B6;&#x6001;&#x673A;&#x7684;&#x5F53;&#x524D;&#x72B6;&#x6001;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> DfaState currentState = <span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x63A5;&#x53D7;&#x72B6;&#x6001;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> HashMap&lt;Integer, DfaState&gt; acceptState;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> RETURN_ID = <span class="number">13</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> CHANGE_LINE_ID = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TAB_ID = <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SPACE_ID = <span class="number">32</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;Integer&gt; endIdList;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> DfaCallBack dfaCallBack = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DfaBuilder</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="comment">// parent is null</span></span><br><span class="line">        <span class="keyword">this</span>(<span class="keyword">new</span> DfaState(<span class="keyword">null</span>, <span class="keyword">null</span>));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DfaBuilder</span><span class="params">(DfaState startState)</span> </span>{</span><br><span class="line">        <span class="keyword">this</span>.startState = startState;</span><br><span class="line">        <span class="keyword">this</span>.currentState = startState;</span><br><span class="line">        initial();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x6DFB;&#x52A0;&#x63A5;&#x53D7;&#x72B6;&#x6001;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addAcceptState</span><span class="params">(<span class="keyword">int</span> input, DfaState accept)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (!acceptState.containsKey(input)) {</span><br><span class="line">            acceptState.put(input, accept);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initial</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">this</span>.acceptState = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">this</span>.endIdList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        initialEndIdList();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initialEndIdList</span><span class="params">()</span> </span>{</span><br><span class="line">        endIdList.add(RETURN_ID);</span><br><span class="line">        endIdList.add(CHANGE_LINE_ID);</span><br><span class="line">        endIdList.add(TAB_ID);</span><br><span class="line">        endIdList.add(SPACE_ID);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DfaState <span class="title">input</span><span class="params">(<span class="keyword">int</span> input)</span> </span>{</span><br><span class="line">        <span class="comment">// parser &#x4E86;&#x6240;&#x6709;&#x7279;&#x6B8A;&#x60C5;&#x51B5; &#x5BF9;&#x4E8E;&#x5355;&#x8BCD;&#x7684;&#x63D0;&#x793A;</span></span><br><span class="line">        <span class="comment">// &#x4E00;&#x4E2A;&#x5355;&#x8BCD;&#x5185;&#x662F;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x7A7A;&#x683C;&#x5236;&#x8868;&#x7B26;&#x548C;&#x6362;&#x884C;&#x7684;</span></span><br><span class="line"><span class="comment">//        System.out.println(input + &quot;sss&quot;);</span></span><br><span class="line">        <span class="keyword">if</span> (endIdList.contains(input)) {</span><br><span class="line">            <span class="keyword">this</span>.currentState = startState;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// &#x5904;&#x7406;&#x4E86;&#x5F53;&#x8F93;&#x5165;&#x4E32;&#x8FD8;&#x5728;&#x8D77;&#x59CB;&#x72B6;&#x6001;&#x7684;&#x60C5;&#x51B5;</span></span><br><span class="line">        <span class="keyword">if</span> (currentState.getStateId() == startState.getStateId()) {</span><br><span class="line">            <span class="keyword">return</span> startInput(input);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">// &#x8BF4;&#x660E;&#x72B6;&#x6001;&#x4E0D;&#x5728;&#x8D77;&#x59CB;&#x72B6;&#x6001;</span></span><br><span class="line">        DfaState tempCurrent = currentState.getTransitionInput(input);</span><br><span class="line">        <span class="keyword">if</span> (tempCurrent == <span class="keyword">null</span>) {</span><br><span class="line">            tempCurrent = <span class="keyword">new</span> DfaState(input, currentState);</span><br><span class="line">            currentState.addTransition(input, tempCurrent);</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            <span class="keyword">if</span> (dfaCallBack != <span class="keyword">null</span>) dfaCallBack.onMultipleSetBack(tempCurrent, tempCurrent.getTransitionSet());</span><br><span class="line">        }</span><br><span class="line">        currentState = tempCurrent;</span><br><span class="line">        <span class="keyword">return</span> currentState;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x5904;&#x7406;&#x8FD8;&#x5728;&#x8F93;&#x5165;&#x4E32;&#x8D77;&#x59CB;&#x72B6;&#x6001;&#x7684;&#x60C5;&#x51B5;</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> input &#x8F93;&#x5165;</span><br><span class="line">     * <span class="doctag">@return</span> current&#x72B6;&#x6001;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DfaState <span class="title">startInput</span><span class="params">(<span class="keyword">int</span> input)</span> </span>{</span><br><span class="line">        DfaState current;</span><br><span class="line">        <span class="comment">// &#x8F6C;&#x5165;&#x7B2C;&#x4E00;&#x4E2A;&#x8D77;&#x59CB;&#x72B6;&#x6001;</span></span><br><span class="line">        <span class="keyword">if</span> (!acceptState.containsKey(input)) {</span><br><span class="line">            current = <span class="keyword">new</span> DfaState(input, currentState);</span><br><span class="line">            <span class="keyword">this</span>.addAcceptState(input, current);</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            current = acceptState.get(input);</span><br><span class="line">            <span class="keyword">if</span> (dfaCallBack != <span class="keyword">null</span>) dfaCallBack.onMultipleSetBack(current, current.getTransitionSet());</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">this</span>.currentState = current;</span><br><span class="line">        <span class="keyword">return</span> current;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDfaCallBack</span><span class="params">(DfaCallBack dfaCallBack)</span> </span>{</span><br><span class="line">        <span class="keyword">this</span>.dfaCallBack = dfaCallBack;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printDfa</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">for</span> (Integer integer : acceptState.keySet()) {</span><br><span class="line">            System.out.println(<span class="string">&quot;&#x63A5;&#x53D7;&#x72B6;&#x6001; &quot;</span> + acceptState.get(integer).getStateId());</span><br><span class="line">            acceptState.get(integer).printState();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x91CD;&#x8BBE;startState</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resetStartState</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">this</span>.currentState = startState;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
@@ -231,78 +230,316 @@ classes that you can use:
 <h3 id="&#x6548;&#x679C;&#x56FE;"><a href="#&#x6548;&#x679C;&#x56FE;" class="headerlink" title="&#x6548;&#x679C;&#x56FE;"></a>&#x6548;&#x679C;&#x56FE;</h3><p>&#x6211;&#x6253;&#x7B97;&#x770B;&#x770B;javaFx&#xFF0C;&#x5199;&#x4E00;&#x4E2A;&#x5E26;gui&#x7684;&#xFF0C;&#x4E0D;&#x8FC7;&#x73B0;&#x5728;&#x6709;&#x70B9;&#x61D2;&#xFF0C;&#x8FD8;&#x6CA1;&#x5199;&#x5B8C;&#x3002;</p>
 <p><img src="/2016/07/11/dfa-auto-suggestion/psb.png" alt="pic"></p>
 
-  </section>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
-  
-  
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
 
-<section class="post-comments">
-
-    <div class="ds-thread" data-thread-key="2016/07/11/dfa-auto-suggestion/"></div>
-
-    <script type="text/javascript">
-      var duoshuoQuery = {short_name:"lfkdsk"};
-      (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = '//static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] 
-        || document.getElementsByTagName('body')[0]).appendChild(ds);
-      })();
-    </script> 
-
-</section>
 
 
+</div>
+
+            
+    
+        <a href="http://yoursite.com/2016/07/11/dfa-auto-suggestion/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2016/07/11/dfa-auto-suggestion/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/07/14/generate-view-id/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    AndroidTips0:动态生成ID？
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/07/04/learnparser1/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">编译原理：状态机相关的三种算法</div>
+        </a>
+    
+</nav>
+
+
+    
 </article>
 
 
-            <footer class="footer">
-
-    <span class="footer__copyright">&copy; 2014-2015. | 由<a href="https://hexo.io/">Hexo</a>强力驱动 | 主题<a href="https://github.com/someus/huno">Huno</a></span>
     
-</footer>
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/15/the-end-ofx/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/15/the-end-ofx/" class="title">写在学伴叁的边上</a></p>
+                            <p class="item-date"><time datetime="2016-11-15T04:19:15.000Z" itemprop="datePublished">2016-11-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/10/know-cpp-again/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/10/know-cpp-again/" class="title">Cpp Tips</a></p>
+                            <p class="item-date"><time datetime="2016-11-10T07:11:30.000Z" itemprop="datePublished">2016-11-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/01/read-handler/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/01/read-handler/" class="title">Handler - Message - Looper多线程的数据交换</a></p>
+                            <p class="item-date"><time datetime="2016-10-31T16:27:38.000Z" itemprop="datePublished">2016-11-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/08/how-to-solve-co/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/09/08/how-to-solve-co/" class="title">如何处理游戏中的碰撞事件</a></p>
+                            <p class="item-date"><time datetime="2016-09-08T08:04:42.000Z" itemprop="datePublished">2016-09-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/06/androidTips1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/09/06/androidTips1/" class="title">AndroidTips1:从View源码学习点击事件的模拟</a></p>
+                            <p class="item-date"><time datetime="2016-09-06T11:32:07.000Z" itemprop="datePublished">2016-09-06</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
         </div>
     </div>
 
-    <!-- js files -->
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/main.js"></script>
-    <script src="/js/scale.fix.js"></script>
     
-
+        
     
-
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript"> 
-        $(document).ready(function(){
-            MathJax.Hub.Config({ 
-                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
-            });
-        });
-    </script>
-
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
 
     
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AndroidTips/">AndroidTips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android：动态生成ID/">Android：动态生成ID</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interesting/">Interesting!</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏编程/">游戏编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/源码阅读/">源码阅读</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程语言/">编程语言</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编译原理/">编译原理</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动机/">自动机</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
 
-    <script src="/js/awesome-toc.min.js"></script>
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/AndroidTips/" style="font-size: 10px;">AndroidTips</a> <a href="/tags/Android：动态生成ID/" style="font-size: 10px;">Android：动态生成ID</a> <a href="/tags/Interesting/" style="font-size: 10px;">Interesting!</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/游戏编程/" style="font-size: 10px;">游戏编程</a> <a href="/tags/源码阅读/" style="font-size: 15px;">源码阅读</a> <a href="/tags/编程语言/" style="font-size: 20px;">编程语言</a> <a href="/tags/编译原理/" style="font-size: 15px;">编译原理</a> <a href="/tags/自动机/" style="font-size: 10px;">自动机</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 刘丰恺<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
     <script>
-        $(document).ready(function(){
-            $.awesome_toc({
-                overlay: true,
-                contentId: "post-content",
-            });
-        });
-    </script>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://yoursite.com/2016/07/11/dfa-auto-suggestion/';
+        
+        this.page.identifier = 'dfa-auto-suggestion';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
 
 
     
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
     
-    <!--kill ie6 -->
-<!--[if IE 6]>
-  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
-<![endif]-->
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
 
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
 </body>
 </html>
