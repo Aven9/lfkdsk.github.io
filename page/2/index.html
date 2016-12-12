@@ -73,7 +73,7 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -92,10 +92,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Entradas',
+            POSTS: 'Posts',
             PAGES: 'Pages',
-            CATEGORIES: 'Categorias',
-            TAGS: 'Etiquetas',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -122,7 +122,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
     </div>
 
                 </td>
@@ -142,16 +142,16 @@
             <h2 id="name">lfkdsk</h2>
             <h3 id="title">Android Developer &amp; Designer</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Dalian, China</span>
-            <a id="follow" target="_blank" href="https://github.com/lfkdsk/">SEGUIR</a>
+            <a id="follow" target="_blank" href="https://github.com/lfkdsk/">FOLLOW</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                18
-                <span>Entradas</span>
+                19
+                <span>posts</span>
             </div>
             <div class="article-info-block">
                 12
-                <span>Etiquetas</span>
+                <span>tags</span>
             </div>
         </div>
         
@@ -175,6 +175,137 @@
 
             
             <section id="main">
+    <article id="post-learnparser1" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/07/04/learnparser1/">编译原理：状态机相关的三种算法</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/07/04/learnparser1/">
+            <time datetime="2016-07-04T15:39:38.000Z" itemprop="datePublished">2016-07-04</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/编译原理/">编译原理</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;"><a href="#&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;" class="headerlink" title="&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;"></a>&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;</h3><p>&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;&#x5BF9;&#x4E8E;&#x6B63;&#x89C4;&#x5F0F;&#xFF08;&#x53EF;&#x7406;&#x89E3;&#x4E3A;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF09;&#x7684;&#x8BC6;&#x522B;&#xFF0C;&#x6211;&#x4EEC;&#x63D0;&#x51FA;&#x4E86;&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#x7406;&#x8BBA;&#xFF0C;&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#x63A5;&#x53D7;&#x6B63;&#x89C4;&#x5F0F;&#x7684;&#x5B9A;&#x4E49;&#x7B26;&#xFF0C;&#x5E76;&#x4E0D;&#x65AD;&#x7684;&#x8BC6;&#x522B;&#x7B26;&#x53F7;&#xFF0C;&#x79FB;&#x52A8;&#x5230;&#x65B0;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x5982;&#x679C;&#x51FA;&#x73B0;&#x4E86;&#x8BC6;&#x522B;&#x9519;&#x8BEF;&#x5C31;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
+<p>&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#x5305;&#x542B;&#x786E;&#x5B9A;&#x7684;&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#xFF08;DFA&#xFF09;&#xFF0C;&#x548C;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#xFF08;NFA&#xFF09;&#x3002;&#x4E24;&#x8005;&#x7684;&#x4E3B;&#x8981;&#x533A;&#x522B;&#x5728;&#x4E8E;&#xFF0C;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x662F;&#x5426;&#x901A;&#x8FC7;&#x540C;&#x6837;&#x7684;&#x7B26;&#x53F7;&#x8F93;&#x5165;&#x80FD;&#x8FBE;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x72B6;&#x6001;&#x3002;&#x5982;&#x679C;&#x80FD;&#x5C31;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#xFF0C;&#x53CD;&#x4E4B;&#x5C31;&#x662F;&#x786E;&#x5B9A;&#x7684;&#x3002;&#x53E6;&#x5916;&#xFF1A;NFA&#x8FD8;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x7A7A;&#x5B57;&#x4E32;&#x5DF2;&#x8FBE;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x72B6;&#x6001;&#x3002;</p>
+<h3 id="&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7B97;&#x6CD5;"><a href="#&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7B97;&#x6CD5;" class="headerlink" title="&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7B97;&#x6CD5;"></a>&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7B97;&#x6CD5;</h3><p>&#x8FD9;&#x5176;&#x4E2D;&#x6709;&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7B97;&#x6CD5;&#xFF1A;</p>
+<h4 id="&#x6B63;&#x89C4;&#x5F0F;-gt-NFA-Thompson&#x7B97;&#x6CD5;"><a href="#&#x6B63;&#x89C4;&#x5F0F;-gt-NFA-Thompson&#x7B97;&#x6CD5;" class="headerlink" title="&#x6B63;&#x89C4;&#x5F0F; =&gt; NFA Thompson&#x7B97;&#x6CD5;"></a>&#x6B63;&#x89C4;&#x5F0F; =&gt; NFA Thompson&#x7B97;&#x6CD5;</h4><p>&#x8FD9;&#x4E2A;&#x7B97;&#x6CD5;&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E9B;&#x6A21;&#x7248;&#x53BB;&#x5BF9;&#x5E94;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x7684;&#x7B26;&#x53F7;&#xFF0C;&#x53EA;&#x8981;&#x8BB0;&#x4F4F;&#x6A21;&#x7248;&#xFF0C;&#x5C31;&#x80FD;&#x63A8;&#x51FA;&#x76F8;&#x5E94;&#x7684;NFA&#x3002;</p>
+<p>&#x8FD9;&#x5176;&#x4E2D;&#x7684;S&#x662F;&#x6307;&#x5F00;&#x59CB;&#x72B6;&#x6001;&#x3002;</p>
+<ol>
+<li><p>a:</p>
+<p><img src="/2016/07/04/learnparser1/graph_a.png" alt="graph_a"></p>
+</li>
+<li><p>ab</p>
+<p><img src="/2016/07/04/learnparser1/graph_ab.png" alt="graph_ab"></p>
+</li>
+<li><p>a|b: &#x2202; &#x5E26;&#x8868;&#x7A7A;&#x4E32;</p>
+<p><img src="/2016/07/04/learnparser1/graph_a|b.png" alt="a|b"></p>
+</li>
+<li><p>a*:</p>
+<p><img src="/2016/07/04/learnparser1/graph_a*.png" alt="graph_a*"></p>
+</li>
+</ol>
+<p>&#x628A;&#x5BF9;&#x5E94;&#x7684;&#x6B63;&#x89C4;&#x5F0F;&#x6309;&#x7167;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x9010;&#x5C42;&#x5206;&#x89E3;&#xFF0C;&#x5C31;&#x80FD;&#x5F97;&#x5230;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;NFA&#x4E86;&#x3002;</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+</div>
+
+            
+    
+        <a href="https://lfkdsk.github.io/2016/07/04/learnparser1/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/07/04/learnparser1/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-learnparser" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -336,7 +467,7 @@
 
             
     
-        <a href="https://lfkdsk.github.io/2016/07/03/learnparser/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/07/03/learnparser/">Comentarios</a>
+        <a href="https://lfkdsk.github.io/2016/07/03/learnparser/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/07/03/learnparser/">Comments</a>
     
 
         </footer>
@@ -448,7 +579,7 @@
 
             
     
-        <a href="https://lfkdsk.github.io/2016/06/25/make-new-language-4/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/06/25/make-new-language-4/">Comentarios</a>
+        <a href="https://lfkdsk.github.io/2016/06/25/make-new-language-4/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/06/25/make-new-language-4/">Comments</a>
     
 
         </footer>
@@ -575,7 +706,7 @@
 
             
     
-        <a href="https://lfkdsk.github.io/2016/06/16/some-magic-things/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/06/16/some-magic-things/">Comentarios</a>
+        <a href="https://lfkdsk.github.io/2016/06/16/some-magic-things/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/06/16/some-magic-things/">Comments</a>
     
 
         </footer>
@@ -694,7 +825,7 @@
 
             
     
-        <a href="https://lfkdsk.github.io/2016/06/09/2014to2016/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/06/09/2014to2016/">Comentarios</a>
+        <a href="https://lfkdsk.github.io/2016/06/09/2014to2016/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/06/09/2014to2016/">Comments</a>
     
 
         </footer>
@@ -869,7 +1000,7 @@
 
             
     
-        <a href="https://lfkdsk.github.io/2016/06/01/make-new-language-3/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/06/01/make-new-language-3/">Comentarios</a>
+        <a href="https://lfkdsk.github.io/2016/06/01/make-new-language-3/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/06/01/make-new-language-3/">Comments</a>
     
 
         </footer>
@@ -1212,7 +1343,7 @@ lex.yy.c: ex_calc.l
 
             
     
-        <a href="https://lfkdsk.github.io/2016/06/01/make-new-language-2/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/06/01/make-new-language-2/">Comentarios</a>
+        <a href="https://lfkdsk.github.io/2016/06/01/make-new-language-2/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/06/01/make-new-language-2/">Comments</a>
     
 
         </footer>
@@ -1398,7 +1529,7 @@ lex.yy.c: ex_calc.l
 
             
     
-        <a href="https://lfkdsk.github.io/2016/05/27/make-new-language-1/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/05/27/make-new-language-1/">Comentarios</a>
+        <a href="https://lfkdsk.github.io/2016/05/27/make-new-language-1/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/05/27/make-new-language-1/">Comments</a>
     
 
         </footer>
@@ -1521,7 +1652,7 @@ lex.yy.c: ex_calc.l
 
             
     
-        <a href="https://lfkdsk.github.io/2016/05/26/make-new-language-0/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/05/26/make-new-language-0/">Comentarios</a>
+        <a href="https://lfkdsk.github.io/2016/05/26/make-new-language-0/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/05/26/make-new-language-0/">Comments</a>
     
 
         </footer>
@@ -1532,7 +1663,7 @@ lex.yy.c: ex_calc.l
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&laquo; Anterior</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
     </nav>
 </section>
             
@@ -1540,9 +1671,28 @@ lex.yy.c: ex_calc.l
    
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Recientes</h3>
+        <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/12/12/eff-cpp-tips/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/12/12/eff-cpp-tips/" class="title">Effective Cpp Tips</a></p>
+                            <p class="item-date"><time datetime="2016-12-12T07:27:51.000Z" itemprop="datePublished">2016-12-12</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1620,25 +1770,6 @@ lex.yy.c: ex_calc.l
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/09/06/androidTips1/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2016/09/06/androidTips1/" class="title">AndroidTips1:从View源码学习点击事件的模拟</a></p>
-                            <p class="item-date"><time datetime="2016-09-06T11:32:07.000Z" itemprop="datePublished">2016-09-06</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1648,34 +1779,34 @@ lex.yy.c: ex_calc.l
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Archivos</h3>
+        <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Etiquetas</h3>
+        <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AndroidTips/">AndroidTips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android：动态生成ID/">Android：动态生成ID</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interesting/">Interesting!</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏编程/">游戏编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/源码阅读/">源码阅读</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程语言/">编程语言</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编译原理/">编译原理</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动机/">自动机</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AndroidTips/">AndroidTips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android：动态生成ID/">Android：动态生成ID</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interesting/">Interesting!</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏编程/">游戏编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/源码阅读/">源码阅读</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程语言/">编程语言</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编译原理/">编译原理</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动机/">自动机</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">Nube de etiquetas</h3>
+        <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/AndroidTips/" style="font-size: 10px;">AndroidTips</a> <a href="/tags/Android：动态生成ID/" style="font-size: 10px;">Android：动态生成ID</a> <a href="/tags/Interesting/" style="font-size: 10px;">Interesting!</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/游戏编程/" style="font-size: 10px;">游戏编程</a> <a href="/tags/源码阅读/" style="font-size: 15px;">源码阅读</a> <a href="/tags/编程语言/" style="font-size: 20px;">编程语言</a> <a href="/tags/编译原理/" style="font-size: 15px;">编译原理</a> <a href="/tags/自动机/" style="font-size: 10px;">自动机</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+            <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/AndroidTips/" style="font-size: 10px;">AndroidTips</a> <a href="/tags/Android：动态生成ID/" style="font-size: 10px;">Android：动态生成ID</a> <a href="/tags/Interesting/" style="font-size: 10px;">Interesting!</a> <a href="/tags/cpp/" style="font-size: 15px;">cpp</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/游戏编程/" style="font-size: 10px;">游戏编程</a> <a href="/tags/源码阅读/" style="font-size: 15px;">源码阅读</a> <a href="/tags/编程语言/" style="font-size: 20px;">编程语言</a> <a href="/tags/编译原理/" style="font-size: 15px;">编译原理</a> <a href="/tags/自动机/" style="font-size: 10px;">自动机</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
         </div>
     </div>
 
     
         
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">Links</h3>
+        <h3 class="widget-title">links</h3>
         <div class="widget">
             <ul>
                 
