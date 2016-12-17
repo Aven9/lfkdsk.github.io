@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>AndroidTips1:从View源码学习点击事件的模拟 | 若梦浮生</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="&amp;#x4F5C;&amp;#x8005;&amp;#xFF1A;&amp;#x5218;&amp;#x4E30;&amp;#x607A;
+&amp;#x4F5C;&amp;#x8005;&amp;#x535A;&amp;#x5BA2;&amp;#xFF1A;&amp;#x82E5;&amp;#x68A6;&amp;#x6D6E;&amp;#x751F;
+&amp;#x8F6C;&amp;#x8F7D;&amp;#x8BF7;&amp;#x6CE8;&amp;#x660E;&amp;#x6587;&amp;#x7AE0;&amp;#x6765;&amp;#x6E90;
+
+&amp;#x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AndroidTips1:从View源码学习点击事件的模拟">
+<meta property="og:url" content="https://lfkdsk.github.io/2016/09/06/androidTips1/index.html">
+<meta property="og:site_name" content="若梦浮生">
+<meta property="og:description" content="&amp;#x4F5C;&amp;#x8005;&amp;#xFF1A;&amp;#x5218;&amp;#x4E30;&amp;#x607A;
+&amp;#x4F5C;&amp;#x8005;&amp;#x535A;&amp;#x5BA2;&amp;#xFF1A;&amp;#x82E5;&amp;#x68A6;&amp;#x6D6E;&amp;#x751F;
+&amp;#x8F6C;&amp;#x8F7D;&amp;#x8BF7;&amp;#x6CE8;&amp;#x660E;&amp;#x6587;&amp;#x7AE0;&amp;#x6765;&amp;#x6E90;
+
+&amp;#x">
+<meta property="og:updated_time" content="2016-09-08T00:31:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AndroidTips1:从View源码学习点击事件的模拟">
+<meta name="twitter:description" content="&amp;#x4F5C;&amp;#x8005;&amp;#xFF1A;&amp;#x5218;&amp;#x4E30;&amp;#x607A;
+&amp;#x4F5C;&amp;#x8005;&amp;#x535A;&amp;#x5BA2;&amp;#xFF1A;&amp;#x82E5;&amp;#x68A6;&amp;#x6D6E;&amp;#x751F;
+&amp;#x8F6C;&amp;#x8F7D;&amp;#x8BF7;&amp;#x6CE8;&amp;#x660E;&amp;#x6587;&amp;#x7AE0;&amp;#x6765;&amp;#x6E90;
+
+&amp;#x">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">若梦浮生</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/justwe.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/justwe.png" />
+            <h2 id="name">lfkdsk</h2>
+            <h3 id="title">Android Developer &amp; Designer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Dalian, China</span>
+            <a id="follow" target="_blank" href="https://github.com/lfkdsk/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                21
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                13
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-androidTips1" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            AndroidTips1:从View源码学习点击事件的模拟
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/09/06/androidTips1/">
+            <time datetime="2016-09-06T11:32:07.000Z" itemprop="datePublished">2016-09-06</time>
+        </a>
+    </div>
+
+
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/AndroidTips/">AndroidTips</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <blockquote>
+<p>&#x4F5C;&#x8005;&#xFF1A;<a href="https://github.com/lfkdsk" target="_blank" rel="external">&#x5218;&#x4E30;&#x607A;</a></p>
+<p>&#x4F5C;&#x8005;&#x535A;&#x5BA2;&#xFF1A;<a href="http://lfkdsk.github.io/">&#x82E5;&#x68A6;&#x6D6E;&#x751F;</a></p>
+<p>&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#x6587;&#x7AE0;&#x6765;&#x6E90;</p>
+</blockquote>
+<p>&#x6211;&#x4EEC;&#x5728;&#x5F00;&#x53D1;&#x81EA;&#x5B9A;&#x4E49;&#x63A7;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x7ECF;&#x5E38;&#x4F1A;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x4E00;&#x4E2A;&#x63A7;&#x4EF6;&#x65E2;&#x9700;&#x8981;&#x80FD;&#x591F;&#x88AB;&#x62D6;&#x62FD;&#xFF0C;&#x4E5F;&#x9700;&#x8981;&#x80FD;&#x591F;&#x88AB;&#x70B9;&#x51FB;&#x3002;&#x5176;&#x5B9E;&#x8FD9;&#x4E2A;&#x9700;&#x6C42;&#x6709;&#x4E2A;&#x77DB;&#x76FE;&#x4E4B;&#x5904;&#xFF0C;&#x9700;&#x8981;&#x88AB;&#x62D6;&#x62FD;&#x5C31;&#x8981;&#x590D;&#x5199;<code>onTouch(...)</code>&#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x5C31;&#x88AB;&#x8986;&#x76D6;&#x4E86;&#xFF0C;&#x6B63;&#x5E38;&#x7684; <code>onClick()</code>  /  <code>onLongClick()</code>&#x4E8B;&#x4EF6;&#x662F;&#x4E0D;&#x80FD;&#x88AB;&#x54CD;&#x5E94;&#x7684;&#x4E86;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x9762;&#x5BF9;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;GestureDetector&#xFF0C;ViewDragHelper&#x80FD;&#x4E3A;&#x6211;&#x4EEC;&#x7684;&#x5F00;&#x53D1;&#x63D0;&#x4F9B;&#x4E00;&#x4E9B;&#x4FBF;&#x5229;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x8FD9;&#x4E9B;&#x5C01;&#x88C5;&#x7684;&#x5DE5;&#x5177;&#x7C7B;&#x6CA1;&#x529E;&#x6CD5;&#x5F88;&#x597D;&#x7684;&#x6EE1;&#x8DB3;&#x6211;&#x4EEC;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x5C31;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x6765;&#x6A21;&#x62DF;View&#x7684;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x3002;</p>
+<p>&#x6A21;&#x62DF;View&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x8BF4;&#x8D77;&#x6765;&#x4E5F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x8BF4;&#x767D;&#x4E86;&#x5C31;&#x662F;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7684;&#x70B9;&#x51FB;&#x672A;&#x77E5;&#x7684;&#x5750;&#x6807;&#x503C;&#xFF0C;&#x548C;&#x63A7;&#x4EF6;&#x6240;&#x5728;&#x7684;&#x77E9;&#x5F62;&#x6846;&#x7684;&#x76F8;&#x5BF9;&#x4F4D;&#x7F6E;&#xFF0C;&#x5E76;&#x4E14;&#x4FDD;&#x6301;&#x4E86;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x7528;&#x6237;&#x6210;&#x529F;&#x7684;&#x8FDB;&#x884C;&#x4E86;&#x4E00;&#x6B21;&#x70B9;&#x51FB;&#xFF0C;&#x8C03;&#x7528;View&#x7684;<code>callOnClick()</code>&#x65B9;&#x6CD5;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x8FD9;&#x65F6;View&#x5C31;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x7684;&#x56DE;&#x8C03;<code>onClickListener()</code>&#x4E86;&#x3002;</p>
+<h3 id="Bad-Implemention"><a href="#Bad-Implemention" class="headerlink" title="Bad Implemention"></a>Bad Implemention</h3><p>&#x6211;&#x770B;&#x8FC7;&#x4E00;&#x4E9B;&#x9879;&#x76EE;&#x7684;&#x4E0D;&#x5B8C;&#x7F8E;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x5927;&#x6982;&#x7C7B;&#x4F3C;&#x4E8E;&#x8FD9;&#x6837;&#x7684;&#x4F2A;&#x4EE3;&#x7801;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x,y; <span class="keyword">long</span> time;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTouch</span><span class="params">(view,event)</span></span>{</span><br><span class="line">  <span class="comment">// &#x4F2A;&#x4EE3;&#x7801;</span></span><br><span class="line">  	<span class="keyword">switch</span>(event.getAction()){</span><br><span class="line">      <span class="keyword">case</span> DOWN:</span><br><span class="line">        x = event.getX();</span><br><span class="line">        y = event.getY();</span><br><span class="line">        </span><br><span class="line">        time = getTime();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> UP:</span><br><span class="line">        <span class="comment">// &#x8D85;&#x8FC7;&#x4E00;&#x6BB5;&#x8F83;&#x77ED;&#x65F6;&#x95F4; &#x54CD;&#x5E94;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;</span></span><br><span class="line">        <span class="comment">// &#x8D85;&#x8FC7;&#x4E00;&#x6BB5;&#x957F;&#x65F6;&#x95F4; &#x54CD;&#x5E94;&#x957F;&#x6309;&#x65F6;&#x95F4;</span></span><br><span class="line">        <span class="keyword">if</span>(getTime() - time &gt; <span class="number">4</span></span><br><span class="line">           <span class="comment">// &#x5224;&#x65AD;x,y &#x79FB;&#x52A8;&#x7684;&#x4F4D;&#x7F6E;&#x4E0D;&#x8D85;&#x8FC7;&#x4E00;&#x4E2A;&#x9600;&#x503C;</span></span><br><span class="line">          &amp;&amp; event.getX() - x...</span><br><span class="line">          event.getY() - y ...){</span><br><span class="line">        	view.callOnClick();</span><br><span class="line">          or view.performOnLongClick()</span><br><span class="line">        }</span><br><span class="line">      <span class="keyword">case</span> MOVE&#x5904;&#x7406;:</span><br><span class="line">        <span class="comment">// &#x5904;&#x7406;&#x62D6;&#x52A8;&#x4E8B;&#x4EF6;</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">  	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x4EFD;&#x4EE3;&#x7801;&#x4ECE;&#x539F;&#x7406;&#x4E0A;&#x8BB2;&#x8D77;&#x65F6;&#x6CA1;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF0C;&#x5B8C;&#x5168;&#x6CE8;&#x610F;&#x5230;&#x4E86;&#x65F6;&#x95F4;&#x548C;&#x4F4D;&#x7F6E;&#xFF0C;&#x4F46;&#x662F;&#x628A;&#x5BF9;&#x70B9;&#x51FB;&#x7684;&#x5224;&#x5B9A;&#x5B8C;&#x5168;&#x7684;&#x653E;&#x5728;&#x4E86;<code>onTouch()</code>&#x7684;&#x89E6;&#x70B9;&#x62AC;&#x8D77;&#x7684;UP&#x5224;&#x5B9A;&#x91CC;&#xFF0C;&#x8FD9;&#x5C31;&#x9020;&#x6210;&#x4E86;&#x4F60;&#x7684;&#x70B9;&#x51FB;&#x5FC5;&#x987B;&#x5728;&#x4F60;&#x62AC;&#x624B;&#x4E4B;&#x540E;&#x624D;&#x80FD;&#x54CD;&#x5E94;&#xFF0C;&#x6B63;&#x5E38;&#x7684;&#x70B9;&#x6309;&#x4F3C;&#x4E4E;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x957F;&#x6309;&#x7684;&#x8BDD;&#xFF08;&#x53EA;&#x52A0;&#x957F;&#x5224;&#x5B9A;&#x65F6;&#x95F4;&#xFF09;&#x5C31;&#x4F1A;&#x9020;&#x6210;&#x9700;&#x8981;&#x62AC;&#x8D77;&#x6765;&#x624D;&#x80FD;&#x5224;&#x5B9A;&#x957F;&#x6309;&#x3002;</p>
+<h3 id="System-Source-Implemention"><a href="#System-Source-Implemention" class="headerlink" title="System Source Implemention"></a>System Source Implemention</h3><p>&#x4E0B;&#x9762;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x662F;View&#x6E90;&#x4EE3;&#x7801;&#x4E2D;onTouchEvent()&#x4E2D;&#x7684;ACTION_UP&#x4E0B;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x548C;&#x4E4B;&#x524D;&#x90A3;&#x79CD;&#x731C;&#x60F3;&#x4E00;&#x6837;&#xFF0C;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> MotionEvent.ACTION_UP:</span><br><span class="line">     <span class="keyword">boolean</span> prepressed = (mPrivateFlags &amp; PFLAG_PREPRESSED) != <span class="number">0</span>;</span><br><span class="line">     <span class="keyword">if</span> ((mPrivateFlags &amp; PFLAG_PRESSED) != <span class="number">0</span> || prepressed) {</span><br><span class="line">         <span class="comment">// take focus if we don&apos;t have it already and we should in</span></span><br><span class="line">         <span class="comment">// touch mode.</span></span><br><span class="line">         <span class="keyword">boolean</span> focusTaken = <span class="keyword">false</span>;</span><br><span class="line">         <span class="keyword">if</span> (isFocusable() &amp;&amp; isFocusableInTouchMode() &amp;&amp; !isFocused()) {</span><br><span class="line">             focusTaken = requestFocus();</span><br><span class="line">         }</span><br><span class="line"></span><br><span class="line">         <span class="keyword">if</span> (prepressed) {</span><br><span class="line">             <span class="comment">// The button is being released before we actually</span></span><br><span class="line">             <span class="comment">// showed it as pressed.  Make it show the pressed</span></span><br><span class="line">             <span class="comment">// state now (before scheduling the click) to ensure</span></span><br><span class="line">             <span class="comment">// the user sees it.</span></span><br><span class="line">             setPressed(<span class="keyword">true</span>, x, y);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">         <span class="keyword">if</span> (!mHasPerformedLongPress) {</span><br><span class="line">             <span class="comment">// This is a tap, so remove the longpress check</span></span><br><span class="line">             removeLongPressCallback();</span><br><span class="line"></span><br><span class="line">             <span class="comment">// Only perform take click actions if we were in the pressed state</span></span><br><span class="line">             <span class="keyword">if</span> (!focusTaken) {</span><br><span class="line">                 <span class="comment">// Use a Runnable and post this rather than calling</span></span><br><span class="line">                 <span class="comment">// performClick directly. This lets other visual state</span></span><br><span class="line">                 <span class="comment">// of the view update before click actions start.</span></span><br><span class="line">                 <span class="keyword">if</span> (mPerformClick == <span class="keyword">null</span>) {</span><br><span class="line">                     mPerformClick = <span class="keyword">new</span> PerformClick();</span><br><span class="line">                 }</span><br><span class="line">                 <span class="keyword">if</span> (!post(mPerformClick)) {</span><br><span class="line">                     performClick();</span><br><span class="line">                 }</span><br><span class="line">             }</span><br><span class="line">         }</span><br><span class="line"></span><br><span class="line">         <span class="keyword">if</span> (mUnsetPressedState == <span class="keyword">null</span>) {</span><br><span class="line">             mUnsetPressedState = <span class="keyword">new</span> UnsetPressedState();</span><br><span class="line">         }</span><br><span class="line"></span><br><span class="line">         <span class="keyword">if</span> (prepressed) {</span><br><span class="line">             postDelayed(mUnsetPressedState,</span><br><span class="line">                     ViewConfiguration.getPressedStateDuration());</span><br><span class="line">         } <span class="keyword">else</span> <span class="keyword">if</span> (!post(mUnsetPressedState)) {</span><br><span class="line">             <span class="comment">// If the post failed, unpress right now</span></span><br><span class="line">             mUnsetPressedState.run();</span><br><span class="line">         }</span><br><span class="line"></span><br><span class="line">         removeTapCallback();</span><br><span class="line">     }</span><br><span class="line">     <span class="keyword">break</span>;</span><br></pre></td></tr></table></figure>
+<p>&#x7CFB;&#x7EDF;&#x7684;&#x6E90;&#x7801;&#x8003;&#x91CF;&#x66F4;&#x4E3A;&#x590D;&#x6742;&#x4E00;&#x70B9;&#xFF0C;&#x5176;&#x4E2D;&#x6709;&#x5F88;&#x591A;&#x7684;&#x72B6;&#x6001;&#x7684;&#x8F6C;&#x6362;&#x548C;Flag&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x6211;&#x4EEC;&#x8BFB;&#x6E90;&#x7801;&#x7684;&#x65F6;&#x5019;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x76F8;&#x5173;&#x7684;&#x53EF;&#x4EE5;&#x5148;&#x7701;&#x7565;&#x5F88;&#x591A;Flag&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x8FD9;&#x6BB5;&#x6E90;&#x7801;&#x4E2D;&#x8003;&#x8651;&#x4E86;&#x5173;&#x4E8E;View&#x662F;&#x5426;&#x6709;&#x7126;&#x70B9;&#xFF0C;&#x662F;&#x5426;&#x53EF;&#x70B9;&#x51FB;&#x7B49;&#x5F88;&#x591A;&#x7684;&#x60C5;&#x51B5;&#xFF0C;setPress()&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x8BBE;&#x5B9A;View&#x7684;&#x6837;&#x5F0F;&#x6539;&#x53D8;&#x3002;&#x8FD9;&#x5176;&#x4E2D;&#x4E3B;&#x8981;&#x7684;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x662F;<code>performClick()</code>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x51FD;&#x6570;&#x6709;&#x522B;&#x4E8E;<code>callOnClick()</code>&#x51FD;&#x6570;&#x4E0D;&#x53EA;&#x662F;&#x56DE;&#x8C03;&#x4E86;click&#x63A5;&#x53E3;&#xFF0C;&#x8FD8;&#x6539;&#x53D8;&#x4E86;View&#x7684;&#x754C;&#x9762;&#x72B6;&#x6001;&#x3002;</p>
+<p>&#x91CD;&#x70B9;&#x770B;&#x5176;&#x4E2D;&#x7684;&#x8FD9;&#x6BB5;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!focusTaken) {</span><br><span class="line">     <span class="comment">// Use a Runnable and post this rather than calling</span></span><br><span class="line">     <span class="comment">// performClick directly. This lets other visual state</span></span><br><span class="line">     <span class="comment">// of the view update before click actions start.</span></span><br><span class="line">     <span class="keyword">if</span> (mPerformClick == <span class="keyword">null</span>) {</span><br><span class="line">         mPerformClick = <span class="keyword">new</span> PerformClick();</span><br><span class="line">     }</span><br><span class="line">     <span class="keyword">if</span> (!post(mPerformClick)) {</span><br><span class="line">         performClick();</span><br><span class="line">     }</span><br><span class="line"> }</span><br></pre></td></tr></table></figure>
+<p>&#x91CC;&#x9762;&#x7684;&#x6CE8;&#x91CA;&#x544A;&#x8BC9;&#x6211;&#x4EEC;&#xFF0C;&#x4E0D;&#x76F4;&#x63A5;&#x7684;&#x8C03;&#x7528;performClick()&#xFF0C;&#x800C;&#x662F;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;Runnable&#x8FD0;&#x884C;&#xFF0C;&#x80FD;&#x591F;&#x8BA9;View&#x5148;&#x66F4;&#x65B0;&#x89C6;&#x89C9;&#x72B6;&#x6001;&#x3002;&#x8FD9;&#x91CC;&#x9762;&#x6211;&#x4EEC;&#x6CE8;&#x610F;&#x5230;&#x4E86;View&#x6E90;&#x7801;&#x4E2D;&#x7528;&#x5230;&#x4E86;&#x4E00;&#x4E2A;PerformClick()&#x7684;Runnable&#xFF0C;&#x8FD9;&#x4E2A;Runnable&#x7684;run()&#x65B9;&#x6CD5;&#x91CC;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x5C31;&#x662F;performClick()&#x3002;&#x4ECE;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x7CFB;&#x7EDF;&#x5728;&#x70B9;&#x51FB;&#x5904;&#x7406;&#x4E0A;&#x4F1A;&#x4F7F;&#x7528;Runnable&#x6216;&#x662F;&#x5EF6;&#x65F6;&#x7684;Runnable&#x53BB;&#x5904;&#x7406;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#xFF0C;View&#x4E2D;&#x8FD8;&#x6709;&#x51E0;&#x4E2A;Runnable&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CheckForLongPress</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>{</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mOriginalWindowAttachCount;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (isPressed() &amp;&amp; (mParent != <span class="keyword">null</span>)</span><br><span class="line">                &amp;&amp; mOriginalWindowAttachCount == mWindowAttachCount) {</span><br><span class="line">            <span class="keyword">if</span> (performLongClick()) {</span><br><span class="line">                mHasPerformedLongPress = <span class="keyword">true</span>;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rememberWindowAttachCount</span><span class="params">()</span> </span>{</span><br><span class="line">        mOriginalWindowAttachCount = mWindowAttachCount;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CheckForTap</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>{</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> x;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">float</span> y;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">        mPrivateFlags &amp;= ~PFLAG_PREPRESSED;</span><br><span class="line">        setPressed(<span class="keyword">true</span>, x, y);</span><br><span class="line">        checkForLongClick(ViewConfiguration.getTapTimeout());</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">PerformClick</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>{</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">        performClick();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x5176;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;CheckForLongPress&#x5C31;&#x662F;&#x5BF9;&#x957F;&#x6309;&#x7684;&#x68C0;&#x6D4B;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;CheckForTap&#x5728;&#x6ED1;&#x52A8;&#x63A7;&#x4EF6;&#x4E2D;&#x5EF6;&#x8FDF;&#x54CD;&#x5E94;&#x3002;</p>
+<p>CheckForLongPress&#x7684;&#x5B9E;&#x73B0;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x68C0;&#x6D4B;&#x4E86;&#x51E0;&#x9879;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x70B9;&#x51FB;&#x7684;&#x72B6;&#x6001;&#x4E4B;&#x540E;&#x53EA;&#x9700;&#x8981;&#x6BD4;&#x8F83;&#x4FDD;&#x5B58;&#x7684;mOriginalWindowAttachCount&#x662F;&#x5426;&#x76F8;&#x7B49;&#xFF0C;&#x5982;&#x679C;&#x76F8;&#x7B49;&#x5C31;&#x76F8;&#x5E94;&#x957F;&#x6309;&#x4E8B;&#x4EF6;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Count of how many windows this view has been attached to.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">int</span> mWindowAttachCount;</span><br></pre></td></tr></table></figure>
+<p>&#x5728;View&#x7684;onTouchEvent&#x4E2D;&#x7684;ACTION_DOWN&#x4E2D;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">           <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line">...</span><br><span class="line">               <span class="keyword">boolean</span> isInScrollingContainer = isInScrollingContainer();</span><br><span class="line">               <span class="comment">// For views inside a scrolling container, delay the pressed feedback for</span></span><br><span class="line">               <span class="comment">// a short period in case this is a scroll.</span></span><br><span class="line">               <span class="keyword">if</span> (isInScrollingContainer) {</span><br><span class="line">                   mPrivateFlags |= PFLAG_PREPRESSED;</span><br><span class="line">                   <span class="keyword">if</span> (mPendingCheckForTap == <span class="keyword">null</span>) {</span><br><span class="line">                       mPendingCheckForTap = <span class="keyword">new</span> CheckForTap();</span><br><span class="line">                   }</span><br><span class="line">                   mPendingCheckForTap.x = event.getX();</span><br><span class="line">                   mPendingCheckForTap.y = event.getY();</span><br><span class="line">                   postDelayed(mPendingCheckForTap, ViewConfiguration.getTapTimeout());</span><br><span class="line">               } <span class="keyword">else</span> {</span><br><span class="line">                   <span class="comment">// Not inside a scrolling container, so show the feedback right away</span></span><br><span class="line">                   setPressed(<span class="keyword">true</span>, x, y);</span><br><span class="line">                   checkForLongClick(<span class="number">0</span>);</span><br><span class="line">               }</span><br></pre></td></tr></table></figure>
+<p>&#x5728;&#x6309;&#x4E0B;&#x7684;&#x4E8B;&#x4EF6;&#x4E2D;&#x9996;&#x5148;&#x901A;&#x8FC7;&#x67E5;&#x770B;View&#x6811;&#x5224;&#x65AD;&#x81EA;&#x5DF1;&#x5728;&#x4E0D;&#x5728;&#x4E00;&#x4E2A;&#x6EDA;&#x52A8;&#x7684;&#x7A7A;&#x95F4;&#x91CC;&#xFF0C;&#x800C;&#x4E14;&#x5982;&#x679C;&#x505C;&#x7559;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x7684;&#x8BDD;&#x5C31;&#x5EF6;&#x8FDF;&#x54CD;&#x5E94;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x5C31;&#x76F8;&#x5E94;&#x957F;&#x6309;&#x4E8B;&#x4EF6;&#x3002;</p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5176;&#x5B9E;&#x6BCF;&#x6B21;&#x70B9;&#x4E0B;&#x53BB;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x53D1;&#x9001;&#x957F;&#x6309;&#x7684;&#x5224;&#x65AD;Runnable&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x8981;&#x662F;&#x5DF2;&#x7ECF;&#x54CD;&#x5E94;&#x4E86;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x90A3;&#x8BE5;&#x600E;&#x4E48;&#x529E;&#x5462;&#xFF1F;&#x53D6;&#x6D88;&#x961F;&#x5217;&#x4E2D;&#x7684;&#x957F;&#x6309;Runnable&#x5C31;&#x597D;&#x4E86;&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This is a tap, so remove the longpress check</span></span><br><span class="line">removeLongPressCallback();</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Remove the longpress detection timer.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">removeLongPressCallback</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (mPendingCheckForLongPress != <span class="keyword">null</span>) {</span><br><span class="line">          removeCallbacks(mPendingCheckForLongPress);</span><br><span class="line">        }</span><br><span class="line">    }</span><br></pre></td></tr></table></figure>
+<p>&#x521A;&#x624D;&#x5728;UP&#x7684;&#x4E8B;&#x4EF6;&#x91CC;&#xFF0C;&#x5C31;&#x5DF2;&#x7ECF;&#x79FB;&#x9664;&#x4E86;&#x957F;&#x6309;&#x7684;&#x56DE;&#x8C03;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x521A;&#x624D;&#x7684;&#x5206;&#x6790;&#x603B;&#x7ED3;&#x51FA;View&#x5B9E;&#x73B0;&#x70B9;&#x51FB;&#x548C;&#x957F;&#x6309;&#x7684;&#x4F2A;&#x4EE3;&#x7801;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(event.getAction()){</span><br><span class="line">  <span class="keyword">case</span> UP:</span><br><span class="line">    post performClick Runnable</span><br><span class="line">    remove checkForTap CallBack</span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> DOWN:</span><br><span class="line">    <span class="keyword">if</span> (in scroll layout){</span><br><span class="line">      post checkForTap Runnable</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">      post checkForLong Runnable</span><br><span class="line">    }</span><br><span class="line">  <span class="keyword">break</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h3 id="How-To-Use"><a href="#How-To-Use" class="headerlink" title="How To Use?"></a>How To Use?</h3><p>&#x9996;&#x5148;&#x6A21;&#x4EFF;View&#x4E00;&#x6837;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x957F;&#x6309;&#x68C0;&#x6D4B;&#x7684;Runnable&#xFF1A;</p>
+<p>&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x901A;&#x8FC7;&#x70B9;&#x51FB;&#x4F4D;&#x7F6E;&#x6765;&#x5224;&#x65AD;&#x800C;&#x4E0D;&#x662F;attachCount&#x3002;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">    * &#x6A21;&#x4EFF;&#x7CFB;&#x7EDF;&#x7684; &#x957F;&#x6309;&#x4E8B;&#x4EF6;&#x4EFB;&#x52A1;</span><br><span class="line">    * &#x6BCF;&#x6B21;&#x5728; {<span class="doctag">@link</span> #onTouch(View, MotionEvent)} &#x4E2D; MotionEvent.ACTION_DOWN &#x7684;&#x65F6;&#x5019;</span><br><span class="line">    * &#x5411; {<span class="doctag">@link</span> #touchEventHandler} &#x4F20;&#x9012;&#x4E00;&#x4E2A; {<span class="doctag">@link</span> #CheckForLongPress(float, float)} &#x7684;&#x5EF6;&#x65F6;&#x4E8B;&#x4EF6;</span><br><span class="line">    * &#x5EF6;&#x65F6;&#x65F6;&#x95F4;&#x4E3A; ViewConfiguration.getLongPressTimeout()</span><br><span class="line">    * &#x662F;&#x7528;&#x4E8E;&#x68C0;&#x6D4B;&#x662F;&#x4E0D;&#x662F;&#x957F;&#x6309;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;500&#x6BEB;&#x79D2;</span><br><span class="line">    */</span></span><br><span class="line">   <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">CheckForLongPress</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>{</span><br><span class="line">       <span class="comment">/**</span><br><span class="line">        * &#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#x7684;x/y &#x662F;&#x89E6;&#x6478;&#x503C;&#x800C;&#x4E0D;&#x662F; &#x89E6;&#x6478;&#x503C;+&#x504F;&#x79FB;</span><br><span class="line">        * &#x504F;&#x79FB;&#x5728;&#x957F;&#x6309;&#x4E8B;&#x4EF6;&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#x518D;&#x62FF;&#x53BB;</span><br><span class="line">        */</span></span><br><span class="line">       <span class="keyword">float</span> x, y;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="title">CheckForLongPress</span><span class="params">(<span class="keyword">float</span> x, <span class="keyword">float</span> y)</span> </span>{</span><br><span class="line">           <span class="keyword">this</span>.x = x;</span><br><span class="line">           <span class="keyword">this</span>.y = y;</span><br><span class="line">       }</span><br><span class="line"></span><br><span class="line">       <span class="comment">/**</span><br><span class="line">        * &#x4E3A;&#x4E86;&#x8BA9;&#x4EFB;&#x52A1;&#x4FDD;&#x6301;&#x590D;&#x7528; &#x4E0D;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x4E8B;&#x4EF6; &#x800C;&#x9009;&#x62E9;&#x590D;&#x7528;&#x4E4B;&#x524D;&#x7684;&#x4E8B;&#x4EF6;</span><br><span class="line">        *</span><br><span class="line">        * <span class="doctag">@param</span> x newX</span><br><span class="line">        * <span class="doctag">@param</span> y newY</span><br><span class="line">        */</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setXY</span><span class="params">(<span class="keyword">float</span> x, <span class="keyword">float</span> y)</span> </span>{</span><br><span class="line">           <span class="keyword">this</span>.x = x;</span><br><span class="line">           <span class="keyword">this</span>.y = y;</span><br><span class="line">       }</span><br><span class="line"></span><br><span class="line">       <span class="comment">/**</span><br><span class="line">        * &lt;p&gt;</span><br><span class="line">        * &#x5728; 500ms &#x4E4B;&#x540E;&#x4E8B;&#x4EF6;&#x8FD0;&#x884C;</span><br><span class="line">        * &#x8FD9;&#x91CC;&#x7684; {<span class="doctag">@link</span> #lastEvent} &#x5728; {<span class="doctag">@link</span> #onTouch(View, MotionEvent)} &#x4E2D;&#x8FDB;&#x884C;&#x4FEE;&#x6539;</span><br><span class="line">        * &#x6BCF;&#x6B21;&#x5904;&#x7406; MotionEvent &#x4E8B;&#x4EF6;&#x4E4B;&#x540E;&#x90FD;&#x4F1A;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x66F4;&#x65B0;</span><br><span class="line">        * &lt;/p&gt;</span><br><span class="line">        * &#x957F;&#x6309;&#x6761;&#x4EF6;&#x5224;&#x5B9A;:</span><br><span class="line">        * &lt;ol&gt;</span><br><span class="line">        * &lt;li&gt;&#x4E0A;&#x4E00;&#x6B21;&#x7684;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x8FD8;&#x662F; MotionEvent.ACTION_DOWN</span><br><span class="line">        * (&#x591A;&#x534A;&#x4E0D;&#x53EF;&#x80FD;,&#x603B;&#x662F;&#x4F1A;&#x53D1;&#x751F; MotionEvent.ACTION_MOVE)&lt;/li&gt;</span><br><span class="line">        * &lt;li&gt;</span><br><span class="line">        * &#x4E0A;&#x4E00;&#x6B21;&#x7684;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x662F; MotionEvent.ACTION_MOVE</span><br><span class="line">        * (&#x4F46;&#x662F;&#x4E4B;&#x524D;&#x7684;&#x70B9;&#x51FB;&#x4F4D;&#x7F6E;&#x548C;&#x5F53;&#x524D;&#x7684;&#x4F4D;&#x7F6E;&#x4E0D;&#x8D85;&#x8FC7;&#x5341;&#x4E2A;&#x50CF;&#x7D20;&#x503C;)</span><br><span class="line">        * &lt;/li&gt;</span><br><span class="line">        * &lt;/ol&gt;</span><br><span class="line">        */</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{</span><br><span class="line">           <span class="keyword">if</span> (lastEvent == MotionEvent.ACTION_DOWN</span><br><span class="line">                   || (lastEvent == MotionEvent.ACTION_MOVE</span><br><span class="line">                   &amp;&amp; (Math.abs(globalX - x) &lt; <span class="number">4</span>)</span><br><span class="line">                   &amp;&amp; Math.abs(globalY - y) &lt; <span class="number">4</span>)) {</span><br><span class="line">             	<span class="comment">// &#x5904;&#x7406;&#x957F;&#x6309;&#x4E8B;&#x4EF6;</span></span><br><span class="line">               setCourseOnClick(globalX + scrollX, globalY + scrollY, TouchMode.LongClick);</span><br><span class="line">               <span class="comment">/**</span><br><span class="line">                * &#x4E0D;&#x5141;&#x8BB8;&#x591A;&#x4E2A;&#x65F6;&#x95F4;&#x540C;&#x65F6;&#x54CD;&#x5E94; &#x5728;&#x6D4B;&#x8BD5;&#x4E2D;&#x53D1;&#x73B0;&#x7ECF;&#x5E38;&#x4F1A;&#x56E0;&#x4E3A;&#x8BEF;&#x5DEE;</span><br><span class="line">                * &#x5BFC;&#x81F4;&#x4E00;&#x6B21;&#x957F;&#x6309;&#x51FA;&#x73B0;&#x4E24;&#x4E2A;&#x8FDE;&#x7EED;&#x7684;&#x54CD;&#x5E94;&#x4E8B;&#x4EF6;</span><br><span class="line">                * &#x56E0;&#x6B64;&#x5F53;&#x4E00;&#x4E2A;&#x5F00;&#x59CB;&#x54CD;&#x5E94;&#x4E4B;&#x540E; &#x628A;&#x5F53;&#x524D;&#x7684;&#x4EFB;&#x52A1;&#x90FD;&#x4ECE;</span><br><span class="line">                * {<span class="doctag">@link</span> #touchEventHandler}&#x7684;&#x4EFB;&#x52A1;&#x961F;&#x5217;&#x4E2D;&#x79FB;&#x9664;</span><br><span class="line">                */</span></span><br><span class="line">               touchEventHandler.removeCallbacks(press);</span><br><span class="line">           }</span><br><span class="line">       }</span><br><span class="line">   }</span><br></pre></td></tr></table></figure>
+<p>&#x5BF9;&#x5B83;&#x7684;&#x8C03;&#x7528;&#x4E5F;&#x662F;&#x540C;&#x6837;&#xFF0C;&#x5728;ACTION_DOWN&#x4E2D;&#x53D1;&#x9001;&#x5224;&#x65AD;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * ACTION_DOWN&#x4E2D;&#x505A;&#x4E86;&#x4E09;&#x4EF6;&#x4E8B;</span><br><span class="line"> * 1.&#x62FF;&#x5230;&#x4E86;&#x6309;&#x4E0B;&#x65F6;&#x95F4;</span><br><span class="line"> * 2.&#x53D1;&#x9001;&#x4E86;&#x957F;&#x6309;&#x4E8B;&#x4EF6;</span><br><span class="line"> * 3.&#x8BB0;&#x5F55;&#x4E86;&#x6309;&#x4E0B;&#x7684;&#x70B9;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line"></span><br><span class="line">    downTime = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">    x_temp1 = x;</span><br><span class="line"></span><br><span class="line">    lastEvent = MotionEvent.ACTION_DOWN;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (press == <span class="keyword">null</span>)</span><br><span class="line">        press = <span class="keyword">new</span> CheckForLongPress(x, y);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        press.setXY(x, y);</span><br><span class="line"></span><br><span class="line">    touchEventHandler.postDelayed(press, ViewConfiguration.getLongPressTimeout());</span><br><span class="line">    <span class="keyword">break</span>;</span><br></pre></td></tr></table></figure>
+<p>&#x518D;&#x5224;&#x65AD;&#x4F60;&#x7684;&#x70B9;&#x51FB;&#x533A;&#x57DF;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * &#x5224;&#x65AD;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@param</span> button &#x62FF;&#x5230;&#x6309;&#x94AE;</span><br><span class="line"> * <span class="doctag">@param</span> x      &#x70B9;&#x51FB;&#x7684;X</span><br><span class="line"> * <span class="doctag">@param</span> y      &#x70B9;&#x51FB;&#x7684;Y</span><br><span class="line"> * <span class="doctag">@return</span> &#x662F;&#x5426;&#x6210;&#x529F;&#x70B9;&#x51FB;</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Button button, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> offset = ClassTableDefaultInfo.timeLineWidth;</span><br><span class="line">    <span class="keyword">int</span> left = button.getLeft() + offset;</span><br><span class="line">    <span class="keyword">int</span> right = left + button.getWidth();</span><br><span class="line">    <span class="keyword">int</span> top = button.getTop();</span><br><span class="line">    <span class="keyword">int</span> bottom = top + button.getHeight();</span><br><span class="line">    <span class="keyword">return</span> left &lt; right &amp;&amp; top &lt; bottom  <span class="comment">// check for empty first</span></span><br><span class="line">            &amp;&amp; x &gt;= left &amp;&amp; x &lt; right &amp;&amp; y &gt;= top &amp;&amp; y &lt; bottom;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x5F53;&#x4F60;&#x7684;&#x70B9;&#x51FB;&#x533A;&#x57DF;&#x5728;&#x63A7;&#x4EF6;&#x77E9;&#x5F62;&#x533A;&#x57DF;&#x5185;&#x5373;&#x53EF;&#x54CD;&#x5E94;&#x957F;&#x6309;&#x6216;&#x8005;&#x70B9;&#x51FB;&#x7684;&#x56DE;&#x8C03;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</p>
+<h2 id="&#x6700;&#x540E;&#x518D;&#x8BF4;&#x4E24;&#x53E5;"><a href="#&#x6700;&#x540E;&#x518D;&#x8BF4;&#x4E24;&#x53E5;" class="headerlink" title="&#x6700;&#x540E;&#x518D;&#x8BF4;&#x4E24;&#x53E5;"></a>&#x6700;&#x540E;&#x518D;&#x8BF4;&#x4E24;&#x53E5;</h2><p>&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#x6211;&#x4EEC;&#x4E86;&#x89E3;&#x4E86;View&#x7684;&#x70B9;&#x51FB;&#x548C;&#x957F;&#x6309;&#x5224;&#x65AD;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5176;&#x5B9E;&#x4ECE;&#x8FD9;&#x4E2A;&#x77E5;&#x8BC6;&#x70B9;&#x53EF;&#x4EE5;&#x53D1;&#x6563;&#x7684;&#x53BB;&#x60F3;&#xFF0C;&#x8FD9;&#x79CD;&#x53D1;&#x9001;&#x5EF6;&#x65F6;Runnable&#x7684;&#x65B9;&#x5F0F;&#x8FD8;&#x53EF;&#x4EE5;&#x653E;&#x5728;&#x5F88;&#x591A;&#x7684;&#x6761;&#x4EF6;&#x4E0B;&#x4F7F;&#x7528;&#xFF0C;&#x6BD4;&#x5982;&#x5728;&#x4F7F;&#x7528;smoothScroll&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x624B;&#x52A8;&#x7684;&#x53BB;&#x63A7;&#x5236;&#x591A;&#x4E2A;&#x65B9;&#x5411;&#x7684;&#x6EDA;&#x52A8;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x5EF6;&#x65F6;&#x7684;&#x5224;&#x65AD;&#x6761;&#x4EF6;&#x6765;&#x5224;&#x65AD;&#x6211;&#x4EEC;&#x7684;&#x5E73;&#x79FB;&#x662F;&#x5426;&#x505C;&#x6B62;&#x3002;&#x5F53;&#x7136;&#x6211;&#x4EEC;&#x5E76;&#x6CA1;&#x6709;&#x4E00;&#x5B9A;&#x8981;&#x50CF;View&#x6E90;&#x7801;&#x90A3;&#x6837;&#x7684;&#x53BB;&#x5206;&#x7740;&#x5904;&#x7406;&#x70B9;&#x51FB;&#x548C;&#x957F;&#x6309;&#x4E8B;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;&#x5B83;&#x548C;&#x5728;&#x4E00;&#x4E2A;Runnable&#x91CC;&#x9762;&#xFF0C;&#x4EC5;&#x4EC5;&#x901A;&#x8FC7;&#x65F6;&#x95F4;&#x6765;&#x5224;&#x65AD;&#x3002;</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_qzone">QQ空间</a>
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <a class="jiathis_button_tqq">腾讯微博</a>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+</div>
+
+            
+    
+        <a href="https://lfkdsk.github.io/2016/09/06/androidTips1/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/09/06/androidTips1/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/09/08/how-to-solve-co/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    如何处理游戏中的碰撞事件
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/09/06/mvpInAndroid/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">MVP In Android</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/12/15/csapp-read-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/12/15/csapp-read-1/" class="title">csapp_read_1</a></p>
+                            <p class="item-date"><time datetime="2016-12-15T07:34:25.000Z" itemprop="datePublished">2016-12-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/12/15/csapp-answer-1/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/12/15/csapp-answer-1/" class="title">CSAPP:课后练习-第二章</a></p>
+                            <p class="item-date"><time datetime="2016-12-15T07:34:08.000Z" itemprop="datePublished">2016-12-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/12/12/eff-cpp-tips/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/12/12/eff-cpp-tips/" class="title">Effective Cpp Tips</a></p>
+                            <p class="item-date"><time datetime="2016-12-12T07:27:51.000Z" itemprop="datePublished">2016-12-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/15/the-end-ofx/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/15/the-end-ofx/" class="title">写在学伴叁的边上</a></p>
+                            <p class="item-date"><time datetime="2016-11-15T04:19:15.000Z" itemprop="datePublished">2016-11-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/10/know-cpp-again/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/10/know-cpp-again/" class="title">Cpp Tips</a></p>
+                            <p class="item-date"><time datetime="2016-11-10T07:11:30.000Z" itemprop="datePublished">2016-11-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AndroidTips/">AndroidTips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android：动态生成ID/">Android：动态生成ID</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSAPP/">CSAPP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interesting/">Interesting!</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏编程/">游戏编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/源码阅读/">源码阅读</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程语言/">编程语言</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编译原理/">编译原理</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动机/">自动机</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/AndroidTips/" style="font-size: 10px;">AndroidTips</a> <a href="/tags/Android：动态生成ID/" style="font-size: 10px;">Android：动态生成ID</a> <a href="/tags/CSAPP/" style="font-size: 10px;">CSAPP</a> <a href="/tags/Interesting/" style="font-size: 10px;">Interesting!</a> <a href="/tags/cpp/" style="font-size: 15px;">cpp</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/游戏编程/" style="font-size: 10px;">游戏编程</a> <a href="/tags/源码阅读/" style="font-size: 15px;">源码阅读</a> <a href="/tags/编程语言/" style="font-size: 20px;">编程语言</a> <a href="/tags/编译原理/" style="font-size: 15px;">编译原理</a> <a href="/tags/自动机/" style="font-size: 10px;">自动机</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 刘丰恺<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = 'https://lfkdsk.github.io/2016/09/06/androidTips1/';
+        
+        this.page.identifier = 'androidTips1';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
