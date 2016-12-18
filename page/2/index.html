@@ -1,11 +1,90 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-    <meta charset="utf-8">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
     
-    <title>若梦浮生</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description">
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="若梦浮生">
 <meta property="og:url" content="https://lfkdsk.github.io/page/2/index.html">
@@ -14,205 +93,247 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="若梦浮生">
 <meta name="twitter:description">
-    
-
-    
-
-    
-
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/open-sans/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
-
-    <link rel="stylesheet" href="/css/style.css">
-
-    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
-    
-    
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
-    
-    
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-    
-    
-    
-    
 
 
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lfkdsk.github.io/page/2/"/>
+
+
+
+
+
+  <title> 若梦浮生 </title>
 </head>
 
-<body>
-    <div id="container">
-        <header id="header">
-    <div id="header-main" class="header-inner">
-        <div class="outer">
-            <a href="/" id="logo">
-                <i class="logo"></i>
-                <span class="site-title">若梦浮生</span>
-            </a>
-            <nav id="main-nav">
-                
-                    <a class="main-nav-link" href="/.">Home</a>
-                
-                    <a class="main-nav-link" href="/archives">Archives</a>
-                
-                    <a class="main-nav-link" href="/about">About</a>
-                
-            </nav>
-            
-                
-                <nav id="sub-nav">
-                    <div class="profile" id="profile-nav">
-                        <a id="profile-anchor" href="javascript:;">
-                            <img class="avatar" src="/css/images/justwe.png" />
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                    </div>
-                </nav>
-            
-            <div id="search-form-wrap">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
+  
 
-</div>
-        </div>
-    </div>
-    <div id="main-nav-mobile" class="header-sub header-inner">
-        <table class="menu outer">
-            <tr>
-                
-                    <td><a class="main-nav-link" href="/.">Home</a></td>
-                
-                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
-                
-                    <td><a class="main-nav-link" href="/about">About</a></td>
-                
-                <td>
-                    
-    <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-    </div>
 
-                </td>
-            </tr>
-        </table>
-    </div>
-</header>
 
-        <div class="outer">
-            
-                
 
-<aside id="profile">
-    <div class="inner profile-inner">
-        <div class="base-info profile-block">
-            <img id="avatar" src="/css/images/justwe.png" />
-            <h2 id="name">lfkdsk</h2>
-            <h3 id="title">Android Developer &amp; Designer</h3>
-            <span id="location"><i class="fa fa-map-marker"></i>Dalian, China</span>
-            <a id="follow" target="_blank" href="https://github.com/lfkdsk/">FOLLOW</a>
-        </div>
-        <div class="article-info profile-block">
-            <div class="article-info-block">
-                21
-                <span>posts</span>
-            </div>
-            <div class="article-info-block">
-                13
-                <span>tags</span>
-            </div>
-        </div>
-        
-        <div class="profile-block social-links">
-            <table>
-                <tr>
-                    
-                    
-                    <td>
-                        <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank" title="github" class=tooltip>
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </td>
-                    
-                </tr>
-            </table>
-        </div>
-        
-    </div>
-</aside>
 
-            
-            <section id="main">
-    <article id="post-generate-view-id" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
+
+
+
+
+
+  
+  
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/07/14/generate-view-id/">AndroidTips0:动态生成ID？</a>
-        </h1>
+  
+
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">若梦浮生</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://lfkdsk.github.io/2016/07/14/generate-view-id/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘丰恺">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/justwe.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="若梦浮生">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="若梦浮生" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/14/generate-view-id/" itemprop="url">
+                  AndroidTips0:动态生成ID？
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-14T15:24:39+08:00">
+                2016-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/07/14/generate-view-id/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/14/generate-view-id/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/14/generate-view-id/">
-            <time datetime="2016-07-14T07:24:39.000Z" itemprop="datePublished">2016-07-14</time>
-        </a>
-    </div>
 
+    <div class="post-body" itemprop="articleBody">
 
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Android：动态生成ID/">Android：动态生成ID</a>
-    </div>
+      
+      
 
-                    </div>
-                
-            </header>
+      
         
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
+          
             <h3 id="&#x52A8;&#x6001;ID&#xFF1F;"><a href="#&#x52A8;&#x6001;ID&#xFF1F;" class="headerlink" title="&#x52A8;&#x6001;ID&#xFF1F;"></a>&#x52A8;&#x6001;ID&#xFF1F;</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">android.support.v7.widget.RecyclerView</span></span><br><span class="line">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/box_subscribe_home_page_recycler&quot;</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">&quot;match_parent&quot;</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">&quot;match_parent&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 <p>&#x6211;&#x4EEC;&#x6700;&#x4E60;&#x60EF;&#x7684;ID&#x8BBE;&#x7F6E;&#x65B9;&#x5F0F;&#x5927;&#x6982;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#x4E86;&#xFF0C;&#x5728;xml&#x4E2D;&#x76F4;&#x63A5;&#x4F7F;&#x7528;<code>android:id</code>&#x4E3A;&#x4E00;&#x4E2A;View&#x6DFB;&#x52A0;ID&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x5E76;&#x4E0D;&#x80FD;&#x89E3;&#x51B3;&#x6240;&#x6709;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x5F88;&#x591A;&#x7684;View&#x90FD;&#x662F;&#x52A8;&#x6001;&#x521B;&#x5EFA;&#xFF0C;&#x8FD8;&#x6709;&#x7684;&#x662F;&#x81EA;&#x5B9A;&#x4E49;&#x63A7;&#x4EF6;&#x751F;&#x6210;&#x7684;&#xFF0C;&#x4F8B;&#x5982;&#x6211;&#x4EEC;&#x8981;&#x5728;&#x4EE3;&#x7801;&#x91CC;&#x5B9E;&#x73B0;&#x76F8;&#x5BF9;&#x5E03;&#x5C40;&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x5C31;&#x5FC5;&#x987B;&#x62FF;&#x5230;&#x76F8;&#x5BF9;&#x7684;&#x57FA;&#x51C6;View&#x7684;ID&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x5C31;&#x6CA1;&#x529E;&#x6CD5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;xml&#x8FDB;&#x884C;&#x5B9A;&#x4E49;&#x4E86;&#x3002;</p>
 <p>&#x4E0D;&#x8FC7;&#x6211;&#x60F3;&#x5927;&#x5BB6;&#x90FD;&#x77E5;&#x9053;&#x5C31;&#x60F3;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x80FD;&#x591F;&#x7528;<code>view.getId()</code>&#x4E00;&#x6837;&#x83B7;&#x53D6;&#x5230;View&#x7684;ID&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x80FD;&#x591F;&#x7528;<code>view.setId(int id)</code>&#x6765;&#x4E3A;View&#x8BBE;&#x5B9A;ID&#x3002;&#x4E0D;&#x8FC7;&#x8FD9;&#x5C31;&#x51FA;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x5F88;&#x4E25;&#x91CD;&#x7684;&#x95EE;&#x9898;ID&#x662F;&#x4E2A;int&#x7C7B;&#x578B;&#x7684;&#x6570;&#x5B57;&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x4EC0;&#x4E48;&#x90FD;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x5417;&#xFF1F;</p>
@@ -250,116 +371,128 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> AtomicInteger sNextGeneratedId = <span class="keyword">new</span> AtomicInteger(<span class="number">2000</span>);</span><br></pre></td></tr></table></figure>
 <p>&#x5C31;&#x80FD;&#x4F7F;&#x7528;&#x4E86;&#x3002;</p>
 
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://lfkdsk.github.io/2016/07/11/dfa-auto-suggestion/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘丰恺">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/justwe.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="若梦浮生">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="若梦浮生" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/11/dfa-auto-suggestion/" itemprop="url">
+                  使用DFA做文本编辑器的自动提示
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-11T07:59:17+08:00">
+                2016-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/07/11/dfa-auto-suggestion/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/11/dfa-auto-suggestion/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
         </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-    <div class="jiathis_style">
-    <span class="jiathis_txt">分享到：</span>
-    <a class="jiathis_button_qzone">QQ空间</a>
-    <a class="jiathis_button_tsina">新浪微博</a>
-    <a class="jiathis_button_tqq">腾讯微博</a>
-    <a class="jiathis_button_weixin">微信</a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-    <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<style>
-    .jiathis_style div:first-child:not(.jiadiv_01) {
-        width: auto !important;
-        border: none !important;
-    }
-    .jiathis_style .jiadiv_01 {
-        margin: 10px 0;
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .jiathis_style .jiadiv_01 div:first-child {
-        display: none;
-    }
-    .jiathis_style .jiadiv_02 {
-        padding: 7px 0 !important;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle {
-        width: 85px;
-        border: none;
-        height: auto;
-        margin: 3px 10px;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:hover {
-        border: none;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
-        margin-left: 0;
-    }
-    .jiathis_style .jtico:hover {
-        opacity: 1;
-    }
-    .jiathis_style .ckepopBottom,
-    .jiathis_style .centerBottom {
-        width: auto !important;
-        padding: 5px;
-        background: #f7f7f7;
-    }
-</style>
-
-
-
-</div>
-
-            
-    
-        <a href="https://lfkdsk.github.io/2016/07/14/generate-view-id/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/07/14/generate-view-id/">Comments</a>
+      </header>
     
 
-        </footer>
-    </div>
-    
-</article>
 
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
 
-    <article id="post-dfa-auto-suggestion" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+      
         
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/07/11/dfa-auto-suggestion/">使用DFA做文本编辑器的自动提示</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/11/dfa-auto-suggestion/">
-            <time datetime="2016-07-10T23:59:17.000Z" itemprop="datePublished">2016-07-11</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/自动机/">自动机</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
+          
             <p>&#x4E4B;&#x524D;&#x770B;&#x9F99;&#x4E66;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9F99;&#x4E66;&#x63D0;&#x5230;&#x53EF;&#x4EE5;&#x5728;&#x7F16;&#x8BD1;&#x5668;&#x91CC;&#x7528;&#x52A8;&#x6001;&#x7684;&#x751F;&#x6210;&#x7684;NFA&#x81EA;&#x52A8;&#x673A;&#x6765;&#x52A8;&#x6001;&#x5339;&#x914D;&#x81EA;&#x5DF1;&#x7684;&#x8F93;&#x5165;&#x4E32;&#xFF0C;NFA&#x7684;&#x7B80;&#x5355;&#x5B9E;&#x73B0;&#x5176;&#x5B9E;&#x5199;&#x8D77;&#x6765;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x662F;&#x5B9E;&#x9645;&#x51ED;&#x611F;&#x89C9;&#x5199;&#x5B8C;&#x4E4B;&#x540E;&#xFF0C;&#x5374;&#x89C9;&#x5F97;&#x5E76;&#x4E0D;&#x662F;&#x975E;&#x5E38;&#x7684;&#x597D;&#x7528;&#xFF0C;&#x5728;&#x5904;&#x7406;&#x81EA;&#x5DF1;&#x5DF2;&#x7ECF;&#x8F93;&#x5165;&#x8FC7;&#x7684;&#x4E32;&#xFF0C;&#x5982;&#x679C;&#x8FD8;&#x8981;&#x5904;&#x7406;&#x7A7A;&#x4E32;&#x548C;&#x4E00;&#x4E2A;&#x7B26;&#x53F7;&#x5BF9;&#x5E94;&#x591A;&#x79CD;&#x8DEF;&#x5F84;&#x5C31;&#x52BF;&#x5FC5;&#x6D89;&#x53CA;&#x56DE;&#x6EAF;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x5C31;&#x52A8;&#x6001;&#x751F;&#x6210;&#x4E86;&#x4E00;&#x4E2A;DFA&#xFF0C;&#x5E94;&#x8BE5;&#x4E0D;&#x662F;&#x6700;&#x7B80;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x80FD;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#x3002;</p>
 <h3 id="DFA&#x72B6;&#x6001;"><a href="#DFA&#x72B6;&#x6001;" class="headerlink" title="DFA&#x72B6;&#x6001;"></a>DFA&#x72B6;&#x6001;</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> sample;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Dfa &#x72B6;&#x6001;</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@author</span> liufengkai</span><br><span class="line"> *         Created by liufengkai on 16/7/10.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DfaState</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">DfaState</span>&gt; </span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> DFA_ID_COUNT = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * state id</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> stateId;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * transition set</span><br><span class="line">     * char / set of dfaState</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;Integer, DfaState&gt; transitionSet;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> DfaState parentState;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Integer parentInput;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x6784;&#x9020;&#x65B9;&#x6CD5;</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> input       &#x8F93;&#x5165;&#x4E32;</span><br><span class="line">     * <span class="doctag">@param</span> parentState &#x7236;&#x8282;&#x70B9;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DfaState</span><span class="params">(Integer input, DfaState parentState)</span> </span>{</span><br><span class="line">        <span class="keyword">this</span>.parentInput = input;</span><br><span class="line">        <span class="keyword">this</span>.parentState = parentState;</span><br><span class="line">        <span class="keyword">this</span>.stateId = DFA_ID_COUNT++;</span><br><span class="line">        <span class="keyword">this</span>.transitionSet = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x6DFB;&#x52A0;&#x4E00;&#x6761;&#x8F6C;&#x79FB;&#x8BED;&#x53E5;</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> input &#x8F93;&#x5165;&#x5B57;&#x7B26;</span><br><span class="line">     * <span class="doctag">@param</span> state &#x4E0B;&#x4E00;&#x4E2A;&#x72B6;&#x6001;</span><br><span class="line">     * <span class="doctag">@return</span> &#x8FD4;&#x56DE;&#x6DFB;&#x52A0;&#x72B6;&#x6001;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DfaState <span class="title">addTransition</span><span class="params">(<span class="keyword">int</span> input, DfaState state)</span> </span>{</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!transitionSet.containsKey(input)) {</span><br><span class="line">            transitionSet.put(input, state);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> state;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DfaState <span class="title">getTransitionInput</span><span class="params">(<span class="keyword">int</span> input)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> getTransitionSet().get(input);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getStateId</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> stateId;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getTotalNumber</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> DFA_ID_COUNT;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;Integer, DfaState&gt; <span class="title">getTransitionSet</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> transitionSet;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DfaState <span class="title">getParentState</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> parentState;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(DfaState o)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getParentInput</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> parentInput;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x6253;&#x5370;&#x72B6;&#x6001;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printState</span><span class="params">()</span> </span>{</span><br><span class="line">        System.out.println(<span class="string">&quot;state : &quot;</span> + getStateId());</span><br><span class="line">        <span class="keyword">for</span> (Integer integer : transitionSet.keySet()) {</span><br><span class="line">            System.out.println(<span class="string">&quot;symbol: &quot;</span> +</span><br><span class="line">                    (<span class="keyword">char</span>) integer.intValue() + <span class="string">&quot; to :&quot;</span> +</span><br><span class="line">                    transitionSet.get(integer).getStateId());</span><br><span class="line">            transitionSet.get(integer).printState();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * &#x8FD4;&#x56DE;&#x7ED3;&#x675F;&#x72B6;&#x6001;</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> list &#x4F20;&#x5165;&#x7ED3;&#x675F;&#x72B6;&#x6001;</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">returnEndList</span><span class="params">(ArrayList&lt;DfaState&gt; list)</span> </span>{</span><br><span class="line">        <span class="keyword">for</span> (Integer key : transitionSet.keySet()) {</span><br><span class="line">            DfaState cur = transitionSet.get(key);</span><br><span class="line">            <span class="keyword">if</span> (cur.getTransitionSet().isEmpty()) {</span><br><span class="line">                list.add(cur);</span><br><span class="line">            } <span class="keyword">else</span> {</span><br><span class="line">                cur.returnEndList(list);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>DFAState&#x5B9A;&#x4E49;&#x4E86;&#x5F88;&#x591A;&#x57FA;&#x7840;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6BD4;&#x5982;&#x6BCF;&#x4E2A;&#x72B6;&#x6001;&#x90FD;&#x6709;&#x552F;&#x4E00;&#x7684;ID&#x503C;&#x4E0E;&#x4E4B;&#x5BF9;&#x5E94;&#xFF0C;&#x867D;&#x7136;&#x662F;&#x4E00;&#x4E2A;DFA&#x4F46;&#x662F;&#x63D2;&#x5165;&#x7684;&#x8FC7;&#x7A0B;&#x662F;&#x53D1;&#x73B0;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4E0D;&#x540C;&#x624D;&#x5206;&#x53C9;&#xFF0C;&#x7531;&#x6B64;&#x770B;&#x6765;&#x6BCF;&#x4E2A;&#x72B6;&#x6001;&#x90FD;&#x5E94;&#x8BE5;&#x6709;&#x552F;&#x4E00;&#x7684;&#x7236;&#x8282;&#x70B9;&#x4E0E;&#x4E4B;&#x5BF9;&#x5E94;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E2A;Map&#x6765;&#x8BB0;&#x5F55;&#x6211;&#x4EEC;&#x6709;&#x54EA;&#x4E9B;&#x8DEF;&#x5F84;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x6765;&#x9012;&#x5F52;&#x67E5;&#x627E;&#x7EC8;&#x7ED3;&#x8282;&#x70B9;&#xFF0C;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6765;&#x5012;&#x5E8F;&#x67E5;&#x627E;&#x9884;&#x6D4B;&#x5206;&#x6790;&#x51FA;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x8FD9;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x6548;&#x7387;&#x5F88;&#x9AD8;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4E4B;&#x540E;&#x4E5F;&#x4F1A;&#x88AB;&#x66FF;&#x6362;&#x3002;</p>
@@ -375,116 +508,128 @@
 <h3 id="&#x6548;&#x679C;&#x56FE;"><a href="#&#x6548;&#x679C;&#x56FE;" class="headerlink" title="&#x6548;&#x679C;&#x56FE;"></a>&#x6548;&#x679C;&#x56FE;</h3><p>&#x6211;&#x6253;&#x7B97;&#x770B;&#x770B;javaFx&#xFF0C;&#x5199;&#x4E00;&#x4E2A;&#x5E26;gui&#x7684;&#xFF0C;&#x4E0D;&#x8FC7;&#x73B0;&#x5728;&#x6709;&#x70B9;&#x61D2;&#xFF0C;&#x8FD8;&#x6CA1;&#x5199;&#x5B8C;&#x3002;</p>
 <p><img src="/2016/07/11/dfa-auto-suggestion/psb.png" alt="pic"></p>
 
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://lfkdsk.github.io/2016/07/04/learnparser1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘丰恺">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/justwe.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="若梦浮生">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="若梦浮生" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/04/learnparser1/" itemprop="url">
+                  编译原理：状态机相关的三种算法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-04T23:39:38+08:00">
+                2016-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/07/04/learnparser1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/04/learnparser1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
         </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-    <div class="jiathis_style">
-    <span class="jiathis_txt">分享到：</span>
-    <a class="jiathis_button_qzone">QQ空间</a>
-    <a class="jiathis_button_tsina">新浪微博</a>
-    <a class="jiathis_button_tqq">腾讯微博</a>
-    <a class="jiathis_button_weixin">微信</a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-    <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<style>
-    .jiathis_style div:first-child:not(.jiadiv_01) {
-        width: auto !important;
-        border: none !important;
-    }
-    .jiathis_style .jiadiv_01 {
-        margin: 10px 0;
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .jiathis_style .jiadiv_01 div:first-child {
-        display: none;
-    }
-    .jiathis_style .jiadiv_02 {
-        padding: 7px 0 !important;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle {
-        width: 85px;
-        border: none;
-        height: auto;
-        margin: 3px 10px;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:hover {
-        border: none;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
-        margin-left: 0;
-    }
-    .jiathis_style .jtico:hover {
-        opacity: 1;
-    }
-    .jiathis_style .ckepopBottom,
-    .jiathis_style .centerBottom {
-        width: auto !important;
-        padding: 5px;
-        background: #f7f7f7;
-    }
-</style>
-
-
-
-</div>
-
-            
-    
-        <a href="https://lfkdsk.github.io/2016/07/11/dfa-auto-suggestion/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/07/11/dfa-auto-suggestion/">Comments</a>
+      </header>
     
 
-        </footer>
-    </div>
-    
-</article>
 
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
 
-    <article id="post-learnparser1" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+      
         
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/07/04/learnparser1/">编译原理：状态机相关的三种算法</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/04/learnparser1/">
-            <time datetime="2016-07-04T15:39:38.000Z" itemprop="datePublished">2016-07-04</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/编译原理/">编译原理</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
+          
             <h3 id="&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;"><a href="#&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;" class="headerlink" title="&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;"></a>&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;</h3><p>&#x4E3A;&#x4E86;&#x5B9E;&#x73B0;&#x5BF9;&#x4E8E;&#x6B63;&#x89C4;&#x5F0F;&#xFF08;&#x53EF;&#x7406;&#x89E3;&#x4E3A;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF09;&#x7684;&#x8BC6;&#x522B;&#xFF0C;&#x6211;&#x4EEC;&#x63D0;&#x51FA;&#x4E86;&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#x7406;&#x8BBA;&#xFF0C;&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#x63A5;&#x53D7;&#x6B63;&#x89C4;&#x5F0F;&#x7684;&#x5B9A;&#x4E49;&#x7B26;&#xFF0C;&#x5E76;&#x4E0D;&#x65AD;&#x7684;&#x8BC6;&#x522B;&#x7B26;&#x53F7;&#xFF0C;&#x79FB;&#x52A8;&#x5230;&#x65B0;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x5982;&#x679C;&#x51FA;&#x73B0;&#x4E86;&#x8BC6;&#x522B;&#x9519;&#x8BEF;&#x5C31;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
 <p>&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#x5305;&#x542B;&#x786E;&#x5B9A;&#x7684;&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#xFF08;DFA&#xFF09;&#xFF0C;&#x548C;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x6709;&#x7A77;&#x81EA;&#x52A8;&#x673A;&#xFF08;NFA&#xFF09;&#x3002;&#x4E24;&#x8005;&#x7684;&#x4E3B;&#x8981;&#x533A;&#x522B;&#x5728;&#x4E8E;&#xFF0C;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x662F;&#x5426;&#x901A;&#x8FC7;&#x540C;&#x6837;&#x7684;&#x7B26;&#x53F7;&#x8F93;&#x5165;&#x80FD;&#x8FBE;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x72B6;&#x6001;&#x3002;&#x5982;&#x679C;&#x80FD;&#x5C31;&#x662F;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#xFF0C;&#x53CD;&#x4E4B;&#x5C31;&#x662F;&#x786E;&#x5B9A;&#x7684;&#x3002;&#x53E6;&#x5916;&#xFF1A;NFA&#x8FD8;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x7A7A;&#x5B57;&#x4E32;&#x5DF2;&#x8FBE;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x72B6;&#x6001;&#x3002;</p>
 <h3 id="&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7B97;&#x6CD5;"><a href="#&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7B97;&#x6CD5;" class="headerlink" title="&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7B97;&#x6CD5;"></a>&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7B97;&#x6CD5;</h3><p>&#x8FD9;&#x5176;&#x4E2D;&#x6709;&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x7B97;&#x6CD5;&#xFF1A;</p>
@@ -506,116 +651,128 @@
 </ol>
 <p>&#x628A;&#x5BF9;&#x5E94;&#x7684;&#x6B63;&#x89C4;&#x5F0F;&#x6309;&#x7167;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x9010;&#x5C42;&#x5206;&#x89E3;&#xFF0C;&#x5C31;&#x80FD;&#x5F97;&#x5230;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;NFA&#x4E86;&#x3002;</p>
 
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://lfkdsk.github.io/2016/07/03/learnparser/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘丰恺">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/justwe.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="若梦浮生">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="若梦浮生" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/03/learnparser/" itemprop="url">
+                  编译原理：First|Follow集的求法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-03T00:12:20+08:00">
+                2016-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/07/03/learnparser/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/03/learnparser/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
         </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-    <div class="jiathis_style">
-    <span class="jiathis_txt">分享到：</span>
-    <a class="jiathis_button_qzone">QQ空间</a>
-    <a class="jiathis_button_tsina">新浪微博</a>
-    <a class="jiathis_button_tqq">腾讯微博</a>
-    <a class="jiathis_button_weixin">微信</a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-    <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<style>
-    .jiathis_style div:first-child:not(.jiadiv_01) {
-        width: auto !important;
-        border: none !important;
-    }
-    .jiathis_style .jiadiv_01 {
-        margin: 10px 0;
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .jiathis_style .jiadiv_01 div:first-child {
-        display: none;
-    }
-    .jiathis_style .jiadiv_02 {
-        padding: 7px 0 !important;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle {
-        width: 85px;
-        border: none;
-        height: auto;
-        margin: 3px 10px;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:hover {
-        border: none;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
-        margin-left: 0;
-    }
-    .jiathis_style .jtico:hover {
-        opacity: 1;
-    }
-    .jiathis_style .ckepopBottom,
-    .jiathis_style .centerBottom {
-        width: auto !important;
-        padding: 5px;
-        background: #f7f7f7;
-    }
-</style>
-
-
-
-</div>
-
-            
-    
-        <a href="https://lfkdsk.github.io/2016/07/04/learnparser1/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/07/04/learnparser1/">Comments</a>
+      </header>
     
 
-        </footer>
-    </div>
-    
-</article>
 
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
 
-    <article id="post-learnparser" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+      
         
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/07/03/learnparser/">编译原理：First|Follow集的求法</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/03/learnparser/">
-            <time datetime="2016-07-02T16:12:20.000Z" itemprop="datePublished">2016-07-03</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/编译原理/">编译原理</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
+          
             <blockquote>
 <p>&#x539F;&#x6587;&#x94FE;&#x63A5; : <a href="https://lfkdsk.github.io/">https://lfkdsk.github.io/</a></p>
 <p>&#x539F;&#x6587;&#x4F5C;&#x8005;&#xFF1A;<a href="https://github.com/lfkdsk" target="_blank" rel="external">lfkdsk</a></p>
@@ -677,228 +834,252 @@
 <p>&#x200B;    &#x4E0D;&#x7528;&#x60F3;&#x4E86;&#x76F4;&#x63A5;&#x628A;follow(c) &#x52A0;&#x5165;follow(B).</p>
 <p>&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x6211;&#x5199;&#x5F97;&#x4EE3;&#x7801;&#xFF1A;<a href="https://github.com/lfkdsk/CodeParse/tree/master/OtherDemo/FirstFollow" target="_blank" rel="external">First&amp;Follow</a></p>
 
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://lfkdsk.github.io/2016/06/25/make-new-language-4/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘丰恺">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/justwe.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="若梦浮生">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="若梦浮生" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/25/make-new-language-4/" itemprop="url">
+                  学习制作一门有趣的编程语言－0x04
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-25T22:33:35+08:00">
+                2016-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/06/25/make-new-language-4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/25/make-new-language-4/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
         </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-    <div class="jiathis_style">
-    <span class="jiathis_txt">分享到：</span>
-    <a class="jiathis_button_qzone">QQ空间</a>
-    <a class="jiathis_button_tsina">新浪微博</a>
-    <a class="jiathis_button_tqq">腾讯微博</a>
-    <a class="jiathis_button_weixin">微信</a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-    <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<style>
-    .jiathis_style div:first-child:not(.jiadiv_01) {
-        width: auto !important;
-        border: none !important;
-    }
-    .jiathis_style .jiadiv_01 {
-        margin: 10px 0;
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .jiathis_style .jiadiv_01 div:first-child {
-        display: none;
-    }
-    .jiathis_style .jiadiv_02 {
-        padding: 7px 0 !important;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle {
-        width: 85px;
-        border: none;
-        height: auto;
-        margin: 3px 10px;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:hover {
-        border: none;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
-        margin-left: 0;
-    }
-    .jiathis_style .jtico:hover {
-        opacity: 1;
-    }
-    .jiathis_style .ckepopBottom,
-    .jiathis_style .centerBottom {
-        width: auto !important;
-        padding: 5px;
-        background: #f7f7f7;
-    }
-</style>
-
-
-
-</div>
-
-            
-    
-        <a href="https://lfkdsk.github.io/2016/07/03/learnparser/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/07/03/learnparser/">Comments</a>
+      </header>
     
 
-        </footer>
-    </div>
-    
-</article>
 
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
 
-    <article id="post-make-new-language-4" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+      
         
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/06/25/make-new-language-4/">学习制作一门有趣的编程语言－0x04</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/06/25/make-new-language-4/">
-            <time datetime="2016-06-25T14:33:35.000Z" itemprop="datePublished">2016-06-25</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/编程语言/">编程语言</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
+          
             <h2 id="&#x51E0;&#x79CD;&#x5E38;&#x7528;&#x7B97;&#x6CD5;"><a href="#&#x51E0;&#x79CD;&#x5E38;&#x7528;&#x7B97;&#x6CD5;" class="headerlink" title="&#x51E0;&#x79CD;&#x5E38;&#x7528;&#x7B97;&#x6CD5;"></a>&#x51E0;&#x79CD;&#x5E38;&#x7528;&#x7B97;&#x6CD5;</h2><p>&#x6211;&#x4EEC;&#x65E5;&#x5E38;&#x4F1A;&#x7528;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7528;&#x4E86;&#x975E;&#x5E38;&#x7CBE;&#x7B80;&#x7684;&#x8BED;&#x6CD5;&#x5C31;&#x80FD;&#x6982;&#x62EC;&#x591A;&#x79CD;&#x8F93;&#x5165;&#x4E32;&#x7684;&#x7279;&#x5F81;&#xFF0C;</p>
 
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://lfkdsk.github.io/2016/06/16/some-magic-things/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘丰恺">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/justwe.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="若梦浮生">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="若梦浮生" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/16/some-magic-things/" itemprop="url">
+                  我们来写一些魔法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-16T21:30:29+08:00">
+                2016-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/06/16/some-magic-things/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/16/some-magic-things/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
         </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-    <div class="jiathis_style">
-    <span class="jiathis_txt">分享到：</span>
-    <a class="jiathis_button_qzone">QQ空间</a>
-    <a class="jiathis_button_tsina">新浪微博</a>
-    <a class="jiathis_button_tqq">腾讯微博</a>
-    <a class="jiathis_button_weixin">微信</a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-    <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<style>
-    .jiathis_style div:first-child:not(.jiadiv_01) {
-        width: auto !important;
-        border: none !important;
-    }
-    .jiathis_style .jiadiv_01 {
-        margin: 10px 0;
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .jiathis_style .jiadiv_01 div:first-child {
-        display: none;
-    }
-    .jiathis_style .jiadiv_02 {
-        padding: 7px 0 !important;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle {
-        width: 85px;
-        border: none;
-        height: auto;
-        margin: 3px 10px;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:hover {
-        border: none;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
-        margin-left: 0;
-    }
-    .jiathis_style .jtico:hover {
-        opacity: 1;
-    }
-    .jiathis_style .ckepopBottom,
-    .jiathis_style .centerBottom {
-        width: auto !important;
-        padding: 5px;
-        background: #f7f7f7;
-    }
-</style>
-
-
-
-</div>
-
-            
-    
-        <a href="https://lfkdsk.github.io/2016/06/25/make-new-language-4/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/06/25/make-new-language-4/">Comments</a>
+      </header>
     
 
-        </footer>
-    </div>
-    
-</article>
 
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
 
-    <article id="post-some-magic-things" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+      
         
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/06/16/some-magic-things/">我们来写一些魔法</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/06/16/some-magic-things/">
-            <time datetime="2016-06-16T13:30:29.000Z" itemprop="datePublished">2016-06-16</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Interesting/">Interesting!</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
+          
             <h2 id="&#x8BF7;&#x95EE;&#x8981;&#x6765;&#x70B9;&#x9B54;&#x6CD5;&#x4E48;&#xFF1F;"><a href="#&#x8BF7;&#x95EE;&#x8981;&#x6765;&#x70B9;&#x9B54;&#x6CD5;&#x4E48;&#xFF1F;" class="headerlink" title="&#x8BF7;&#x95EE;&#x8981;&#x6765;&#x70B9;&#x9B54;&#x6CD5;&#x4E48;&#xFF1F;"></a>&#x8BF7;&#x95EE;&#x8981;&#x6765;&#x70B9;&#x9B54;&#x6CD5;&#x4E48;&#xFF1F;</h2><p>&#x4F46;&#x51E1;&#x5927;&#x578B;&#x5E94;&#x7528;&#x5F00;&#x53D1;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x5927;&#x591A;&#x90FD;&#x4F1A;&#x7559;&#x4E00;&#x4E9B;&#x7528;&#x4E8E;&#x8C03;&#x8BD5;&#x7684;&#x5EFA;&#x8BAE;&#x63A5;&#x53E3;&#xFF0C;&#x5C31;&#x50CF;&#x5FAE;&#x4FE1;&#x4E4B;&#x524D;&#x7684;&#x901A;&#x8FC7;&#x8F93;&#x5165;&#x547C;&#x51FA;&#x7684;&#x9690;&#x85CF;&#x6309;&#x94AE;&#xFF0C;&#x7CFB;&#x7EDF;&#x4E0A;&#x7684;&#x9690;&#x85CF;&#x529F;&#x80FD;&#x4E5F;&#x4E0D;&#x4F8B;&#x5916;&#xFF0C;&#x4ECE;&#x7EAF;&#x7CB9;&#x7684;java&#x673A;&#x65F6;&#x4EE3;&#x5C31;&#x6709;&#x5404;&#x5BB6;&#x5382;&#x5546;&#x7559;&#x4E0B;&#x6765;&#x7684;&#x9690;&#x85CF;&#x547C;&#x51FA;&#x4EE3;&#x7801;&#xFF0C;&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x67E5;&#x770B;&#x5185;&#x5B58;&#x554A;&#xFF0C;&#x5F3A;&#x5236;&#x91CD;&#x542F;&#x554A;&#xFF0C;&#x67E5;&#x770B;&#x7535;&#x91CF;&#x6D88;&#x8017;&#x4EC0;&#x4E48;&#x7684;&#xFF0C;&#x591A;&#x6570;&#x7528;&#x7EC4;&#x5408;&#x952E;&#x6216;&#x8005;&#x662F;&#x53F7;&#x7801;&#x7C3F;&#x547C;&#x51FA;&#x7684;&#x3002;Android&#x5E73;&#x53F0;&#x4E4B;&#x524D;&#x4E5F;&#x6D41;&#x4F20;&#x8FC7;&#x5F88;&#x591A;&#x5047;&#x7684;SecretCode&#xFF0C;&#x4F46;&#x662F;&#x5176;&#x5B9E;SecretCode&#x662F;&#x771F;&#x5B9E;&#x5B58;&#x5728;&#x4E8E;Android&#x5E73;&#x53F0;&#x4E0A;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x6211;&#x4EEC;&#x4E5F;&#x6709;&#x673A;&#x4F1A;&#x5B9E;&#x73B0;&#x81EA;&#x5DF1;&#x7684;SecretCode&#x3002;</p>
 <p>SecretCode&#x5728;Android&#x4E0A;&#x5927;&#x591A;&#x6570;&#x662F;&#x7531;&#x62E8;&#x53F7;&#x76D8;&#x8F93;&#x5165;&#x7279;&#x5B9A;&#x5E8F;&#x5217;&#x89E6;&#x53D1;&#x7684;&#xFF0C;&#x5176;&#x5B9E;&#x8D28;&#x4E0A;&#x4E5F;&#x4E0D;&#x8FC7;&#x662F;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x5168;&#x5C40;&#x5E7F;&#x64AD;&#x7684;&#x6536;&#x53D1;&#xFF0C;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x5E94;&#x8BE5;&#x5B66;&#x8FC7;&#x5E7F;&#x64AD;&#x63A5;&#x6536;&#x5668;&#xFF0C;&#x90A3;&#x7406;&#x89E3;&#x8D77;&#x6765;&#x5C31;&#x5F88;&#x5BB9;&#x6613;&#xFF0C;&#x6240;&#x8C13;&#x7684;SecretCode&#x4E5F;&#x5C31;&#x53EA;&#x662F;&#x4E2A;&#x5F88;&#x6709;&#x8DA3;&#x7684;&#x5C0F;&#x529F;&#x80FD;&#x4E86;&#x3002;</p>
 <h3 id="&#x9996;&#x5148;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5E7F;&#x64AD;&#x63A5;&#x6536;&#x5668;"><a href="#&#x9996;&#x5148;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5E7F;&#x64AD;&#x63A5;&#x6536;&#x5668;" class="headerlink" title="&#x9996;&#x5148;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5E7F;&#x64AD;&#x63A5;&#x6536;&#x5668;"></a>&#x9996;&#x5148;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5E7F;&#x64AD;&#x63A5;&#x6536;&#x5668;</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lfk.myapplication;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.content.BroadcastReceiver;</span><br><span class="line"><span class="keyword">import</span> android.content.Context;</span><br><span class="line"><span class="keyword">import</span> android.content.Intent;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecretReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SecretReceiver</span><span class="params">()</span> </span>{</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>{</span><br><span class="line">        SpUtils.put(context, <span class="string">&quot;key&quot;</span>, <span class="number">1</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
@@ -916,116 +1097,128 @@
 <p>PS&#xFF1A;&#x5E38;&#x7528;&#x7684;SecretCode &#xFF1A;<a href="http://www.androidupdater.com/2015/02/if-you-are-android-user-than-you-should.html" target="_blank" rel="external">If you are an Android User, Than you Should try these 32 Secret Codes!</a></p>
 </blockquote>
 
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://lfkdsk.github.io/2016/06/09/2014to2016/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘丰恺">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/justwe.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="若梦浮生">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="若梦浮生" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/09/2014to2016/" itemprop="url">
+                  2014to2016梦回吹角连营
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-09T00:23:04+08:00">
+                2016-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/06/09/2014to2016/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/09/2014to2016/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
         </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-    <div class="jiathis_style">
-    <span class="jiathis_txt">分享到：</span>
-    <a class="jiathis_button_qzone">QQ空间</a>
-    <a class="jiathis_button_tsina">新浪微博</a>
-    <a class="jiathis_button_tqq">腾讯微博</a>
-    <a class="jiathis_button_weixin">微信</a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-    <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<style>
-    .jiathis_style div:first-child:not(.jiadiv_01) {
-        width: auto !important;
-        border: none !important;
-    }
-    .jiathis_style .jiadiv_01 {
-        margin: 10px 0;
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .jiathis_style .jiadiv_01 div:first-child {
-        display: none;
-    }
-    .jiathis_style .jiadiv_02 {
-        padding: 7px 0 !important;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle {
-        width: 85px;
-        border: none;
-        height: auto;
-        margin: 3px 10px;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:hover {
-        border: none;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
-        margin-left: 0;
-    }
-    .jiathis_style .jtico:hover {
-        opacity: 1;
-    }
-    .jiathis_style .ckepopBottom,
-    .jiathis_style .centerBottom {
-        width: auto !important;
-        padding: 5px;
-        background: #f7f7f7;
-    }
-</style>
-
-
-
-</div>
-
-            
-    
-        <a href="https://lfkdsk.github.io/2016/06/16/some-magic-things/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/06/16/some-magic-things/">Comments</a>
+      </header>
     
 
-        </footer>
-    </div>
-    
-</article>
 
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
 
-    <article id="post-2014to2016" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+      
         
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/06/09/2014to2016/">2014to2016梦回吹角连营</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/06/09/2014to2016/">
-            <time datetime="2016-06-08T16:23:04.000Z" itemprop="datePublished">2016-06-09</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/随笔/">随笔</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
+          
             <p>&#x200B;    &#x4ECA;&#x5E74;&#x7684;&#x9AD8;&#x8003;&#x5728;&#x4ECA;&#x5929;&#x7ED3;&#x675F;&#x4E86;&#xFF0C;&#x8FD9;&#x5BF9;&#x6211;&#x5B9E;&#x5728;&#x6CA1;&#x4EC0;&#x4E48;&#x5B9E;&#x611F;&#xFF0C;&#x4ED4;&#x7EC6;&#x4E00;&#x60F3;&#x9AD8;&#x8003;&#x90FD;&#x662F;&#x4E24;&#x5E74;&#x524D;&#x7684;&#x4E8B;&#x60C5;&#x4E86;&#x3002;&#x4E24;&#x5E74;&#x8FC7;&#x53BB;&#x4E86;&#x5F53;&#x5E74;&#x7684;&#x9AD8;&#x4E2D;&#x540C;&#x5B66;&#x4E5F;&#x90FD;&#x98CE;&#x6D41;&#x4E91;&#x6563;&#x4E86;&#xFF0C;&#x4FDD;&#x6301;&#x8054;&#x7CFB;&#x7684;&#x4EBA;&#x4E5F;&#x4E0D;&#x662F;&#x592A;&#x591A;&#x4E86;&#x3002;&#x8FD9;&#x90FD;&#x662F;&#x65E0;&#x53EF;&#x907F;&#x514D;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x6D3B;&#x7740;&#x4E0D;&#x8FC7;&#x662F;&#x8FCE;&#x6765;&#x9001;&#x5F80;&#x3002;&#x4E0D;&#x8FC7;&#x4ECA;&#x5929;&#x542C;&#x5988;&#x63D0;&#x5230;&#x5979;&#x7684;&#x4E00;&#x4E2A;&#x540C;&#x4E8B;&#x7684;&#x4F84;&#x5B50;&#xFF0C;&#x4ED6;&#x6BD4;&#x6211;&#x5C0F;&#x4E00;&#x5C4A;&#x5427;&#xFF0C;&#x4E4B;&#x524D;&#x4ED6;&#x7684;&#x4E8B;&#x6211;&#x9AD8;&#x4E2D;&#x7684;&#x65F6;&#x5019;&#x4E5F;&#x6709;&#x6240;&#x8033;&#x95FB;&#xFF0C;&#x4E0A;&#x4E00;&#x6B21;&#x8003;&#x8BD5;&#x5931;&#x5229;&#xFF0C;&#x8FD9;&#x6B21;&#x590D;&#x8BFB;&#x91CD;&#x8003;&#x3002;&#x542C;&#x5230;&#x8FD9;&#x4E2A;&#x6D88;&#x606F;&#x624D;&#x8BA9;&#x6211;&#x53C8;&#x60F3;&#x8D77;&#x6765;&#x6211;&#x7684;&#x9AD8;&#x8003;&#x4E86;&#x3002;</p>
 <p>&#x200B;    &#x201C;&#x68A6;&#x56DE;&#x5439;&#x89D2;&#x8FDE;&#x8425;&#x201D;&#xFF0C;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E2A;&#x9898;&#x76EE;&#x6211;&#x89C9;&#x5F97;&#x8FD9;&#x53E5;&#x771F;&#x662F;&#x592A;&#x6070;&#x5F53;&#x4E86;&#xFF0C;&#x9AD8;&#x8003;&#x5BF9;&#x4E8E;&#x6211;&#x6765;&#x8BB2;&#x771F;&#x7684;&#x662F;&#x4E00;&#x573A;&#x6218;&#x4E89;&#xFF0C;&#x4E00;&#x751F;&#x7684;&#x68A6;&#x9B47;&#x3002;&#x6709;&#x7684;&#x65F6;&#x5019;&#x548C;&#x670B;&#x53CB;&#x8C08;&#x8D77;&#x9AD8;&#x8003;&#xFF0C;&#x6211;&#x90FD;&#x4F1A;&#x9009;&#x62E9;&#x4E00;&#x4E9B;&#x8F7B;&#x677E;&#x7684;&#x8BED;&#x8C03;&#x53BB;&#x63CF;&#x8FF0;&#x6211;&#x7684;&#x9AD8;&#x8003;&#xFF0C;&#x8BF4;&#x8BF4;&#x81EA;&#x5DF1;&#x90A3;&#x65F6;&#x5019;&#x4E5F;&#x8D2A;&#x73A9;&#xFF0C;&#x4E5F;&#x4E0D;&#x542C;&#x8BFE;&#xFF0C;&#x4E5F;&#x4F1A;&#x548C;&#x670B;&#x53CB;&#x53BB;&#x7F51;&#x5427;&#x3002;&#x4F46;&#x8BF4;&#x5B9E;&#x8BDD;&#x8FD9;&#x63CF;&#x8FF0;&#x867D;&#x662F;&#x5B9E;&#x60C5;&#xFF0C;&#x4F46;&#x662F;&#x8981;&#x8BF4;&#x6211;&#x6574;&#x4E2A;&#x9AD8;&#x4E09;&#x90FD;&#x5904;&#x5728;&#x8FD9;&#x79CD;&#x72B6;&#x6001;&#x4E0B;&#x6211;&#x90FD;&#x4E0D;&#x4FE1;&#xFF0C;&#x8FD9;&#x79CD;&#x8BF4;&#x6CD5;&#x53EF;&#x80FD;&#x662F;&#x771F;&#x7684;&#x5C5E;&#x4E8E;&#x4E00;&#x4E2A;&#x7ECF;&#x5386;&#x8FC7;&#x7684;&#x4EBA;&#x7684;&#x4E91;&#x6DE1;&#x98CE;&#x8F7B;&#x5427;&#x3002;&#x8981;&#x5355;&#x7EAF;&#x8BB2;&#x51FA;&#x6211;&#x9AD8;&#x4E09;&#x7684;&#x72B6;&#x6001;&#x53EF;&#x80FD;&#x5C31;&#x662F;&#x201C;&#x6655;&#x201D;&#x5427;&#x3002;&#x5176;&#x5B9E;&#x6211;&#x9AD8;&#x4E00;&#xFF0F;&#x9AD8;&#x4E8C;&#x4E5F;&#x633A;&#x6655;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x73A9;&#x5F97;&#x591A;&#x7761;&#x5F97;&#x5C11;&#xFF0C;&#x800C;&#x4E14;&#x4E0D;&#x7528;&#x592A;&#x4E0A;&#x5FC3;&#x5C31;&#x80FD;&#x8003;&#x51FA;&#x5DEE;&#x5F3A;&#x4EBA;&#x610F;&#x7684;&#x6210;&#x7EE9;&#xFF0C;&#x53EF;&#x80FD;&#x6211;&#x81EA;&#x5DF1;&#x90FD;&#x4E0D;&#x592A;&#x5728;&#x610F;&#x5427;&#x3002;&#x4F46;&#x662F;&#x9AD8;&#x4E09;&#x7684;&#x6655;&#x662F;&#x771F;&#x7684;&#x5934;&#x6655;&#x773C;&#x82B1;&#xFF0C;&#x6BCF;&#x5929;&#x7684;&#x7761;&#x7720;&#x65F6;&#x95F4;&#x90FD;&#x5C0F;&#x4E8E;5&#x4E2A;&#x5C0F;&#x65F6;&#xFF0C;2&#xFF0C;3&#x70B9;&#x7761;&#x89C9;&#x7684;&#x65F6;&#x5019;&#x4E5F;&#x5C61;&#x89C1;&#x4E0D;&#x9C9C;&#xFF0C;&#x6211;&#x751A;&#x81F3;&#x5230;&#x4E86;&#x5206;&#x4E0D;&#x6E05;&#x5F53;&#x5929;&#x662F;&#x5468;&#x51E0;&#xFF0C;&#x5206;&#x4E0D;&#x6E05;&#x4E00;&#x4EF6;&#x4E8B;&#x662F;&#x54EA;&#x5929;&#x53D1;&#x751F;&#x7684;&#xFF0C;&#x65E9;&#x4E0A;&#x4E0A;&#x5B66;&#x8FC7;&#x9A6C;&#x8DEF;&#x770B;&#x4E0D;&#x6E05;&#x8F66;&#x90FD;&#x88AB;&#x8F66;&#x64E6;&#x5230;&#x7684;&#x60C5;&#x51B5;&#x51FA;&#x73B0;&#x3002;&#x6211;&#x8BB0;&#x5F97;&#x4E2D;&#x5348;&#x53EF;&#x4EE5;&#x5348;&#x7761;&#xFF0C;&#x4F46;&#x662F;&#x53EA;&#x80FD;&#x7761;&#x5341;&#x5206;&#x949F;&#xFF0C;&#x5BF9;&#x4E8E;&#x91CD;&#x5EA6;&#x7F3A;&#x89C9;&#x7684;&#x4EBA;&#xFF0C;&#x8FD9;&#x70B9;&#x65F6;&#x95F4;&#x51E0;&#x4E4E;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#x4E0D;&#x8BA1;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x57FA;&#x672C;&#x4E0A;&#x5934;&#x78B0;&#x4E0A;&#x624B;&#x81C2;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x7761;&#x7740;&#x4E86;&#xFF0C;&#x7136;&#x540E;&#x9192;&#x7684;&#x65F6;&#x5019;&#x610F;&#x8BC6;&#x8FD8;&#x505C;&#x7559;&#x5728;&#x521A;&#x7761;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x66F4;&#x4E0D;&#x8981;&#x63D0;&#x6709;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x5728;&#x68A6;&#x91CC;&#x68A6;&#x5230;&#x8FD8;&#x5728;&#x5B66;&#x4E60;&#xFF0C;&#x7ED3;&#x679C;&#x9192;&#x4E86;&#x75B2;&#x52B3;&#x5EA6;&#x4E0D;&#x51CF;&#x53CD;&#x589E;&#x3002;&#x6700;&#x6709;&#x5370;&#x8C61;&#x7684;&#x662F;&#x6570;&#x5B66;&#x7684;&#xFF0C;&#x9AD8;&#x4E09;&#x8F6C;&#x6765;&#x4E86;&#x4E00;&#x4E2A;&#x8BB2;&#x5F97;&#x4E0D;&#x9519;&#x7684;&#x6570;&#x5B66;&#x8001;&#x5E08;&#xFF0C;&#x4ECE;&#x67D0;&#x79CD;&#x610F;&#x4E49;&#x4E0A;&#x662F;&#x633D;&#x6551;&#x4E86;&#x6211;&#x4EEC;&#x5168;&#x73ED;&#x7684;&#x6570;&#x5B66;&#x3002;&#x6570;&#x5B66;&#x8BFE;&#x81EA;&#x7136;&#x8981;&#x597D;&#x597D;&#x542C;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x56F0;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x57FA;&#x672C;&#x4E0A;&#x6574;&#x5802;&#x8BFE;&#x90FD;&#x81EA;&#x52A8;&#x7684;&#x53BB;&#x540E;&#x9762;&#x7AD9;&#x7740;&#x3002;&#x6211;&#x8FD8;&#x662F;&#x633A;&#x4F69;&#x670D;&#x6211;&#x81EA;&#x5DF1;&#x7684;&#x4E34;&#x8003;&#x72B6;&#x6001;&#x7684;&#xFF0C;&#x6211;&#x867D;&#x7136;&#x7761;&#x7720;&#x5DF2;&#x7ECF;&#x4E25;&#x91CD;&#x4E0D;&#x8DB3;&#xFF0C;&#x751A;&#x81F3;&#x601D;&#x8DEF;&#x90FD;&#x4E0D;&#x6E05;&#x695A;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x80FD;&#x575A;&#x6301;&#x6B63;&#x786E;&#x7684;&#x505A;&#x9898;&#x3002;&#x53EF;&#x80FD;&#x771F;&#x7684;&#x662F;&#x6240;&#x8C13;&#x7684;&#x201C;&#x5B66;&#x4E60;&#x673A;&#x5668;&#x201D;&#x7684;&#x7A0B;&#x5EA6;&#x5427;&#xFF0C;&#x56F0;&#x7684;&#x5DF2;&#x7ECF;&#x5E72;&#x6270;&#x4E86;&#x6B63;&#x5E38;&#x751F;&#x6D3B;&#x4E86;&#xFF0C;&#x5374;&#x8FD8;&#x80FD;&#x6B63;&#x5E38;&#x7684;&#x505A;&#x9898;&#xFF0C;&#x60F3;&#x6765;&#x4E5F;&#x662F;&#x633A;&#x8BBD;&#x523A;&#x7684;&#x3002;&#x90A3;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x4EA7;&#x751F;&#x4E86;&#x4E00;&#x4E2A;&#x5F88;&#x5947;&#x602A;&#x7684;&#x5174;&#x8DA3;&#xFF0C;&#x5C31;&#x662F;&#x603B;&#x60F3;&#x53BB;&#x4E70;&#x7EC3;&#x4E60;&#x518C;&#x53BB;&#x505A;&#xFF0C;&#x603B;&#x60F3;&#x591A;&#x505A;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x5E78;&#x7684;&#x662F;&#x5BF9;&#x4E8E;&#x6211;&#x7CBE;&#x795E;&#x4E0A;&#x8FD8;&#x662F;&#x80FD;&#x575A;&#x6301;&#x7684;&#x4F4F;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x8EAB;&#x4F53;&#x7684;&#x75B2;&#x52B3;&#x5DF2;&#x7ECF;&#x6491;&#x4E0D;&#x4F4F;&#x4E86;&#xFF0C;&#x5C31;&#x662F;&#x8111;&#x5B50;&#x60F3;&#x7740;&#x201C;&#x6211;&#x8FD8;&#x80FD;&#x6253;&#x4E00;&#x5E74;&#x201D;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x5DF2;&#x7ECF;&#x8DB4;&#x7740;&#x5C31;&#x8D77;&#x4E0D;&#x6765;&#x4E86;&#x3002;&#x6211;&#x9AD8;&#x8003;&#x65F6;&#x5019;&#x7684;&#x72B6;&#x6001;&#x5C31;&#x5927;&#x62B5;&#x5982;&#x6B64;&#x3002;</p>
 <p>&#x200B;    &#x8BF4;&#x4E86;&#x8FD9;&#x4E48;&#x591A;&#xFF0C;&#x5176;&#x5B9E;&#x4E0D;&#x662F;&#x60F3;&#x8BC9;&#x82E6;&#xFF0C;&#x6216;&#x8005;&#x6807;&#x699C;&#x4EC0;&#x4E48;&#x7684;&#x3002;&#x8BF4;&#x8D77;&#x6765;&#x90FD;&#x662F;&#x4E24;&#x5E74;&#x524D;&#x7684;&#x4E8B;&#x4E86;&#xFF0C;&#x5439;&#x5618;&#x4EC0;&#x4E48;&#x7684;&#x4E00;&#x70B9;&#x610F;&#x601D;&#x90FD;&#x6CA1;&#x6709;&#xFF0C;&#x800C;&#x4E14;&#x6709;&#x79CD;&#x94B1;&#x949F;&#x4E66;&#x6240;&#x8BF4;&#x7684;&#x201C;&#x5144;&#x5F1F;&#x6211;&#x5728;&#x82F1;&#x56FD;&#x7684;&#x65F6;&#x5019;&#x201D;&#x7684;&#x611F;&#x89C9;&#x3002;&#x4F46;&#x662F;&#x9AD8;&#x8003;&#x771F;&#x7684;&#x662F;&#x5BF9;&#x5B66;&#x751F;&#x4E00;&#x6B21;&#x5F88;&#x75DB;&#x82E6;&#x7684;&#x7ECF;&#x5386;&#xFF0C;&#x597D;&#x574F;&#x4F17;&#x8BF4;&#x7EB7;&#x7EAD;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x60F3;&#x6211;&#x8FD8;&#x4E0D;&#x81F3;&#x4E8E;&#x53D8;&#x6210;&#x65AF;&#x8FBE;&#x54E5;&#x5C14;&#x6469;&#x7EFC;&#x5408;&#x75C7;&#xFF0C;&#x7ECF;&#x5386;&#x8FC7;&#x5C31;&#x53BB;&#x8DEA;&#x8214;&#x8FD9;&#x4E2A;&#x75DB;&#x82E6;&#x7684;&#x7ECF;&#x5386;&#xFF0C;&#x5373;&#x4F7F;&#x6211;&#x6216;&#x8BB8;&#x4E5F;&#x7B97;&#x9AD8;&#x8003;&#x7684;&#x67D0;&#x79CD;&#x65E2;&#x5F97;&#x5229;&#x76CA;&#x8005;&#xFF08;&#xFF1F;&#xFF09;&#x3002;&#x5176;&#x5B9E;&#x6211;&#x5012;&#x662F;&#x8BA4;&#x8BC6;&#x5F88;&#x591A;&#x7684;&#x5B66;&#x9738;&#xFF0C;&#x4ED6;&#x4EEC;&#x7684;&#x4F5C;&#x606F;&#x65B9;&#x5F0F;&#x548C;&#x6211;&#x6709;&#x5F88;&#x5927;&#x533A;&#x522B;&#x7684;&#xFF0C;&#x542C;&#x8D77;&#x6765;&#x4F3C;&#x4E4E;&#x6CA1;&#x6211;&#x62FC;&#x547D;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x60F3;&#x6216;&#x8BB8;&#x4ED6;&#x4EEC;&#x4E5F;&#x6709;&#x4ED6;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x52AA;&#x529B;&#xFF0C;&#x6BD5;&#x7ADF;&#x4E16;&#x4E0A;&#x8FD8;&#x662F;&#x6CA1;&#x6709;&#x771F;&#x6B63;&#x7684;&#x4E0D;&#x52B3;&#x800C;&#x83B7;&#x3002;&#x6211;&#x8F9B;&#x82E6;&#x5230;&#x5982;&#x4E0A;&#x6240;&#x8BF4;&#x6216;&#x8BB8;&#x662F;&#x6211;&#x771F;&#x7684;&#x5F88;&#x7B28;&#x5427;&#xFF01;</p>
@@ -1035,111 +1228,128 @@
 <p>&#x200B;    &#x6211;&#x4F30;&#x8BA1;&#x5927;&#x5BB6;&#x90FD;&#x4E0D;&#x4F1A;&#x770B;&#x5230;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x5427;&#xFF0C;&#x6BD5;&#x7ADF;&#x591C;&#x5DF2;&#x7ECF;&#x6DF1;&#x4E86;&#xFF0C;&#x6211;&#x4E5F;&#x5FEB;&#x8981;&#x53BB;&#x7761;&#x4E86;&#xFF0C;&#x795D;&#x5927;&#x5BB6;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x524D;&#x7A0B;&#x4F3C;&#x9526;&#x7684;&#x524D;&#x7A0B;&#x5427;&#x3002;</p>
 <p>P,S:&#x6211;&#x5F88;&#x7684;&#x633A;&#x611F;&#x8C22;&#x73B0;&#x5728;&#x7684;&#x8FD9;&#x4E2A;&#x5927;&#x5B66;&#x7684;&#xFF0C;&#x867D;&#x7136;&#x67D0;&#x5DE5;&#x4E0D;&#x662F;&#x6211;&#x80FD;&#x8003;&#x4E0A;&#x7684;&#x6700;&#x597D;&#x7684;&#x5927;&#x5B66;&#xFF0C;&#x5F53;&#x5E74;&#x534E;&#x79D1;&#xFF0C;&#x534E;&#x5357;&#x7687;&#x5BB6;&#x7406;&#x5DE5;&#xFF0C;&#x6B66;&#x5927;&#x4EC0;&#x4E48;&#x7684;&#x6211;&#x4E5F;&#x90FD;&#x662F;&#x80FD;&#x8003;&#x4E0A;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x67D0;&#x5DE5;&#x5F00;&#x53D1;&#x533A;&#x8FD9;&#x4E2A;&#x5730;&#x65B9;&#x771F;&#x662F;&#x5E73;&#x65F6;&#x9664;&#x4E86;&#x5B66;&#x4E60;&#x4E4B;&#x5916;&#x627E;&#x4E0D;&#x5230;&#x4EC0;&#x4E48;&#x5176;&#x5B83;&#x80FD;&#x505A;&#x7684;&#xFF0C;&#x679C;&#x7136;&#x662F;&#x786C;&#x70B9;&#x7684;&#x5B66;&#x5728;&#x67D0;&#x5DE5;&#x554A;&#x3002;</p>
 
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://lfkdsk.github.io/2016/06/01/make-new-language-3/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘丰恺">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/justwe.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="若梦浮生">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="若梦浮生" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/01/make-new-language-3/" itemprop="url">
+                  学习制作一门有趣的编程语言－0x03
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-01T22:28:06+08:00">
+                2016-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/06/01/make-new-language-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/make-new-language-3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
         </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-    <div class="jiathis_style">
-    <span class="jiathis_txt">分享到：</span>
-    <a class="jiathis_button_qzone">QQ空间</a>
-    <a class="jiathis_button_tsina">新浪微博</a>
-    <a class="jiathis_button_tqq">腾讯微博</a>
-    <a class="jiathis_button_weixin">微信</a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-    <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<style>
-    .jiathis_style div:first-child:not(.jiadiv_01) {
-        width: auto !important;
-        border: none !important;
-    }
-    .jiathis_style .jiadiv_01 {
-        margin: 10px 0;
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .jiathis_style .jiadiv_01 div:first-child {
-        display: none;
-    }
-    .jiathis_style .jiadiv_02 {
-        padding: 7px 0 !important;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle {
-        width: 85px;
-        border: none;
-        height: auto;
-        margin: 3px 10px;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:hover {
-        border: none;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
-        margin-left: 0;
-    }
-    .jiathis_style .jtico:hover {
-        opacity: 1;
-    }
-    .jiathis_style .ckepopBottom,
-    .jiathis_style .centerBottom {
-        width: auto !important;
-        padding: 5px;
-        background: #f7f7f7;
-    }
-</style>
-
-
-
-</div>
-
-            
-    
-        <a href="https://lfkdsk.github.io/2016/06/09/2014to2016/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/06/09/2014to2016/">Comments</a>
+      </header>
     
 
-        </footer>
-    </div>
-    
-</article>
 
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
 
-    <article id="post-make-new-language-3" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+      
         
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/06/01/make-new-language-3/">学习制作一门有趣的编程语言－0x03</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/06/01/make-new-language-3/">
-            <time datetime="2016-06-01T14:28:06.000Z" itemprop="datePublished">2016-06-01</time>
-        </a>
-    </div>
-
-
-                        
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
+          
             <h2 id="&#x5206;&#x6790;&#x4E00;&#x4E2A;C&#x8BED;&#x8A00;&#x7684;Lex-amp-Yacc-&#x7A0B;&#x5E8F;"><a href="#&#x5206;&#x6790;&#x4E00;&#x4E2A;C&#x8BED;&#x8A00;&#x7684;Lex-amp-Yacc-&#x7A0B;&#x5E8F;" class="headerlink" title="&#x5206;&#x6790;&#x4E00;&#x4E2A;C&#x8BED;&#x8A00;&#x7684;Lex &amp; Yacc &#x7A0B;&#x5E8F;"></a>&#x5206;&#x6790;&#x4E00;&#x4E2A;C&#x8BED;&#x8A00;&#x7684;Lex &amp; Yacc &#x7A0B;&#x5E8F;</h2><p><code>&#x535A;&#x5BA2;&#x5730;&#x5740;</code>&#xFF1A; <a href="http://lfkdsk.github.io">http://lfkdsk.github.io</a><br><code>&#x4EE3;&#x7801;&#x5730;&#x5740;</code>&#xFF1A; <a href="https://github.com/lfkdsk/CodeParse" target="_blank" rel="external">https://github.com/lfkdsk/CodeParse</a></p>
 <p>&#x672C;&#x8282;&#x6211;&#x4EEC;&#x6765;&#x5206;&#x6790;&#x4E00;&#x4E2A;&#x80FD;&#x5339;&#x914D;C&#x8BED;&#x8A00;&#x7684;Lex &amp; Yacc &#x7A0B;&#x5E8F;</p>
 <blockquote>
@@ -1210,116 +1420,128 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">		<span class="comment">/* &#x8FD9;&#x91CC;&#x7684;&#x65E0;else&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x662F;&#x4F4E;&#x4E8E;&#x7531;else &#x7684; */</span></span><br><span class="line">selection_statement</span><br><span class="line">	: IF <span class="string">&apos;(&apos;</span> expression <span class="string">&apos;)&apos;</span> statement %prec LOWER_THAN_ELSE</span><br><span class="line">	| IF <span class="string">&apos;(&apos;</span> expression <span class="string">&apos;)&apos;</span> statement ELSE statement</span><br><span class="line">	| SWITCH <span class="string">&apos;(&apos;</span> expression <span class="string">&apos;)&apos;</span> statement</span><br><span class="line">	;</span><br></pre></td></tr></table></figure>
 <p>&#x5176;&#x4F59;&#x7684;&#x53EA;&#x6709;&#x8FD9;&#x91CC;&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x4E00;&#x4E0B;&#xFF0C;&#x8FD9;&#x91CC;&#x51FA;&#x73B0;&#x4E86;&#x8457;&#x540D;&#x7684;ELSE&#x60AC;&#x7A7A;&#x7684;&#x79FB;&#x8FDB;&#x89C4;&#x7EA6;bug&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E2A;&#x4F18;&#x5148;&#x7EA7;&#x4F4E;&#x4E8E;ELSE&#x7684;LOWER_THAN_ELSE&#x6765;&#x6307;&#x5B9A;&#x4F18;&#x5148;&#x7EA7;&#x3002;</p>
 
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://lfkdsk.github.io/2016/06/01/make-new-language-2/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘丰恺">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/justwe.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="若梦浮生">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="若梦浮生" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/01/make-new-language-2/" itemprop="url">
+                  学习制作一门有趣的编程语言－0x02
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-01T12:13:17+08:00">
+                2016-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/06/01/make-new-language-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/make-new-language-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
         </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-    <div class="jiathis_style">
-    <span class="jiathis_txt">分享到：</span>
-    <a class="jiathis_button_qzone">QQ空间</a>
-    <a class="jiathis_button_tsina">新浪微博</a>
-    <a class="jiathis_button_tqq">腾讯微博</a>
-    <a class="jiathis_button_weixin">微信</a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-    <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<style>
-    .jiathis_style div:first-child:not(.jiadiv_01) {
-        width: auto !important;
-        border: none !important;
-    }
-    .jiathis_style .jiadiv_01 {
-        margin: 10px 0;
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .jiathis_style .jiadiv_01 div:first-child {
-        display: none;
-    }
-    .jiathis_style .jiadiv_02 {
-        padding: 7px 0 !important;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle {
-        width: 85px;
-        border: none;
-        height: auto;
-        margin: 3px 10px;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:hover {
-        border: none;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
-        margin-left: 0;
-    }
-    .jiathis_style .jtico:hover {
-        opacity: 1;
-    }
-    .jiathis_style .ckepopBottom,
-    .jiathis_style .centerBottom {
-        width: auto !important;
-        padding: 5px;
-        background: #f7f7f7;
-    }
-</style>
-
-
-
-</div>
-
-            
-    
-        <a href="https://lfkdsk.github.io/2016/06/01/make-new-language-3/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/06/01/make-new-language-3/">Comments</a>
+      </header>
     
 
-        </footer>
-    </div>
-    
-</article>
 
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
 
-    <article id="post-make-new-language-2" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+      
         
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/06/01/make-new-language-2/">学习制作一门有趣的编程语言－0x02</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/06/01/make-new-language-2/">
-            <time datetime="2016-06-01T04:13:17.000Z" itemprop="datePublished">2016-06-01</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/编程语言/">编程语言</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
+          
             <blockquote>
 <p><code>&#x535A;&#x5BA2;&#x5730;&#x5740;</code>&#xFF1A; <a href="http://lfkdsk.github.io">http://lfkdsk.github.io</a><br><code>&#x4EE3;&#x7801;&#x5730;&#x5740;</code>&#xFF1A; <a href="https://github.com/lfkdsk/CodeParse" target="_blank" rel="external">https://github.com/lfkdsk/CodeParse</a></p>
 </blockquote>
@@ -1553,116 +1775,128 @@ lex.yy.c: ex_calc.l
 <p>&#x4E4B;&#x540E;&#x4F7F;&#x7528;make&#x547D;&#x4EE4;&#x7F16;&#x8BD1;&#x8FD0;&#x884C;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x4F7F;&#x7528;&#x4E86;&#x3002;</p>
 <p><img src="/2016/06/01/make-new-language-2/calc_page.png" alt="calc_page">  </p>
 
+          
         
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://lfkdsk.github.io/2016/05/27/make-new-language-1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘丰恺">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/justwe.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="若梦浮生">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="若梦浮生" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/27/make-new-language-1/" itemprop="url">
+                  学习制作一门有趣的编程语言－0x01
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-27T08:37:20+08:00">
+                2016-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/05/27/make-new-language-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/27/make-new-language-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
         </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-    <div class="jiathis_style">
-    <span class="jiathis_txt">分享到：</span>
-    <a class="jiathis_button_qzone">QQ空间</a>
-    <a class="jiathis_button_tsina">新浪微博</a>
-    <a class="jiathis_button_tqq">腾讯微博</a>
-    <a class="jiathis_button_weixin">微信</a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-    <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<style>
-    .jiathis_style div:first-child:not(.jiadiv_01) {
-        width: auto !important;
-        border: none !important;
-    }
-    .jiathis_style .jiadiv_01 {
-        margin: 10px 0;
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .jiathis_style .jiadiv_01 div:first-child {
-        display: none;
-    }
-    .jiathis_style .jiadiv_02 {
-        padding: 7px 0 !important;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle {
-        width: 85px;
-        border: none;
-        height: auto;
-        margin: 3px 10px;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:hover {
-        border: none;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
-        margin-left: 0;
-    }
-    .jiathis_style .jtico:hover {
-        opacity: 1;
-    }
-    .jiathis_style .ckepopBottom,
-    .jiathis_style .centerBottom {
-        width: auto !important;
-        padding: 5px;
-        background: #f7f7f7;
-    }
-</style>
-
-
-
-</div>
-
-            
-    
-        <a href="https://lfkdsk.github.io/2016/06/01/make-new-language-2/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/06/01/make-new-language-2/">Comments</a>
+      </header>
     
 
-        </footer>
-    </div>
-    
-</article>
 
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
 
-    <article id="post-make-new-language-1" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+      
         
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/05/27/make-new-language-1/">学习制作一门有趣的编程语言－0x01</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/05/27/make-new-language-1/">
-            <time datetime="2016-05-27T00:37:20.000Z" itemprop="datePublished">2016-05-27</time>
-        </a>
-    </div>
-
-
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/编程语言/">编程语言</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
+          
             <h3 id="&#x719F;&#x6089;&#x4E00;&#x4E0B;Lex-&#x548C;-Yacc&#x7684;&#x7528;&#x6CD5;"><a href="#&#x719F;&#x6089;&#x4E00;&#x4E0B;Lex-&#x548C;-Yacc&#x7684;&#x7528;&#x6CD5;" class="headerlink" title="&#x719F;&#x6089;&#x4E00;&#x4E0B;Lex &#x548C; Yacc&#x7684;&#x7528;&#x6CD5;"></a>&#x719F;&#x6089;&#x4E00;&#x4E0B;Lex &#x548C; Yacc&#x7684;&#x7528;&#x6CD5;</h3><blockquote>
 <p><code>&#x535A;&#x5BA2;&#x5730;&#x5740;</code>&#xFF1A; <a href="http://lfkdsk.github.io">http://lfkdsk.github.io</a><br><code>&#x4EE3;&#x7801;&#x5730;&#x5740;</code>&#xFF1A; <a href="https://github.com/lfkdsk/CodeParse" target="_blank" rel="external">https://github.com/lfkdsk/CodeParse</a></p>
 <p><code>tips</code>&#xFF1A;&#x9605;&#x8BFB;&#x6B64;&#x7BC7;&#x9700;&#x8981;&#x4E00;&#x5B9A;&#x7684;C&#x8BED;&#x8A00;&#x57FA;&#x7840;&#x548C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x77E5;&#x8BC6;  </p>
@@ -1739,285 +1973,275 @@ lex.yy.c: ex_calc.l
 <p><img src="/2016/05/27/make-new-language-1/yacc_page.png" alt="yacc_page"> </p>
 <p>&#x81F3;&#x6B64;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5B66;&#x4E60;&#x4E86;Lex &amp; Yacc &#x7684;&#x4E00;&#x4E9B;&#x57FA;&#x7840;&#x5E94;&#x7528;&#xFF0C;Lex &amp; Yacc &#x6709;&#x5F88;&#x591A;&#x7528;&#x9014;<br>&#x9664;&#x4E86;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x76F8;&#x5173;&#x5DE5;&#x4F5C;&#x4E4B;&#x5916;&#xFF0C;&#x5BF9;&#x4E8E;&#x57FA;&#x7840;&#x7684;&#x6587;&#x672C;&#x5904;&#x7406;&#x4E5F;&#x6709;&#x4F18;&#x52BF;&#x3002;&#x4F46;&#x662F;&#x6211;&#x8BA4;&#x4E3A;&#x8FD9;&#x4E2A;&#x5DE5;&#x5177;<br>&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x8FDB;&#x884C;&#x8FC7;&#x5206;&#x7684;&#x6DF1;&#x7A76;&#x7279;&#x6027;&#xFF0C;&#x56E0;&#x4E3A;&#x7279;&#x6027;&#x5E76;&#x4E0D;&#x590D;&#x6742;&#xFF0C;&#x800C;&#x4E14;&#x5BF9;&#x4E8E;&#x5F00;&#x53D1;&#x4E00;&#x95E8;&#x8BED;&#x8A00;&#x6765;&#x8BF4;<br>Lex &amp; Yacc &#x4E3A;&#x4F60;&#x5904;&#x7406;&#x4E86;&#x8FC7;&#x591A;&#x7684;&#x524D;&#x7AEF;&#x5DE5;&#x4F5C;&#xFF0C;&#x8FD9;&#x8BA9;&#x51FA;&#x4E8E;&#x5174;&#x8DA3;&#x7684;&#x5F00;&#x53D1;&#x5E76;&#x4E0D;&#x662F;&#x5F88;&#x6709;&#x8DA3;&#x4E86;&#xFF0C;<br>&#x6240;&#x4EE5;&#x867D;&#x7136;&#x63A5;&#x4E0B;&#x6765;&#x4F1A;&#x505A;&#x4E00;&#x4E9B;lex &amp; Yacc&#x7684;&#x7EC3;&#x4E60;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x4F1A;&#x4EE5;&#x8FD9;&#x4E2A;&#x4E3A;&#x4E3B;&#x3002;</p>
 
+          
         
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
+      
+    </div>
 
-    <div class="jiathis_style">
-    <span class="jiathis_txt">分享到：</span>
-    <a class="jiathis_button_qzone">QQ空间</a>
-    <a class="jiathis_button_tsina">新浪微博</a>
-    <a class="jiathis_button_tqq">腾讯微博</a>
-    <a class="jiathis_button_weixin">微信</a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-    <a class="jiathis_counter_style"></a>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/justwe.png"
+               alt="刘丰恺" />
+          <p class="site-author-name" itemprop="name">刘丰恺</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/lfkdsk" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘丰恺</span>
 </div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<style>
-    .jiathis_style div:first-child:not(.jiadiv_01) {
-        width: auto !important;
-        border: none !important;
-    }
-    .jiathis_style .jiadiv_01 {
-        margin: 10px 0;
-        border-radius: 4px;
-        border: #e1e1e1 solid 1px;
-    }
-    .jiathis_style .jiadiv_01 div:first-child {
-        display: none;
-    }
-    .jiathis_style .jiadiv_02 {
-        padding: 7px 0 !important;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle {
-        width: 85px;
-        border: none;
-        height: auto;
-        margin: 3px 10px;
-        padding: 6px 10px;
-        border-radius: 4px;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:hover {
-        border: none;
-    }
-    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
-        margin-left: 0;
-    }
-    .jiathis_style .jtico:hover {
-        opacity: 1;
-    }
-    .jiathis_style .ckepopBottom,
-    .jiathis_style .centerBottom {
-        width: auto !important;
-        padding: 5px;
-        background: #f7f7f7;
-    }
-</style>
 
 
-
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
-            
-    
-        <a href="https://lfkdsk.github.io/2016/05/27/make-new-language-1/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="https://lfkdsk.github.io/2016/05/27/make-new-language-1/">Comments</a>
-    
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
 
-        </footer>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
     </div>
-    
-</article>
+  </div>
 
+  
 
-
-    <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
-</section>
-            
-                <aside id="sidebar">
-   
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">recent</h3>
-        <div class="widget">
-            <ul id="recent-post" class="">
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/12/15/csapp-read-1/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2016/12/15/csapp-read-1/" class="title">csapp_read_1</a></p>
-                            <p class="item-date"><time datetime="2016-12-15T07:34:25.000Z" itemprop="datePublished">2016-12-15</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/12/15/csapp-answer-1/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2016/12/15/csapp-answer-1/" class="title">CSAPP:课后练习-第二章</a></p>
-                            <p class="item-date"><time datetime="2016-12-15T07:34:08.000Z" itemprop="datePublished">2016-12-15</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/12/12/eff-cpp-tips/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2016/12/12/eff-cpp-tips/" class="title">Effective Cpp Tips</a></p>
-                            <p class="item-date"><time datetime="2016-12-12T07:27:51.000Z" itemprop="datePublished">2016-12-12</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/11/15/the-end-ofx/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2016/11/15/the-end-ofx/" class="title">写在学伴叁的边上</a></p>
-                            <p class="item-date"><time datetime="2016-11-15T04:19:15.000Z" itemprop="datePublished">2016-11-15</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/11/10/know-cpp-again/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2016/11/10/know-cpp-again/" class="title">Cpp Tips</a></p>
-                            <p class="item-date"><time datetime="2016-11-10T07:11:30.000Z" itemprop="datePublished">2016-11-10</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-    
-        
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">archives</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a><span class="archive-list-count">2</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tags</h3>
-        <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AndroidTips/">AndroidTips</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android：动态生成ID/">Android：动态生成ID</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSAPP/">CSAPP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Interesting/">Interesting!</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cpp/">cpp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/游戏编程/">游戏编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/源码阅读/">源码阅读</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程语言/">编程语言</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编译原理/">编译原理</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动机/">自动机</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a><span class="tag-list-count">1</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tag cloud</h3>
-        <div class="widget tagcloud">
-            <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/AndroidTips/" style="font-size: 10px;">AndroidTips</a> <a href="/tags/Android：动态生成ID/" style="font-size: 10px;">Android：动态生成ID</a> <a href="/tags/CSAPP/" style="font-size: 10px;">CSAPP</a> <a href="/tags/Interesting/" style="font-size: 10px;">Interesting!</a> <a href="/tags/cpp/" style="font-size: 15px;">cpp</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/游戏编程/" style="font-size: 10px;">游戏编程</a> <a href="/tags/源码阅读/" style="font-size: 15px;">源码阅读</a> <a href="/tags/编程语言/" style="font-size: 20px;">编程语言</a> <a href="/tags/编译原理/" style="font-size: 15px;">编译原理</a> <a href="/tags/自动机/" style="font-size: 10px;">自动机</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">links</h3>
-        <div class="widget">
-            <ul>
-                
-                    <li>
-                        <a href="http://hexo.io">Hexo</a>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-
-    
-    <div id="toTop" class="fa fa-angle-up"></div>
-</aside>
-            
-        </div>
-        <footer id="footer">
-    <div class="outer">
-        <div id="footer-info" class="inner">
-            &copy; 2016 刘丰恺<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
-        </div>
-    </div>
-</footer>
-        
-    
-    <script>
-    var disqus_config = function () {
-        
-        this.page.identifier = 'undefined';
-    };
-    (function() { 
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + 'hexo-theme-icarus' + '.disqus.com/count.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
 
-    
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
-    
-    
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
-    
 
 
 
-<!-- Custom Scripts -->
-<script src="/js/main.js"></script>
 
-    </div>
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lfkdsk"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
 </body>
 </html>
