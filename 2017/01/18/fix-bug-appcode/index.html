@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="FixBug," />
 
 
 
@@ -84,16 +84,24 @@
 
 
 
-<meta name="description">
+<meta name="description" content="AppCode &amp;#x4E2D;&amp;#x6DFB;&amp;#x52A0;&amp;#x4E86;&amp;#x76F4;&amp;#x63A5;&amp;#x5BF9;CocoaPods&amp;#x7684;&amp;#x5173;&amp;#x8054;&amp;#xFF1A;
+
+&amp;#x4F46;&amp;#x662F;&amp;#x76F4;&amp;#x63A5;&amp;#x5173;&amp;#x8054; Ruby SDK &amp;#x548C; CocoaPods &amp;#x7684;&amp;#x65F6;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="fix-bug-appcode">
+<meta property="og:title" content="AppCode 管联 CocoaPods 的Bug">
 <meta property="og:url" content="https://lfkdsk.github.io/2017/01/18/fix-bug-appcode/index.html">
 <meta property="og:site_name" content="若梦浮生">
-<meta property="og:description">
-<meta property="og:updated_time" content="2017-01-18T08:56:29.000Z">
+<meta property="og:description" content="AppCode &amp;#x4E2D;&amp;#x6DFB;&amp;#x52A0;&amp;#x4E86;&amp;#x76F4;&amp;#x63A5;&amp;#x5BF9;CocoaPods&amp;#x7684;&amp;#x5173;&amp;#x8054;&amp;#xFF1A;
+
+&amp;#x4F46;&amp;#x662F;&amp;#x76F4;&amp;#x63A5;&amp;#x5173;&amp;#x8054; Ruby SDK &amp;#x548C; CocoaPods &amp;#x7684;&amp;#x65F6;">
+<meta property="og:image" content="https://lfkdsk.github.io/2017/01/18/fix-bug-appcode/cocoa.png">
+<meta property="og:updated_time" content="2017-01-18T09:13:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="fix-bug-appcode">
-<meta name="twitter:description">
+<meta name="twitter:title" content="AppCode 管联 CocoaPods 的Bug">
+<meta name="twitter:description" content="AppCode &amp;#x4E2D;&amp;#x6DFB;&amp;#x52A0;&amp;#x4E86;&amp;#x76F4;&amp;#x63A5;&amp;#x5BF9;CocoaPods&amp;#x7684;&amp;#x5173;&amp;#x8054;&amp;#xFF1A;
+
+&amp;#x4F46;&amp;#x662F;&amp;#x76F4;&amp;#x63A5;&amp;#x5173;&amp;#x8054; Ruby SDK &amp;#x548C; CocoaPods &amp;#x7684;&amp;#x65F6;">
+<meta name="twitter:image" content="https://lfkdsk.github.io/2017/01/18/fix-bug-appcode/cocoa.png">
 
 
 
@@ -127,7 +135,7 @@
 
 
 
-  <title> fix-bug-appcode | 若梦浮生 </title>
+  <title> AppCode 管联 CocoaPods 的Bug | 若梦浮生 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -272,7 +280,7 @@
             
             
               
-                fix-bug-appcode
+                AppCode 管联 CocoaPods 的Bug
               
             
           </h1>
@@ -285,7 +293,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-18T16:56:29+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-18T15:27:51+08:00">
                 2017-01-18
               </time>
             
@@ -333,7 +341,13 @@
       
 
       
-        
+        <p>AppCode &#x4E2D;&#x6DFB;&#x52A0;&#x4E86;&#x76F4;&#x63A5;&#x5BF9;CocoaPods&#x7684;&#x5173;&#x8054;&#xFF1A;</p>
+<p><img src="/2017/01/18/fix-bug-appcode/cocoa.png" alt="CocoaPods"></p>
+<p>&#x4F46;&#x662F;&#x76F4;&#x63A5;&#x5173;&#x8054; Ruby SDK &#x548C; CocoaPods &#x7684;&#x65F6;&#x5019;&#x4F1A;&#x53D1;&#x73B0;&#x63D0;&#x793A;&#x9519;&#x8BEF;&#xFF1A;</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Usage of the constant <span class="string">`Pod::SourcesManager`</span> is deprecated, use <span class="string">`Pod::Config.instance.sources_manager`</span> instead (called from /Applications/AppCode.app/Contents/bin/cocoapods_common.<span class="symbol">rb:</span><span class="number">4</span><span class="symbol">:in</span> <span class="string">`init_master_repo&apos;) Usage of the constant `</span>Pod::SourcesManager<span class="string">` is deprecated, use `</span>Pod::Config.instance.sources_manager<span class="string">` instead (called from cocoapods_list.rb:9:in `</span>&lt;main&gt;<span class="string">&apos;)</span></span><br></pre></td></tr></table></figure>
+<p>&#x7167;&#x7740;&#x9519;&#x8BEF;&#x63D0;&#x793A;&#x4FEE;&#x6539; AppCode &#x91CC;&#x9762; <code>cocoapods_common.rb</code> &#x548C;  <code>cocoapods_list,rb</code> &#x91CC;&#x7684;<code>Pod::SourcesManager</code> &#x90FD;&#x5207;&#x6362;&#x4E3A; <code>Pod::Config.instance.sources_manager</code> &#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</p>
+<p>AppCode &#x91CC;&#x9762;&#x7684; Bug &#x5176;&#x5B9E;&#x8FD8;&#x771F;&#x7684;&#x4E0D;&#x5C11;&#xFF0C;&#x81EA;&#x52A8;&#x586B;&#x5145;&#x4EE3;&#x7801;&#x7684;&#x529F;&#x80FD;&#x4E00;&#x76F4;&#x6CA1;&#x4FEE;&#x597D;&#xFF0C;&#x8FD9;&#x4E2A;&#x5E94;&#x8BE5;&#x7B97;&#x662F;CocoaPods&#x7684;&#x9505;&#xFF0C;&#x5F00;&#x6E90;&#x7684;&#x4E1C;&#x897F;&#x81EA;&#x5DF1;&#x6CA1;&#x4E8B;&#x778E;&#x6539;&#x3002;</p>
+
       
     </div>
 
@@ -369,6 +383,12 @@
 
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FixBug/" rel="tag"># FixBug</a>
+          
+        </div>
       
 
       
@@ -410,7 +430,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2017/01/18/fix-bug-appcode/"
-           data-title="fix-bug-appcode" data-url="https://lfkdsk.github.io/2017/01/18/fix-bug-appcode/">
+           data-title="AppCode 管联 CocoaPods 的Bug" data-url="https://lfkdsk.github.io/2017/01/18/fix-bug-appcode/">
       </div>
     
   </div>
@@ -456,7 +476,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
