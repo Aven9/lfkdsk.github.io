@@ -103,7 +103,7 @@
 <meta property="og:image" content="https://lfkdsk.github.io/2017/02/21/learn-sicp-0/twosimple.png">
 <meta property="og:image" content="https://lfkdsk.github.io/2017/02/21/learn-sicp-0/twoo.png">
 <meta property="og:image" content="https://lfkdsk.github.io/2017/02/21/learn-sicp-0/tree.png">
-<meta property="og:updated_time" content="2017-02-24T17:23:42.000Z">
+<meta property="og:updated_time" content="2017-02-24T17:39:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="0x00：SICP 的魔法 - Scheme 基础和黑盒抽象">
 <meta name="twitter:description" content="&amp;#x4F5C;&amp;#x8005; &amp;#xFF1A;&amp;#x5218;&amp;#x4E30;&amp;#x607A;
@@ -509,14 +509,14 @@
 <p>Tips: &#x8FD9;&#x4E00;&#x8282;&#x7684;&#x9012;&#x5F52;&#x548C;&#x8FED;&#x4EE3;&#x548C;&#x6211;&#x4EEC;&#x5728;&#x5176;&#x4F59;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x91CC;&#x5B66;&#x4E60;&#x7684;&#x6709;&#x6240;&#x533A;&#x522B;&#x3002;&#x8FD9;&#x91CC;&#x9762;&#x8BF4;&#x7684;&#x662F;&#x8BA1;&#x7B97;&#x65B9;&#x5F0F;&#xFF0C;&#x800C;&#x975E;&#x8BED;&#x6CD5;&#x5B9E;&#x73B0;&#xFF0C;&#x5982;&#x679C;&#x4ECE;&#x8BED;&#x6CD5;&#x89D2;&#x5EA6;&#x6765;&#x8BB2;&#x8FD9;&#x4E24;&#x4E2A;&#x90FD;&#x8C03;&#x7528;&#x4E86;&#x81EA;&#x5DF1;&#x90FD;&#x662F;<code>&#x8BED;&#x6CD5;&#x9012;&#x5F52;</code>&#x3002;</p>
 <p>&#x8BA1;&#x7B97;&#x7684;<code>&#x7EBF;&#x6027;&#x9012;&#x5F52;</code>&#x7684;&#x4F4E;&#x6548;&#x8FD8;&#x4F53;&#x73B0;&#x5728;&#x4E2D;&#x95F4;&#x7ED3;&#x679C;&#x5B58;&#x50A8;&#x9700;&#x8981;&#x7A7A;&#x95F4;&#xFF0C;&#x6574;&#x4F53;&#x5F62;&#x6210;&#x4E00;&#x4E2A;&#x8F83;&#x5927;&#x7684;&#x8FD0;&#x884C;&#x6808;&#x3002;&#x800C;<code>&#x7EBF;&#x6027;&#x8FED;&#x4EE3;</code>&#x7684;&#x4E2D;&#x95F4;&#x7ED3;&#x679C;&#x53EA;&#x662F;&#x4E2D;&#x95F4;&#x7ED3;&#x679C;&#x7684;&#x6570;&#x503C;&#x548C;&#x8BA1;&#x6570;&#x5668;&#x6570;&#x503C;&#xFF0C;&#x5F53;&#x8BA1;&#x7B97;&#x673A;&#x6389;&#x7535;&#x540E;&#x4E5F;&#x5BB9;&#x6613;&#x6062;&#x590D;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8BA1;&#x7B97;&#x4E2D;&#x4EFB;&#x4F55;&#x4E00;&#x6B65;&#x4E2D;&#x65AD;&#x548C;&#x91CD;&#x542F;&#x3002;</p>
 </blockquote>
-<h3 id="&#x6811;&#x5F62;&#x7ED3;&#x6784;"><a href="#&#x6811;&#x5F62;&#x7ED3;&#x6784;" class="headerlink" title="&#x6811;&#x5F62;&#x7ED3;&#x6784;"></a>&#x6811;&#x5F62;&#x7ED3;&#x6784;</h3><p>&#x8BF4;&#x8D77;&#x6811;&#x5F62;&#x7ED3;&#x6784;&#x6211;&#x4EEC;&#x5148;&#x4E3E;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;&#xFF1A;<br>$$<br>        Fib(n) =<br>        \begin{cases}<br>        0,  &amp; \text{n = 0 } \<br>        n, &amp; \text{n = 1}\<br>        Fib(n-1) + Fib(n-2), &amp; \text{others}<br>        \end{cases}<br>$$<br>&#x8FD9;&#x662F;&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;&#x7684;&#x89C4;&#x5219;&#x5B9A;&#x4E49;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x7ECF;&#x5E38;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x5F0F;&#x53BB;&#x4F7F;&#x7528;&#x9012;&#x5F52;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#xFF0C;&#x7B80;&#x5355;&#x7684;&#x5199;&#x6210; Scheme &#x7684;&#x6837;&#x5B50;&#x5462;&#x5E94;&#x8BE5;&#x5C31;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x6837;&#x5B50;:</p>
+<h3 id="&#x6811;&#x5F62;&#x7ED3;&#x6784;"><a href="#&#x6811;&#x5F62;&#x7ED3;&#x6784;" class="headerlink" title="&#x6811;&#x5F62;&#x7ED3;&#x6784;"></a>&#x6811;&#x5F62;&#x7ED3;&#x6784;</h3><p>&#x8BF4;&#x8D77;&#x6811;&#x5F62;&#x7ED3;&#x6784;&#x6211;&#x4EEC;&#x5148;&#x4E3E;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;&#xFF1A;<br>$$<br>Fib(n) =<br>        \begin{cases}<br>        0,  &amp; \text{n = 0 } \\<br>        n, &amp; \text{n = 1} \\<br>        Fib(n-1) + Fib(n-2), &amp; \text{others}<br>        \end{cases}<br>$$<br>&#x8FD9;&#x662F;&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;&#x7684;&#x89C4;&#x5219;&#x5B9A;&#x4E49;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x7ECF;&#x5E38;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x5F0F;&#x53BB;&#x4F7F;&#x7528;&#x9012;&#x5F52;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#xFF0C;&#x7B80;&#x5355;&#x7684;&#x5199;&#x6210; Scheme &#x7684;&#x6837;&#x5B50;&#x5462;&#x5E94;&#x8BE5;&#x5C31;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x6837;&#x5B50;:</p>
 <figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">Fib</span> x) </span><br><span class="line">  	(<span class="name">if</span> (<span class="name">&lt;</span> N <span class="number">2</span>)</span><br><span class="line">        N</span><br><span class="line">        (<span class="name">+</span> (<span class="name">Fib</span> (<span class="name">-</span> N <span class="number">1</span>)) (<span class="name">Fib</span> (<span class="name">-</span> N <span class="number">2</span>))))</span><br></pre></td></tr></table></figure>
 <p>&#x6309;&#x7167;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x7684;&#x6B65;&#x9AA4;&#x53BB;&#x5206;&#x6790;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x7684;&#x6C42;&#x503C;&#x8FC7;&#x7A0B;&#xFF0C;&#x80FD;&#x753B;&#x51FA;&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E2A;&#x6811;&#x5F62;&#x7684;&#x56FE;&#xFF1A;</p>
 <p><img src="/2017/02/21/learn-sicp-0/tree.png" alt="tree"></p>
 <p>&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x662F;&#x975E;&#x5E38;&#x4F4E;&#x6548;&#x7684;&#xFF0C;&#x4ECE;&#x56FE;&#x4E2D;&#x6709;&#x975E;&#x5E38;&#x591A;&#x91CD;&#x590D;&#x7684;&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;&#xFF0C;&#x6BD4;&#x5982;<code>Fib 2</code> ,<code>Fib1</code>&#x90FD;&#x8BA1;&#x7B97;&#x4E86;&#x4E24;&#x6B21;&#xFF0C;&#x5E76;&#x4E14;&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x662F;&#x6307;&#x6570;&#x7EA7;&#x7684;&#xFF0C;&#x8FD9;&#x4E2A;&#x91CD;&#x590D;&#x4F1A;&#x968F;&#x7740;&#x8BA1;&#x7B97;&#x6570;&#x636E;&#x7684;&#x589E;&#x5927;&#x800C;&#x7EE7;&#x7EED;&#x7684;&#x589E;&#x5927;&#x3002;</p>
 <p>&#x5982;&#x4F55;&#x4F18;&#x5316;&#xFF1F;</p>
 <p>&#x6211;&#x4EEC;&#x770B;&#x5230;&#x4E4B;&#x524D;&#x7684;<code>&#x7EBF;&#x6027;&#x8FED;&#x4EE3;</code>&#x63D0;&#x5230;&#x4E86;&#x53EA;&#x4FDD;&#x5B58;&#x4E86;<strong>&#x4E2D;&#x95F4;&#x7ED3;&#x679C;&#x7684;&#x6570;&#x503C;&#x548C;&#x8BA1;&#x6570;&#x5668;&#x6570;&#x503C;</strong>&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x501F;&#x52A9;&#x8FD9;&#x4E2A;&#x601D;&#x8DEF;&#x53BB;&#x4F18;&#x5316;&#x6211;&#x4EEC;&#x7684;&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x4F7F;&#x7528;<code>a</code>&#xFF0C;<code>b</code>&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x4FDD;&#x5B58;&#x4E2D;&#x95F4;&#x7ED3;&#x679C;&#xFF0C;&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;&#x662F;<code>Fib(0)=1</code>&#xFF0C;<code>Fib(1)=1</code>&#xFF0C;&#x5176;&#x4F59;&#x7B49;&#x4E8E;&#x524D;&#x4E24;&#x4E2A;&#x6570;&#x4E4B;&#x548C;&#xFF0C;&#x6240;&#x4EE5;&#x9996;&#x5148;&#x7ED9;a&#xFF0F;b&#x8D4B;&#x503C;&#x4E3A;1, &#x4E4B;&#x540E;&#xFF1A;<br>$$<br>a\Leftarrow a + b\<br>b\Leftarrow a<br>$$</p>
+<p>&#x6211;&#x4EEC;&#x4F7F;&#x7528;<code>a</code>&#xFF0C;<code>b</code>&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x4FDD;&#x5B58;&#x4E2D;&#x95F4;&#x7ED3;&#x679C;&#xFF0C;&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;&#x662F;<code>Fib(0)=1</code>&#xFF0C;<code>Fib(1)=1</code>&#xFF0C;&#x5176;&#x4F59;&#x7B49;&#x4E8E;&#x524D;&#x4E24;&#x4E2A;&#x6570;&#x4E4B;&#x548C;&#xFF0C;&#x6240;&#x4EE5;&#x9996;&#x5148;&#x7ED9;a&#xFF0F;b&#x8D4B;&#x503C;&#x4E3A;1, &#x4E4B;&#x540E;&#xFF1A;<br>$$<br>a\Leftarrow a + b\\<br>b\Leftarrow a<br>$$</p>
 <p>&#x8FD9;&#x6837;&#x53CD;&#x590D;&#x7684;&#x8FED;&#x4EE3;&#x4E0B;&#x53BB;&#xFF0C;&#x6700;&#x540E;<code>a</code>&#xFF0C;<code>b</code>&#x5C31;&#x4F1A;&#x4FDD;&#x5B58;&#x6700;&#x7EC8;&#x7ED3;&#x679C;<code>Fib(n+1)</code>&#xFF0C;<code>Fib(n)</code>&#x3002;</p>
 <p>&#x5199;&#x6210;&#x4EE3;&#x7801;&#x7684;&#x5F62;&#x5F0F;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
 <figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">fib</span> n)</span><br><span class="line">  (<span class="name">define</span> (<span class="name">fib-iter</span> a b count)</span><br><span class="line">    (<span class="name">if</span> (<span class="name">=</span> count <span class="number">0</span>))</span><br><span class="line">    	b</span><br><span class="line">    	(<span class="name">fib-iter</span> (<span class="name">+</span> a b) a (<span class="name">-</span> count <span class="number">1</span>)))</span><br><span class="line">  (<span class="name">fib-iter</span> <span class="number">1</span> <span class="number">0</span> n)</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
@@ -897,6 +897,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
