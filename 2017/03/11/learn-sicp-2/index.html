@@ -84,16 +84,18 @@
 
 
 
-<meta name="description" content="人生天地间 忽如远行客">
+<meta name="description" content="&amp;#x5728;&amp;#x7B2C;&amp;#x4E00;&amp;#x7AE0;&amp;#x91CC;&amp;#x9762;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC;&amp;#x5DF2;&amp;#x7ECF;&amp;#x89C1;&amp;#x8BC6;&amp;#x5230;&amp;#x4E86;&amp;#x8FC7;&amp;#x7A0B;&amp;#x62BD;&amp;#x8C61;&amp;#x7684;&amp;#x9B54;&amp;#x6CD5;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="0x02：SICP 的魔法 - 构造数据抽象">
+<meta property="og:title" content="0x02：SICP 的魔法 - 数据抽象、层次抽象">
 <meta property="og:url" content="https://lfkdsk.github.io/2017/03/11/learn-sicp-2/index.html">
 <meta property="og:site_name" content="若梦浮生">
-<meta property="og:description" content="人生天地间 忽如远行客">
-<meta property="og:updated_time" content="2017-03-11T13:23:05.000Z">
+<meta property="og:description" content="&amp;#x5728;&amp;#x7B2C;&amp;#x4E00;&amp;#x7AE0;&amp;#x91CC;&amp;#x9762;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC;&amp;#x5DF2;&amp;#x7ECF;&amp;#x89C1;&amp;#x8BC6;&amp;#x5230;&amp;#x4E86;&amp;#x8FC7;&amp;#x7A0B;&amp;#x62BD;&amp;#x8C61;&amp;#x7684;&amp;#x9B54;&amp;#x6CD5;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;">
+<meta property="og:image" content="https://lfkdsk.github.io/2017/03/11/learn-sicp-2/floor.png">
+<meta property="og:updated_time" content="2017-03-19T14:04:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="0x02：SICP 的魔法 - 构造数据抽象">
-<meta name="twitter:description" content="人生天地间 忽如远行客">
+<meta name="twitter:title" content="0x02：SICP 的魔法 - 数据抽象、层次抽象">
+<meta name="twitter:description" content="&amp;#x5728;&amp;#x7B2C;&amp;#x4E00;&amp;#x7AE0;&amp;#x91CC;&amp;#x9762;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC;&amp;#x5DF2;&amp;#x7ECF;&amp;#x89C1;&amp;#x8BC6;&amp;#x5230;&amp;#x4E86;&amp;#x8FC7;&amp;#x7A0B;&amp;#x62BD;&amp;#x8C61;&amp;#x7684;&amp;#x9B54;&amp;#x6CD5;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;">
+<meta name="twitter:image" content="https://lfkdsk.github.io/2017/03/11/learn-sicp-2/floor.png">
 
 
 
@@ -127,7 +129,7 @@
 
 
 
-  <title> 0x02：SICP 的魔法 - 构造数据抽象 | 若梦浮生 </title>
+  <title> 0x02：SICP 的魔法 - 数据抽象、层次抽象 | 若梦浮生 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -292,7 +294,7 @@
             
             
               
-                0x02：SICP 的魔法 - 构造数据抽象
+                0x02：SICP 的魔法 - 数据抽象、层次抽象
               
             
           </h1>
@@ -353,7 +355,83 @@
       
 
       
-        
+        <p>&#x5728;&#x7B2C;&#x4E00;&#x7AE0;&#x91CC;&#x9762;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x89C1;&#x8BC6;&#x5230;&#x4E86;<code>&#x8FC7;&#x7A0B;</code>&#x62BD;&#x8C61;&#x7684;&#x9B54;&#x6CD5;&#xFF0C;&#x4E00;&#x4E2A;&#x8FC7;&#x7A0B;&#x63CF;&#x8FF0;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x6570;&#x636E;&#x7684;&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;&#xFF0C;&#x4F46;&#x672C;&#x8EAB;&#x53C8;&#x662F;&#x4E00;&#x79CD;&#x5143;&#x7D20;&#x53EF;&#x4EE5;&#x51FA;&#x73B0;&#x5728;&#x7A0B;&#x5E8F;&#x7684;&#x4EFB;&#x4F55;&#x90E8;&#x5206;&#xFF0C;&#x6240;&#x4EE5;&#x8BF4;&#x8FC7;&#x7A0B;&#x662F;&#x4E00;&#x79CD;&#x62BD;&#x8C61;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x9700;&#x8981;&#x77E5;&#x9053;&#x4EFB;&#x4F55;&#x548C;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x6709;&#x5173;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x8C03;&#x7528;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5B9A;&#x4E49;&#x597D;&#x7684;&#x8FC7;&#x7A0B;&#x5C31;&#x884C;&#x4E86;&#x3002;</p>
+<p>&#x4E0E;&#x6B64;&#x76F8;&#x7C7B;&#xFF0C;<code>&#x6570;&#x636E;</code>&#x672C;&#x8EAB;&#x4E5F;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x4E00;&#x79CD;&#x62BD;&#x8C61;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x4E4B;&#x524D;&#x63A5;&#x89E6;&#x7684;&#x6570;&#x636E;&#x90FD;&#x662F;&#x4E00;&#x4E9B;&#x7B80;&#x5355;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x80FD;&#x6CA1;&#x4EC0;&#x4E48;&#x611F;&#x53D7;&#x3002;&#x4F46;&#x662F;&#x6570;&#x636E;&#x4E5F;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x4E0D;&#x6B62;&#x4E00;&#x79CD;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x9690;&#x85CF;&#x5177;&#x4F53;&#x7684;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#xFF0C;&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x53C8;&#x80FD;&#x4F5C;&#x4E3A;&#x5143;&#x7D20;&#x51FA;&#x73B0;&#x5728;&#x7A0B;&#x5E8F;&#x4EFB;&#x610F;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x56E0;&#x6B64;&#x6570;&#x636E;&#x4E5F;&#x662F;&#x4E00;&#x79CD;&#x62BD;&#x8C61;&#x3002;</p>
+<blockquote>
+<p>&#x6709;&#x8FC7; OO &#x8BED;&#x8A00;&#x7ECF;&#x9A8C;&#x7684;&#x540C;&#x5B66; &#x53EF;&#x4EE5;&#x501F;&#x52A9;&#x7C7B;&#x7684;&#x6982;&#x5FF5;&#x7406;&#x89E3;&#x4E00;&#x4E0B;&#x4EE5;&#x4E0A;&#x7684;&#x6982;&#x5FF5;</p>
+<p>&#x4F46;&#x662F;<code>&#x7C7B;</code>&#x7684;&#x6982;&#x5FF5;&#x662F;&#x65E0;&#x6CD5;&#x5B8C;&#x5168;&#x6982;&#x62EC;&#x7684;&#x54E6;&#xFF5E;</p>
+</blockquote>
+<h2 id="&#x6570;&#x636E;&#x62BD;&#x8C61;"><a href="#&#x6570;&#x636E;&#x62BD;&#x8C61;" class="headerlink" title="&#x6570;&#x636E;&#x62BD;&#x8C61;"></a>&#x6570;&#x636E;&#x62BD;&#x8C61;</h2><p>&#x6211;&#x4EEC;&#x4ECE;&#x6700;&#x7B80;&#x5355;&#x7684;&#x6570;&#x636E;&#x62BD;&#x8C61;&#x5F00;&#x59CB;&#xFF0C;&#x9996;&#x5148;&#x8BF4;&#x6700;&#x5C0F;&#x7684;&#x6570;&#x636E;&#x62BD;&#x8C61;&#x96C6;&#x5408; &#x2014;&#x2014; &#x5E8F;&#x5BF9;&#x3002;</p>
+<h3 id="&#x5E8F;&#x5BF9;"><a href="#&#x5E8F;&#x5BF9;" class="headerlink" title="&#x5E8F;&#x5BF9;"></a>&#x5E8F;&#x5BF9;</h3><p>&#x8981;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x62BD;&#x8C61;&#x9996;&#x5148;&#x8981;&#x6709;&#x80FD;&#x628A;&#x6570;&#x636E;&#x6253;&#x6210;&#x4E00;&#x4E2A;&#x5305;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x53EB;&#x5B83;<code>&#x6784;&#x9020;&#x51FD;&#x6570;</code>&#xFF0C;&#x8FD8;&#x5E94;&#x8BE5;&#x6709;&#x80FD;&#x628A;&#x6570;&#x636E;&#x4ECE;&#x6346;&#x4E2D;&#x53D6;&#x51FA;&#x6765;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x53EB;&#x4ED6;<code>&#x9009;&#x62E9;&#x51FD;&#x6570;</code>&#x3002;</p>
+<p>&#x5728; Scheme &#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x80FD;&#x5B9E;&#x73B0;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x7684; API:</p>
+<table>
+<thead>
+<tr>
+<th>Function Name</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>( cons p1 p2)</td>
+<td>&#x80FD;&#x628A;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x6253;&#x5305;&#x6210;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td>( car x )</td>
+<td>&#x80FD;&#x4ECE; <code>cons</code> &#x6253;&#x5305;&#x51FA;&#x7684;&#x5BF9;&#x8C61; &#x53D6;&#x51FA;&#x5176;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x6570;&#x636E;</td>
+</tr>
+<tr>
+<td>( cdr x )</td>
+<td>&#x80FD;&#x4ECE; <code>cons</code> &#x6253;&#x5305;&#x51FA;&#x7684;&#x5BF9;&#x8C61; &#x53D6;&#x51FA;&#x5176;&#x4E2D;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x6570;&#x636E;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x5BF9;&#x4E8E;&#x80FD;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#x6784;&#x5EFA; <code>class</code> &#x6216;&#x662F; <code>struct</code> &#x8FD9;&#x6837;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x7684;&#x4F7F;&#x7528;&#x8005;&#x6765;&#x770B;&#xFF0C;&#x8FD9;&#x4E2A;&#x5E8F;&#x5BF9;&#x7684;&#x4F5C;&#x7528;&#x5B9E;&#x5728;&#x662F;&#x5FAE;&#x4E4E;&#x5176;&#x5FAE;&#xFF0C;&#x4F46;&#x662F;&#x5927;&#x7684;&#x62BD;&#x8C61;&#x6A21;&#x5F0F;&#x90FD;&#x662F;&#x4ECE;&#x6700;&#x5C0F;&#x7684;&#x62BD;&#x8C61;&#x65B9;&#x5F0F;&#x5F00;&#x59CB;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x5E8F;&#x5BF9;&#x4E5F;&#x53EA;&#x662F;&#x4E3A;&#x4E86;&#x6F14;&#x793A; Scheme &#x7684;&#x62BD;&#x8C61;&#x80FD;&#x529B;&#x3002;</p>
+<h3 id="&#x5982;&#x4F55;&#x5B9A;&#x4E49;&#x6709;&#x7406;&#x6570;&#xFF1F;"><a href="#&#x5982;&#x4F55;&#x5B9A;&#x4E49;&#x6709;&#x7406;&#x6570;&#xFF1F;" class="headerlink" title="&#x5982;&#x4F55;&#x5B9A;&#x4E49;&#x6709;&#x7406;&#x6570;&#xFF1F;"></a>&#x5982;&#x4F55;&#x5B9A;&#x4E49;&#x6709;&#x7406;&#x6570;&#xFF1F;</h3><p>&#x8FD9;&#x770B;&#x8D77;&#x6765;&#x4F3C;&#x4E4E;&#x4E0D;&#x662F;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x8BED;&#x8A00;&#x90FD;&#x4F1A;&#x539F;&#x751F;&#x652F;&#x6301;&#x5404;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x6D6E;&#x70B9;&#x6570;&#xFF0C;&#x80FD;&#x8F7B;&#x677E;&#x7684;&#x7528;&#x6765;&#x8868;&#x793A;&#x6709;&#x7406;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x8BF7;&#x5148;&#x5FD8;&#x4E86;&#x6709;&#x5173;&#x8FD9;&#x65B9;&#x9762;&#x7684;&#x77E5;&#x8BC6;&#xFF0C;&#x5355;&#x7EAF;&#x8003;&#x8651;&#x5F53;&#x6211;&#x4EEC;&#x7684;&#x7CFB;&#x7EDF;&#x53EA;&#x80FD;&#x652F;&#x6301;&#x6574;&#x5F62;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x600E;&#x4E48;&#x8868;&#x793A;&#x6709;&#x7406;&#x6570;&#x3002;</p>
+<p>&#x4ECE;&#x4E0A;&#x4E00;&#x5C0F;&#x8282;&#x7684;&#x5E8F;&#x5BF9;&#x7684;&#x77E5;&#x8BC6;&#x51FA;&#x53D1;&#xFF0C;&#x6211;&#x4EEC;&#x5F88;&#x5BB9;&#x6613;&#x627E;&#x5230;&#x7B54;&#x6848;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;&#x6709;&#x7406;&#x6570;&#x7684;&#x5C0F;&#x6570;&#x70B9;&#x524D;&#x540E;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x5206;&#x522B;&#x7528;&#x4E00;&#x4E2A;&#x6574;&#x5F62;&#x6570;&#x636E;&#x6765;&#x8868;&#x793A;&#xFF0C;&#x518D;&#x628A;&#x4ED6;&#x4EEC;&#x7528; <code>cons</code> &#x6253;&#x5305;&#xFF0C;&#x5F53;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#x7684;&#x65F6;&#x5019;&#x518D;&#x62C6;&#x5F00;&#x8BA1;&#x7B97;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5BF9;&#x4E8E;&#x6709;&#x7406;&#x6570;&#x7684;&#x5B9A;&#x4E49;&#x751A;&#x81F3;&#x90FD;&#x53EF;&#x4EE5;&#x7528;&#x4E0A;&#x9762;&#x7684;&#x51FD;&#x6570;&#x6765;&#x8868;&#x793A; &#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>Function Name</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>( make-rat x y )</td>
+<td>&#x751F;&#x6210;&#x6709;&#x7406;&#x6570; x.y</td>
+</tr>
+<tr>
+<td>( number bundle )</td>
+<td>&#x83B7;&#x53D6; x.y &#x4E2D;&#x7684; x</td>
+</tr>
+<tr>
+<td>( denom bundle )</td>
+<td>&#x83B7;&#x53D6; x.y &#x4E2D;&#x7684; y</td>
+</tr>
+</tbody>
+</table>
+<p>&#x5199;&#x5B9E;&#x73B0;&#x4E5F;&#x5F88;&#x7B80;&#x5355; &#xFF1A;</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; &#x76F4;&#x63A5;&#x6253;&#x5305;</span></span><br><span class="line">(<span class="name">define</span> (<span class="name">make-rat</span> x y) </span><br><span class="line">  (<span class="name">cons</span> x y))</span><br><span class="line"><span class="comment">; &#x62FF;&#x7B2C;&#x4E00;&#x4E2A;&#x6570;</span></span><br><span class="line">(<span class="name">define</span> (<span class="name">number</span> bundle) </span><br><span class="line">  (<span class="name">car</span> bundle))</span><br><span class="line"><span class="comment">; &#x62FF;&#x7B2C;&#x4E8C;&#x4E2A;&#x6570;</span></span><br><span class="line">(<span class="name">define</span> (<span class="name">number</span> bundle)</span><br><span class="line">  (<span class="name">cdr</span> bundle))</span><br></pre></td></tr></table></figure>
+<p>&#x6211;&#x4EEC;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x7528;&#x4E0A;&#x9762;&#x7684; API &#x53BB;&#x5B9E;&#x73B0;&#x6709;&#x7406;&#x6570;&#x7684;&#x56DB;&#x5219;&#x8FD0;&#x7B97;&#x4EC0;&#x4E48;&#x7684; &#xFF1A;</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">add-rat</span> x y)</span><br><span class="line">	(<span class="name">make-rat</span> (<span class="name">+</span> (<span class="name">*</span> (<span class="name">numer</span> x) (<span class="name">denom</span> y))</span><br><span class="line">		(<span class="name">*</span> (<span class="name">numer</span> y) (<span class="name">denom</span> x)))</span><br><span class="line">		(<span class="name">*</span> (<span class="name">denom</span> x) (<span class="name">denom</span> y))))</span><br><span class="line">(<span class="name">define</span> (<span class="name">sub-rat</span> x y)</span><br><span class="line">	(<span class="name">make-rat</span> (<span class="name">-</span> (<span class="name">*</span> (<span class="name">numer</span> x) (<span class="name">denom</span> y))</span><br><span class="line">		(<span class="name">*</span> (<span class="name">numer</span> y) (<span class="name">denom</span> x)))</span><br><span class="line">		(<span class="name">*</span> (<span class="name">denom</span> x) (<span class="name">denom</span> y))))</span><br><span class="line"><span class="comment">; ... &#x8FD8;&#x6709;&#x5F88;&#x591A;</span></span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0; <code>add-rat</code> &#x3001;<code>sub-rat</code> &#x8FD9;&#x6837;&#x7684;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x8FC7;&#x7A0B;&#x62BD;&#x8C61;&#xFF0C;&#x4EC5;&#x63A5;&#x53D7;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x7684; <code>&#x6709;&#x7406;&#x6570;</code> &#x7C7B;&#x578B; ( &#x5373; <code>cons</code> &#x5305;&#x88F9;&#x7684;&#x7C7B;&#x578B; ) &#x7684;&#x6570;&#x636E;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x751A;&#x81F3;&#x5B8C;&#x5168;&#x4E0D;&#x9700;&#x8981;&#x77E5;&#x9053;&#x6709;&#x7406;&#x6570;&#x5230;&#x5E95;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x628A;&#x6709;&#x7406;&#x6570;&#x63D0;&#x4EA4;&#x7ED9;&#x8FC7;&#x7A0B;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x62FF;&#x5230;&#x8FD4;&#x56DE;&#x7684;&#x6709;&#x7406;&#x6570;&#x7C7B;&#x578B;&#x7684;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x4E86;&#x3002;</p>
+<p>&#x6570;&#x636E;&#x62BD;&#x8C61;&#x548C;&#x8FC7;&#x7A0B;&#x62BD;&#x8C61;&#x76F8;&#x8F85;&#x76F8;&#x627F;&#xFF0C;&#x5728;&#x4ED6;&#x4EEC;&#x7684;&#x5E2E;&#x52A9;&#x4E4B;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x4E3A;&#x7CFB;&#x7EDF;&#x589E;&#x52A0;&#x4E86;&#x7C7B;&#x578B;&#xFF0C;&#x8FD9;&#x65E0;&#x7591;&#x662F;&#x4E00;&#x79CD;&#x65B0;&#x7684;&#x8FDB;&#x6B65;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5236;&#x4F5C;&#x7C7B;&#x578B;&#x4E86;&#x3002;</p>
+<h3 id="&#x5B9E;&#x73B0;&#x62BD;&#x8C61;&#x5C4F;&#x969C;"><a href="#&#x5B9E;&#x73B0;&#x62BD;&#x8C61;&#x5C4F;&#x969C;" class="headerlink" title="&#x5B9E;&#x73B0;&#x62BD;&#x8C61;&#x5C4F;&#x969C;"></a>&#x5B9E;&#x73B0;&#x62BD;&#x8C61;&#x5C4F;&#x969C;</h3><p>&#x521A;&#x624D;&#x7684;&#x6709;&#x7406;&#x6570;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x4F53;&#x73B0;&#x4E3A;&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x5F20;&#x5C42;&#x6B21;&#x56FE;&#xFF1A;&#x3000;</p>
+<p><img src="/2017/03/11/learn-sicp-2/floor.png" alt="floor"></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E0D;&#x540C;&#x5C42;&#x6B21;&#x7684;&#x7A0B;&#x5E8F;&#x6765;&#x8BB2;&#xFF0C;&#x6709;&#x7406;&#x6570;&#x7684;&#x610F;&#x4E49;&#x90FD;&#x662F;&#x4E0D;&#x540C;&#x7684;&#xFF0C;&#x5BF9;&#x4E8E;&#x4F7F;&#x7528;&#x7684;&#x7A0B;&#x5E8F;&#x6765;&#x8BB2;&#xFF0C;&#x6709;&#x7406;&#x6570;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x5143;&#x7D20;&#xFF0C;&#x5230;&#x4E86;&#x9700;&#x8981;&#x8868;&#x793A;&#x6709;&#x7406;&#x6570;&#x7684;&#x5C42;&#x6B21;&#xFF0C;&#x6709;&#x7406;&#x6570;&#x88AB;&#x5206;&#x6210;&#x4E86;&#x5206;&#x5B50;&#x5206;&#x6BCD;&#x6765;&#x4F7F;&#x7528;&#xFF0C;&#x5230;&#x4E86;&#x5E8F;&#x5BF9;&#x8868;&#x8FF0;&#x7684;&#x5C42;&#x6B21;&#xFF0C;&#x6709;&#x7406;&#x6570;&#x662F;&#x901A;&#x8FC7;&#x67D0;&#x79CD;&#x7CFB;&#x7EDF;&#x5B9E;&#x73B0;&#xFF0C;&#x5C06;&#x4E24;&#x4E2A;&#x6574;&#x5F62;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#x5728;&#x4E00;&#x8D77;&#x7684;&#x3002;</p>
+<p>&#x5B9E;&#x73B0;&#x8FD9;&#x6837;&#x7684;&#x62BD;&#x8C61;&#x5C4F;&#x969C;&#x6709;&#x4EC0;&#x4E48;&#x597D;&#x5904;&#xFF1F;&#x5305;&#x62EC;&#x4F46;&#x4E0D;&#x9650;&#x4E8E;&#xFF1A;</p>
+<ul>
+<li>&#x4E0D;&#x540C;&#x7684;&#x90E8;&#x5206;&#x5173;&#x8054;&#x6781;&#x5C11;&#xFF0C;&#x53EF;&#x4EE5;&#x72EC;&#x7ACB;&#x4FEE;&#x6539;&#x548C;&#x589E;&#x6DFB;&#x65B9;&#x6CD5;&#x3002;</li>
+<li>&#x4FEE;&#x6539;&#x5B9E;&#x73B0;&#x65B9;&#x4FBF;&#xFF0C;&#x51CF;&#x5C11;&#x9519;&#x8BEF;&#x7684;&#x53D1;&#x751F;&#x3002;</li>
+<li>&#x4FEE;&#x6539;&#x65B9;&#x4FBF;&#x7684;&#x8BDD;&#xFF0C;&#x6211;&#x4EEC;&#x5BF9;&#x8BBE;&#x8BA1;&#x5C31;&#x4E5F;&#x6709;&#x5E2E;&#x52A9;&#xFF0C;&#x4E00;&#x4E9B;&#x51B3;&#x7B56;&#x53EF;&#x4EE5;&#x63A8;&#x8FDF;&#x3002;</li>
+</ul>
+<blockquote>
+<p>Tips: &#x4FEE;&#x6539;&#x5B9E;&#x73B0;&#x5982;&#x4F55;&#x65B9;&#x4FBF;&#x5462;&#xFF1F;</p>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6362;&#x4E86;&#x5B9E;&#x73B0; <code>&#x5E8F;&#x5BF9;</code> &#x7684; API&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x4E5F;&#x53EA;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x6700;&#x4E0B;&#x9762;&#x4E00;&#x5C42;&#x5C31;&#x53EF;&#x4EE5;&#x5168;&#x90E8;&#x4FEE;&#x6539;&#x3002;&#x76F8;&#x53CD;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6240;&#x6709;&#x7684;&#x65B9;&#x6CD5;&#x90FD;&#x4F9D;&#x8D56;&#x4E8E; &#x6700;&#x4E0B;&#x5C42;&#x5B9E;&#x73B0;&#xFF0C;&#x6BD4;&#x5982;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x7684; <code>add-rat</code> &#x65B9;&#x6CD5;&#x91CC;&#x9762;&#x8FD8;&#x662F;&#x7528;&#x4E86; <code>car</code> &#x3001;<code>cdr</code> &#x8FD9;&#x6837;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x5982;&#x679C;&#x60F3;&#x5F7B;&#x5E95;&#x6539;&#x6389;&#x8FD9;&#x5957; API &#x9700;&#x8981;&#x4FEE;&#x6539;&#x4E0B;&#x65B9;&#x5168;&#x90E8;&#x7684;&#x4E09;&#x5C42;&#x5B9E;&#x73B0;&#x3002;</p>
+</blockquote>
+
       
     </div>
 
@@ -440,7 +518,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2017/03/11/learn-sicp-2/"
-           data-title="0x02：SICP 的魔法 - 构造数据抽象" data-url="https://lfkdsk.github.io/2017/03/11/learn-sicp-2/">
+           data-title="0x02：SICP 的魔法 - 数据抽象、层次抽象" data-url="https://lfkdsk.github.io/2017/03/11/learn-sicp-2/">
       </div>
     
   </div>
@@ -464,8 +542,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/justwe.jpg"
@@ -540,6 +627,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据抽象"><span class="nav-number">1.</span> <span class="nav-text">数据抽象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序对"><span class="nav-number">1.1.</span> <span class="nav-text">序对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何定义有理数？"><span class="nav-number">1.2.</span> <span class="nav-text">如何定义有理数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现抽象屏障"><span class="nav-number">1.3.</span> <span class="nav-text">实现抽象屏障</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
