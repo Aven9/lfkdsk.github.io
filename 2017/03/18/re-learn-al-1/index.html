@@ -374,7 +374,10 @@
 <p>&#x6211;&#x4EEC;&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x50CF; $ f(x) &gt; g(x) $ &#x8FD9;&#x6837;&#x5B50;&#x53BB;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x5EA6;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6BD4;&#x8F83; <code>&#x51FD;&#x6570;&#x7684;&#x76F8;&#x5BF9;&#x589E;&#x957F;&#x901F;&#x7387;</code> &#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x7B97;&#x6CD5;&#x590D;&#x6742;&#x5EA6;&#x5206;&#x6790;&#x7684;&#x6570;&#x5B66;&#x57FA;&#x7840;&#x3002;$ O $ &#x88AB;&#x79F0;&#x4E3A;<code>&#x51FD;&#x6570;&#x4E0A;&#x754C;</code>&#xFF0C;$ \Omega $ &#x88AB;&#x79F0;&#x4F5C;&#x51FD;&#x6570;&#x7684;<code>&#x4E0B;&#x754C;</code>&#x3002;</p>
 <p>&#x6211;&#x4EEC;&#x5BFB;&#x627E;&#x76F8;&#x5BF9;&#x589E;&#x957F;&#x901F;&#x7387;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#x4F7F;&#x7528; <code>log-log-graph</code> &#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x628A;&#x672C;&#x6765;&#x662F; <code>N-T(N)</code> &#x7684;&#x51FD;&#x6570;&#x56FE;&#x50CF;&#xFF0C;&#x6539;&#x6210;&#x4E86; <code>log(N)-log(T(N))</code> &#x7684;&#x56FE;&#x50CF;&#xFF0C;&#x8FD9;&#x6837;&#x66F2;&#x7EBF;&#x5C31;&#x53D8;&#x6210;&#x4E86;&#x76F4;&#x7EBF;&#xFF1A;</p>
 <p><img src="/2017/03/18/re-learn-al-1/log_graph.png" alt="log-log"></p>
-<p>&#x8FD9;&#x6837;&#x8FD9;&#x6761;&#x76F4;&#x7EBF;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x5982;&#x4E0B;:<br>$$<br>lg(T(N)) = blg(N) + a \\<br>T (N) = a N^b,  where \text{  } a = 2 c<br>$$<br>&#x66F2;&#x7EBF;&#x53D8;&#x6210;&#x4E86;&#x76F4;&#x7EBF;&#xFF0C;&#x5C31;&#x80FD;&#x7528;&#x76F4;&#x7EBF;&#x65B9;&#x7A0B;&#x6765;&#x6A21;&#x62DF;&#x4E86;&#xFF0C;&#x7ECF;&#x8FC7;&#x5316;&#x7B80;&#xFF0C;$ T(N) $ &#x90FD;&#x80FD;&#x88AB;&#x63CF;&#x8FF0;&#x4E3A;&#x4E00;&#x4E2A;&#x4E0E; N &#x6709;&#x5173;&#x7CFB;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x80FD;&#x7528; N &#x53BB;&#x8868;&#x8FF0; $ T(N) $ &#x7684;&#x590D;&#x6742;&#x5EA6;&#x4E86;&#x3002;</p>
+<p>&#x8FD9;&#x6837;&#x8FD9;&#x6761;&#x76F4;&#x7EBF;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x5982;&#x4E0B;:</p>
+<script type="math/tex; mode=display">
+lg(T(N)) = blg(N) + a \\\\
+T (N) = a N^b,  where \text{  } a = 2 c</script><p>&#x66F2;&#x7EBF;&#x53D8;&#x6210;&#x4E86;&#x76F4;&#x7EBF;&#xFF0C;&#x5C31;&#x80FD;&#x7528;&#x76F4;&#x7EBF;&#x65B9;&#x7A0B;&#x6765;&#x6A21;&#x62DF;&#x4E86;&#xFF0C;&#x7ECF;&#x8FC7;&#x5316;&#x7B80;&#xFF0C;$ T(N) $ &#x90FD;&#x80FD;&#x88AB;&#x63CF;&#x8FF0;&#x4E3A;&#x4E00;&#x4E2A;&#x4E0E; N &#x6709;&#x5173;&#x7CFB;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x80FD;&#x7528; N &#x53BB;&#x8868;&#x8FF0; $ T(N) $ &#x7684;&#x590D;&#x6742;&#x5EA6;&#x4E86;&#x3002;</p>
 <h4 id="&#x5408;&#x6210;&#x6CD5;&#x5219;"><a href="#&#x5408;&#x6210;&#x6CD5;&#x5219;" class="headerlink" title="&#x5408;&#x6210;&#x6CD5;&#x5219;"></a>&#x5408;&#x6210;&#x6CD5;&#x5219;</h4><p>&#x5F53; $ T_1(N) = O(f(N)) $ &#x4E14; $ T_2 = O(g(N)) $ &#x65F6;&#xFF1A;</p>
 <ul>
 <li>$ T_1(N) + T_2(N) = max(T_1 , T_2))$   </li>
@@ -382,7 +385,9 @@
 <li>$ T(N) $ &#x662F; k &#x6B21;&#x591A;&#x9879;&#x5F0F;&#xFF0C;$ T(N) = \Theta(N^k) $</li>
 <li>$ log^kN = O(N)$ &#x5BF9;&#x6570;&#x7684;&#x589E;&#x957F;&#x975E;&#x5E38;&#x7F13;&#x6162;</li>
 </ul>
-<h4 id="&#x6C42;&#x76F8;&#x5BF9;&#x589E;&#x957F;&#x7387;"><a href="#&#x6C42;&#x76F8;&#x5BF9;&#x589E;&#x957F;&#x7387;" class="headerlink" title="&#x6C42;&#x76F8;&#x5BF9;&#x589E;&#x957F;&#x7387;"></a>&#x6C42;&#x76F8;&#x5BF9;&#x589E;&#x957F;&#x7387;</h4><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6C42;&#x6781;&#x9650;&#xFF1A;<br>$$<br>\lim_{x \to +\infty} f(x) / g(x)<br>$$<br>&#x7684;&#x65B9;&#x5F0F;&#x53BB;&#x83B7;&#x53D6;&#x4E24;&#x51FD;&#x6570;&#x7684;&#x76F8;&#x5BF9;&#x589E;&#x957F;&#x7387;&#x3002;</p>
+<h4 id="&#x6C42;&#x76F8;&#x5BF9;&#x589E;&#x957F;&#x7387;"><a href="#&#x6C42;&#x76F8;&#x5BF9;&#x589E;&#x957F;&#x7387;" class="headerlink" title="&#x6C42;&#x76F8;&#x5BF9;&#x589E;&#x957F;&#x7387;"></a>&#x6C42;&#x76F8;&#x5BF9;&#x589E;&#x957F;&#x7387;</h4><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6C42;&#x6781;&#x9650;&#xFF1A;</p>
+<script type="math/tex; mode=display">
+\lim_{x \to +\infty} f(x) / g(x)</script><p>&#x7684;&#x65B9;&#x5F0F;&#x53BB;&#x83B7;&#x53D6;&#x4E24;&#x51FD;&#x6570;&#x7684;&#x76F8;&#x5BF9;&#x589E;&#x957F;&#x7387;&#x3002;</p>
 <ul>
 <li>&#x6781;&#x9650;&#x4E3A;&#x96F6; &#xFF1A; $ f(N) = o(g(N)) $</li>
 <li>&#x6781;&#x9650;&#x662F;&#x5E38;&#x6570;&#xFF1A;$ f(N) = \Theta(g(N)) $</li>
@@ -409,8 +414,9 @@
 </blockquote>
 <p>&#x666E;&#x901A;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x8BA8;&#x8BBA;&#x8FC7;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x9762;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x7684;&#x662F;&#x5BF9;&#x9012;&#x5F52;&#x51FD;&#x6570;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x7684;&#x5206;&#x6790;&#x3002;</p>
 <p>&#x8FD9;&#x91CC;&#x6709;&#x4E24;&#x79CD;&#x4E3B;&#x8981;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x7684;&#x5206;&#x6790;&#x65B9;&#x6CD5;&#xFF1A;</p>
-<h5 id="&#x4E3B;&#x5B9A;&#x7406;&#x6CD5;"><a href="#&#x4E3B;&#x5B9A;&#x7406;&#x6CD5;" class="headerlink" title="&#x4E3B;&#x5B9A;&#x7406;&#x6CD5;"></a>&#x4E3B;&#x5B9A;&#x7406;&#x6CD5;</h5><p>$$<br>T(n) = a T(n / b) + h(n) \\<br>a \geq 1 \text{   &amp;&amp;       }    b \geq 1<br>$$</p>
-<p>&#x4E3B;&#x5B9A;&#x7406;&#x6CD5;&#x4F7F;&#x7528;&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E2A;&#x516C;&#x5F0F;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#xFF0C;&#x5176;&#x4E2D;&#x7684; $ T(n) $ &#x4EE3;&#x8868;&#x6574;&#x4E2A;&#x9012;&#x5F52;&#x4EFB;&#x52A1;&#xFF0C;$ a $ &#x4EE3;&#x8868;&#x4EFB;&#x52A1;&#x88AB;&#x5206;&#x6210;&#x51E0;&#x4E2A;&#x5206;&#x652F;&#xFF0C;$ b $ &#x8868;&#x793A;&#x6BCF;&#x4E2A;&#x5206;&#x652F;&#x7684;&#x4EFB;&#x52A1;&#x89C4;&#x6A21;&#x88AB;&#x7F29;&#x51CF;&#x5230;&#x539F;&#x4EFB;&#x52A1;&#x7684;&#x51E0;&#x5206;&#x4E4B;&#x51E0;&#xFF0C;$ h(n) $ &#x8868;&#x793A;&#x548C;&#x9012;&#x5F52;&#x65E0;&#x5173;&#x7684;&#x4EFB;&#x52A1;&#x3002;</p>
+<h5 id="&#x4E3B;&#x5B9A;&#x7406;&#x6CD5;"><a href="#&#x4E3B;&#x5B9A;&#x7406;&#x6CD5;" class="headerlink" title="&#x4E3B;&#x5B9A;&#x7406;&#x6CD5;"></a>&#x4E3B;&#x5B9A;&#x7406;&#x6CD5;</h5><script type="math/tex; mode=display">
+T(n) = a T(n / b) + h(n) \\\\
+a \geq 1 \text{   &&       }    b \geq 1</script><p>&#x4E3B;&#x5B9A;&#x7406;&#x6CD5;&#x4F7F;&#x7528;&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E2A;&#x516C;&#x5F0F;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#xFF0C;&#x5176;&#x4E2D;&#x7684; $ T(n) $ &#x4EE3;&#x8868;&#x6574;&#x4E2A;&#x9012;&#x5F52;&#x4EFB;&#x52A1;&#xFF0C;$ a $ &#x4EE3;&#x8868;&#x4EFB;&#x52A1;&#x88AB;&#x5206;&#x6210;&#x51E0;&#x4E2A;&#x5206;&#x652F;&#xFF0C;$ b $ &#x8868;&#x793A;&#x6BCF;&#x4E2A;&#x5206;&#x652F;&#x7684;&#x4EFB;&#x52A1;&#x89C4;&#x6A21;&#x88AB;&#x7F29;&#x51CF;&#x5230;&#x539F;&#x4EFB;&#x52A1;&#x7684;&#x51E0;&#x5206;&#x4E4B;&#x51E0;&#xFF0C;$ h(n) $ &#x8868;&#x793A;&#x548C;&#x9012;&#x5F52;&#x65E0;&#x5173;&#x7684;&#x4EFB;&#x52A1;&#x3002;</p>
 <p>&#x5728;&#x6C42;&#x51FA; $ a $ &#x3001; $ b $ &#x4E4B;&#x540E;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6309;&#x60C5;&#x51B5;&#x8FDB;&#x884C;&#x5206;&#x522B;&#x7684;&#x8BA8;&#x8BBA;&#xFF0C;&#x5224;&#x65AD; $n^{log_b^a} $ &#x548C; $ h(n) $ &#x7684;&#x5173;&#x7CFB;&#xFF1A;</p>
 <ul>
 <li>$ = \Theta( h(n) ) $ &#xFF1A;&#x590D;&#x6742;&#x5EA6;&#x4E3A; $ \Theta (h(n) * lg(n)) $</li>
@@ -419,14 +425,17 @@
 </ul>
 <h5 id="&#x9012;&#x5F52;&#x6811;&#x6CD5;"><a href="#&#x9012;&#x5F52;&#x6811;&#x6CD5;" class="headerlink" title="&#x9012;&#x5F52;&#x6811;&#x6CD5;"></a>&#x9012;&#x5F52;&#x6811;&#x6CD5;</h5><p><img src="/2017/03/18/re-learn-al-1/tree.jpg" alt="tree"></p>
 <p>&#x9012;&#x5F52;&#x6811;&#x6CD5;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x628A;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x5199;&#x6210;&#x4E00;&#x4E2A;&#x6811;&#x5F62;&#x56FE;&#x53BB;&#x5206;&#x6790;&#x5B83;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x3002;&#x4E3B;&#x8981;&#x5185;&#x6838;&#x662F;&#x5728;&#x6C42;&#x5168;&#x90E8;&#x8282;&#x70B9;&#x7684;&#x548C;&#x7684;&#x89C4;&#x6A21;&#x3002;</p>
-<p>&#x6BD4;&#x5982;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50; $ f(n) $ &#x6709; $ a $ &#x4E2A;&#x5206;&#x652F;&#x548C; $ /b $  &#x7684;&#x89C4;&#x6A21;&#x5212;&#x5206;&#xFF0C;&#x8FD9;&#x6837;&#x8FD9;&#x68F5;&#x6811;&#x7684;&#x9AD8;&#x5EA6;&#x5C31;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x6C42;&#xFF1A;<br>$$<br>n / b^h = 1 \\<br>h = log_b^n<br>$$</p>
-<p>&#x7136;&#x540E;&#x8FD9;&#x6837;&#x5B50;&#x5728;&#x89C4;&#x6A21;&#x5212;&#x5206;&#x5230;&#x6700;&#x5E95;&#x5C42;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5F53;&#x6570;&#x636E;&#x89C4;&#x6A21;&#x88AB;&#x5212;&#x5206;&#x5230; $ \Theta(1) $ &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6574;&#x5C42;&#x7684;&#x8282;&#x70B9;&#x5C31;&#x4F1A;&#x6709;&#xFF1A;</p>
-<p>$$<br>\text{node_number} = a^{h} = a^{log_b^n} = n^{log_b^a}<br>$$<br>&#x8FD9;&#x5C31;&#x662F;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#x7684;&#x89C4;&#x6A21;&#x503C;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50; $ f(n) $ &#x6709; $ a $ &#x4E2A;&#x5206;&#x652F;&#x548C; $ /b $  &#x7684;&#x89C4;&#x6A21;&#x5212;&#x5206;&#xFF0C;&#x8FD9;&#x6837;&#x8FD9;&#x68F5;&#x6811;&#x7684;&#x9AD8;&#x5EA6;&#x5C31;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x6C42;&#xFF1A;</p>
+<script type="math/tex; mode=display">
+n / b^h = 1 \\\\
+h = log_b^n</script><p>&#x7136;&#x540E;&#x8FD9;&#x6837;&#x5B50;&#x5728;&#x89C4;&#x6A21;&#x5212;&#x5206;&#x5230;&#x6700;&#x5E95;&#x5C42;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5F53;&#x6570;&#x636E;&#x89C4;&#x6A21;&#x88AB;&#x5212;&#x5206;&#x5230; $ \Theta(1) $ &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6574;&#x5C42;&#x7684;&#x8282;&#x70B9;&#x5C31;&#x4F1A;&#x6709;&#xFF1A;</p>
+<script type="math/tex; mode=display">
+\text{node_number} = a^{h} = a^{log_b^n} = n^{log_b^a}</script><p>&#x8FD9;&#x5C31;&#x662F;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#x7684;&#x89C4;&#x6A21;&#x503C;&#x3002;</p>
 <p>&#x7136;&#x540E;&#x8FD8;&#x6709;&#x6BCF;&#x5C42;&#x7684;&#x7684;&#x8282;&#x70B9;&#x7684;&#x548C;&#xFF1A;</p>
-<p>$$<br>\text{every_floor_nodes<em>numbers} = f(n) + af(n/b) + a^2f(n/b^2) + &#x2026;&#x2026; + a^jf(n/b^j) = \sum</em>{j=0}^{log_b^n-1} a^jf(n/b^j)<br>$$</p>
-<p>&#x8FD9;&#x6837;&#x6574;&#x4E2A;&#x7684;  $ T(n) $  :</p>
-<p>$$<br>T(n) =n^{log<em>b^a}+\sum</em>{j=0}^{log_b^n-1} a^jf(n/b^j)<br>$$</p>
-<p>&#x6211;&#x4EEC;&#x4ED4;&#x7EC6;&#x7684;&#x5206;&#x6790;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x6211;&#x4EEC;&#x521A;&#x624D;&#x8BC1;&#x660E;&#x7684;&#x8FD9;&#x4E2A;&#x5C31;&#x662F;&#x4E3B;&#x5B9A;&#x7406;&#x6CD5;&#x7684;&#x516C;&#x5F0F;&#xFF0C;&#x8FD9;&#x4E5F;&#x80FD;&#x8BF4;&#x660E;&#xFF0C;&#x4E3B;&#x5B9A;&#x7406;&#x6CD5;&#x5176;&#x5B9E;&#x662F;&#x9012;&#x5F52;&#x6811;&#x6CD5;&#x5728;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x4E0B;&#x7684;&#x62BD;&#x8C61;&#x3002;&#x9012;&#x5F52;&#x6811;&#x6CD5;&#x7684;&#x7279;&#x70B9;&#x5C31;&#x662F;&#x753B;&#x51FA;&#x9012;&#x5F52;&#x6811;&#xFF0C;&#x7136;&#x540E;<strong>&#x6C42;&#x51FA;&#x6574;&#x68F5;&#x6811;&#x7684;&#x8282;&#x70B9;&#x4E4B;&#x548C;&#x7136;&#x540E;&#x5224;&#x65AD;&#x95EE;&#x9898;&#x89C4;&#x6A21;</strong>&#x3002;</p>
+<script type="math/tex; mode=display">
+\text{every_floor_nodes_numbers} = f(n) + af(n/b) + a^2f(n/b^2) + ...... + a^jf(n/b^j) = \sum_{j=0}^{log_b^n-1} a^jf(n/b^j)</script><p>&#x8FD9;&#x6837;&#x6574;&#x4E2A;&#x7684;  $ T(n) $  :</p>
+<script type="math/tex; mode=display">
+T(n) =n^{log_b^a}+\sum_{j=0}^{log_b^n-1} a^jf(n/b^j)</script><p>&#x6211;&#x4EEC;&#x4ED4;&#x7EC6;&#x7684;&#x5206;&#x6790;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x6211;&#x4EEC;&#x521A;&#x624D;&#x8BC1;&#x660E;&#x7684;&#x8FD9;&#x4E2A;&#x5C31;&#x662F;&#x4E3B;&#x5B9A;&#x7406;&#x6CD5;&#x7684;&#x516C;&#x5F0F;&#xFF0C;&#x8FD9;&#x4E5F;&#x80FD;&#x8BF4;&#x660E;&#xFF0C;&#x4E3B;&#x5B9A;&#x7406;&#x6CD5;&#x5176;&#x5B9E;&#x662F;&#x9012;&#x5F52;&#x6811;&#x6CD5;&#x5728;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x4E0B;&#x7684;&#x62BD;&#x8C61;&#x3002;&#x9012;&#x5F52;&#x6811;&#x6CD5;&#x7684;&#x7279;&#x70B9;&#x5C31;&#x662F;&#x753B;&#x51FA;&#x9012;&#x5F52;&#x6811;&#xFF0C;&#x7136;&#x540E;<strong>&#x6C42;&#x51FA;&#x6574;&#x68F5;&#x6811;&#x7684;&#x8282;&#x70B9;&#x4E4B;&#x548C;&#x7136;&#x540E;&#x5224;&#x65AD;&#x95EE;&#x9898;&#x89C4;&#x6A21;</strong>&#x3002;</p>
 
       
     </div>
