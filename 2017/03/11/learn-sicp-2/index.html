@@ -86,7 +86,7 @@
 
 <meta name="description" content="&amp;#x5728;&amp;#x7B2C;&amp;#x4E00;&amp;#x7AE0;&amp;#x91CC;&amp;#x9762;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC;&amp;#x5DF2;&amp;#x7ECF;&amp;#x89C1;&amp;#x8BC6;&amp;#x5230;&amp;#x4E86;&amp;#x8FC7;&amp;#x7A0B;&amp;#x62BD;&amp;#x8C61;&amp;#x7684;&amp;#x9B54;&amp;#x6CD5;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="0x02：SICP 的魔法 - 数据抽象、层次抽象和符号数据">
+<meta property="og:title" content="0x02：SICP 的魔法 - 数据抽象、层次抽象">
 <meta property="og:url" content="https://lfkdsk.github.io/2017/03/11/learn-sicp-2/index.html">
 <meta property="og:site_name" content="若梦浮生">
 <meta property="og:description" content="&amp;#x5728;&amp;#x7B2C;&amp;#x4E00;&amp;#x7AE0;&amp;#x91CC;&amp;#x9762;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC;&amp;#x5DF2;&amp;#x7ECF;&amp;#x89C1;&amp;#x8BC6;&amp;#x5230;&amp;#x4E86;&amp;#x8FC7;&amp;#x7A0B;&amp;#x62BD;&amp;#x8C61;&amp;#x7684;&amp;#x9B54;&amp;#x6CD5;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;">
@@ -96,9 +96,9 @@
 <meta property="og:image" content="https://lfkdsk.github.io/2017/03/11/learn-sicp-2/tree.png">
 <meta property="og:image" content="https://lfkdsk.github.io/2017/03/11/learn-sicp-2/example.png">
 <meta property="og:image" content="https://lfkdsk.github.io/2017/03/11/learn-sicp-2/lib.png">
-<meta property="og:updated_time" content="2017-03-25T16:11:11.000Z">
+<meta property="og:updated_time" content="2017-04-02T10:11:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="0x02：SICP 的魔法 - 数据抽象、层次抽象和符号数据">
+<meta name="twitter:title" content="0x02：SICP 的魔法 - 数据抽象、层次抽象">
 <meta name="twitter:description" content="&amp;#x5728;&amp;#x7B2C;&amp;#x4E00;&amp;#x7AE0;&amp;#x91CC;&amp;#x9762;&amp;#xFF0C;&amp;#x6211;&amp;#x4EEC;&amp;#x5DF2;&amp;#x7ECF;&amp;#x89C1;&amp;#x8BC6;&amp;#x5230;&amp;#x4E86;&amp;#x8FC7;&amp;#x7A0B;&amp;#x62BD;&amp;#x8C61;&amp;#x7684;&amp;#x9B54;&amp;#x6CD5;&amp;#xFF0C;&amp;#x4E00;&amp;#x4E2A;">
 <meta name="twitter:image" content="https://lfkdsk.github.io/2017/03/11/learn-sicp-2/floor.png">
 
@@ -134,7 +134,7 @@
 
 
 
-  <title> 0x02：SICP 的魔法 - 数据抽象、层次抽象和符号数据 | 若梦浮生 </title>
+  <title> 0x02：SICP 的魔法 - 数据抽象、层次抽象 | 若梦浮生 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -299,7 +299,7 @@
             
             
               
-                0x02：SICP 的魔法 - 数据抽象、层次抽象和符号数据
+                0x02：SICP 的魔法 - 数据抽象、层次抽象
               
             
           </h1>
@@ -531,8 +531,25 @@
 <h4 id="accumulate"><a href="#accumulate" class="headerlink" title="accumulate"></a>accumulate</h4><p>&#x7D2F;&#x52A0;&#x5668;&#x4E4B;&#x524D;&#x5DF2;&#x7ECF;&#x6709;&#x8FC7;&#x4ECB;&#x7ECD;&#x4E86;&#xFF0C;&#x901A;&#x8FC7;&#x4F20;&#x5165;&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x9012;&#x5F52;&#x4F7F;&#x7528;&#x64CD;&#x4F5C;&#x7B26;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#x3002;</p>
 <figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">accumulate</span> op initial sequence)</span><br><span class="line">    (<span class="name">if</span> (<span class="name">null</span>? sequence)</span><br><span class="line">        initial</span><br><span class="line">        (<span class="name">op</span> (<span class="name">car</span> sequence)</span><br><span class="line">        	(<span class="name">accumulate</span> op initial (<span class="name">cdr</span> sequence)))))</span><br></pre></td></tr></table></figure>
 <h4 id="enumerate"><a href="#enumerate" class="headerlink" title="enumerate"></a>enumerate</h4><p>&#x6811;&#x548C;&#x5E8F;&#x5217;&#x7684;&#x679A;&#x4E3E;&#x4E4B;&#x524D;&#x90FD;&#x5DF2;&#x7ECF;&#x51FA;&#x73B0;&#x8FC7;&#x4E86;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x3002;</p>
-<h4 id="&#x91CD;&#x6574;&#x5E8F;&#x5217;"><a href="#&#x91CD;&#x6574;&#x5E8F;&#x5217;" class="headerlink" title="&#x91CD;&#x6574;&#x5E8F;&#x5217;"></a>&#x91CD;&#x6574;&#x5E8F;&#x5217;</h4><p>&#x91CD;&#x6574;&#x8FC7;&#x7684;&#x5E8F;&#x5217;&#x64CD;&#x4F5C;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0A;&#x63D0;&#x4F9B;&#x7684; API &#x8FDB;&#x884C;&#x6574;&#x7406;&#xFF1A;</p>
+<h4 id="&#x91CD;&#x6574;&#x5E8F;&#x5217;"><a href="#&#x91CD;&#x6574;&#x5E8F;&#x5217;" class="headerlink" title="&#x91CD;&#x6574;&#x5E8F;&#x5217;"></a>&#x91CD;&#x6574;&#x5E8F;&#x5217;</h4><p>&#x91CD;&#x6574;&#x8FC7;&#x7684;&#x5E8F;&#x5217;&#x64CD;&#x4F5C;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0A;&#x63D0;&#x4F9B;&#x7684; API &#x8FDB;&#x884C;&#x6574;&#x7406;&#xFF0C;&#x6211;&#x4EEC;&#x6C42;&#x4E00;&#x68F5;&#x6811;&#x5947;&#x6570;&#x6811;&#x53F6;&#x7684;&#x5E73;&#x65B9;&#x548C;&#x7684;&#x8FC7;&#x7A0B;&#x5C31;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x51FA;&#x6765;&#x4E86;&#xFF1A;</p>
 <figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">sum-odd-squares</span> tree)</span><br><span class="line">    (<span class="name">accumulate</span> +</span><br><span class="line">                <span class="number">0</span></span><br><span class="line">                (<span class="name">map</span> square</span><br><span class="line">                	(<span class="name">filter</span> odd? (<span class="name">enumerate-tree</span> tree)))))</span><br></pre></td></tr></table></figure>
+<p>&#x6211;&#x4EEC;&#x6C42;  <code>Fib</code>  &#x7684;&#x7A0B;&#x5E8F;&#x4E2D;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6539;&#x53D8;&#x4E0A;&#x9762;&#x8FD9;&#x4E9B;&#x5E8F;&#x5217;&#x7684;&#x987A;&#x5E8F;&#x53BB;&#x8868;&#x793A;&#xFF1A;</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">define</span> (<span class="name">even-fibs</span> n)</span><br><span class="line">    (<span class="name">accumulate</span> cons</span><br><span class="line">                <span class="literal">nil</span></span><br><span class="line">                (<span class="name">filter</span> even?</span><br><span class="line">                		(<span class="name">map</span> fib (<span class="name">enumerate-interval</span> <span class="number">0</span> n)))))</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Tips : flatmap &#x7684;&#x8FC7;&#x7A0B;</p>
+<p> &#x7528;&#x8FC7;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x5F0F;&#x7F16;&#x7A0B;&#x5E93;&#x7684;&#x4EBA;&#x90FD;&#x4F1A;&#x5F88;&#x719F;&#x6089; flatmap &#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#xFF0C;flatmap &#x88AB;&#x63CF;&#x8FF0;&#x4E3A;&#x4E00;&#x4E2A;&#x6620;&#x5C04;&#x79EF;&#x7D2F;&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; (<span class="name">define</span> (<span class="name">flatmap</span> proc seq)</span><br><span class="line">&gt;   	(<span class="name">accumulate</span> append <span class="literal">nil</span> (<span class="name">map</span> proc seq)))</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>&#x9996;&#x5148;&#x5BF9; seq &#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x6620;&#x5C04;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x628A;&#x4ED6;&#x4EEC;&#x7D2F;&#x79EF;&#x8D77;&#x6765;&#x3002;<strong>Monad &#x7684;&#x7C7B;&#x578B;&#x90FD;&#x662F;&#x5B9E;&#x73B0;&#x4E86; <code>flatmap</code> &#x8FC7;&#x7A0B;</strong>&#x3002;&#x4E0B;&#x9762;&#x4E00;&#x8282;&#x5C31;&#x6765;&#x89E3;&#x91CA;&#x4E00;&#x4E0B;&#x8FD9;&#x53E5;&#x8BDD;&#x5230;&#x5E95;&#x662F;&#x4EC0;&#x4E48;&#x610F;&#x601D;&#x3002;</p>
+</blockquote>
+<h2 id="Monad"><a href="#Monad" class="headerlink" title="Monad"></a>Monad</h2><blockquote>
+<p>A monad is just a monoid in the category of endofunctors, what&#x2019;s the problem?</p>
+</blockquote>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x8001;&#x6897;&#x4E86;&#xFF0C;&#x7FFB;&#x8BD1;&#x8FC7;&#x6765;&#x5E94;&#x8BE5;&#x662F;&#x8BF4;&#xFF1A;&#x201C;&#x4E00;&#x4E2A;&#x51FD;&#x5B50;&#x4E0D;&#x8FC7;&#x5C31;&#x662F;&#x81EA;&#x51FD;&#x5B50;&#x8303;&#x7574;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x5E7A;&#x534A;&#x7FA4;&#x800C;&#x5DF2;&#xFF0C;&#x6709;&#x4EC0;&#x4E48;&#x96BE;&#x7406;&#x89E3;&#x7684;&#xFF1F;&#x201D;&#x3002;</p>
+<p>&#x90A3;&#x6211;&#x4EEC;&#x7406;&#x89E3;&#x4E5F;&#x5E94;&#x8BE5;&#x4ECE;&#x8FD9;&#x4E2A;&#x6BD4;&#x8F83;&#x6570;&#x5B66;&#x7684;&#x89D2;&#x5EA6;&#x53BB;&#x7406;&#x89E3; Monad &#x76F8;&#x5173;&#x7684;&#x6982;&#x5FF5;&#x3002;</p>
+<h3 id="Group"><a href="#Group" class="headerlink" title="Group"></a>Group</h3><p>&#xFF08;1&#xFF09;&#x5C01;&#x95ED;&#x6027;&#xFF08;Closure&#xFF09;&#xFF1A;&#x5BF9;&#x4E8E;&#x4EFB;&#x610F;<script type="math/tex">a，b∈G，有a*b∈G</script><br>&#xFF08;2&#xFF09;&#x7ED3;&#x5408;&#x5F8B;&#xFF08;Associativity&#xFF09;&#xFF1A;&#x5BF9;&#x4E8E;&#x4EFB;&#x610F;$ a&#xFF0C;b&#xFF0C;c&#x2208;G $$&#xFF0C;&#x6709;$&#xFF08;a<em>b&#xFF09;</em>c=a<em>&#xFF08;b</em>c&#xFF09;$<br>&#xFF08;3&#xFF09;&#x5E7A;&#x5143; &#xFF08;Identity&#xFF09;&#xFF1A;&#x5B58;&#x5728;&#x5E7A;&#x5143;e&#xFF0C;&#x4F7F;&#x5F97;&#x5BF9;&#x4E8E;&#x4EFB;&#x610F;$ a&#x2208;G&#xFF0C;e<em>a=a</em>e=a $<br>&#xFF08;4&#xFF09;&#x9006;&#x5143;&#xFF1A;&#x5BF9;&#x4E8E;&#x4EFB;&#x610F;$a&#x2208;G$&#xFF0C;&#x5B58;&#x5728;&#x9006;&#x5143;$a^-1$&#xFF0C;&#x4F7F;&#x5F97;$a^-1<em>a=a</em>a^-1=e$</p>
 
       
     </div>
@@ -620,7 +637,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2017/03/11/learn-sicp-2/"
-           data-title="0x02：SICP 的魔法 - 数据抽象、层次抽象和符号数据" data-url="https://lfkdsk.github.io/2017/03/11/learn-sicp-2/">
+           data-title="0x02：SICP 的魔法 - 数据抽象、层次抽象" data-url="https://lfkdsk.github.io/2017/03/11/learn-sicp-2/">
       </div>
     
   </div>
@@ -739,7 +756,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据抽象"><span class="nav-number">1.</span> <span class="nav-text">数据抽象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序对"><span class="nav-number">1.1.</span> <span class="nav-text">序对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何定义有理数？"><span class="nav-number">1.2.</span> <span class="nav-text">如何定义有理数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现抽象屏障"><span class="nav-number">1.3.</span> <span class="nav-text">实现抽象屏障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据的过程实现"><span class="nav-number">1.4.</span> <span class="nav-text">数据的过程实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层次抽象"><span class="nav-number">2.</span> <span class="nav-text">层次抽象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序列的形成"><span class="nav-number">2.1.</span> <span class="nav-text">序列的形成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高阶操作和层次结构"><span class="nav-number">2.2.</span> <span class="nav-text">高阶操作和层次结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列操作"><span class="nav-number">2.3.</span> <span class="nav-text">序列操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#filter"><span class="nav-number">2.3.1.</span> <span class="nav-text">filter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#accumulate"><span class="nav-number">2.3.2.</span> <span class="nav-text">accumulate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#enumerate"><span class="nav-number">2.3.3.</span> <span class="nav-text">enumerate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重整序列"><span class="nav-number">2.3.4.</span> <span class="nav-text">重整序列</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据抽象"><span class="nav-number">1.</span> <span class="nav-text">数据抽象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序对"><span class="nav-number">1.1.</span> <span class="nav-text">序对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何定义有理数？"><span class="nav-number">1.2.</span> <span class="nav-text">如何定义有理数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现抽象屏障"><span class="nav-number">1.3.</span> <span class="nav-text">实现抽象屏障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据的过程实现"><span class="nav-number">1.4.</span> <span class="nav-text">数据的过程实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层次抽象"><span class="nav-number">2.</span> <span class="nav-text">层次抽象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序列的形成"><span class="nav-number">2.1.</span> <span class="nav-text">序列的形成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高阶操作和层次结构"><span class="nav-number">2.2.</span> <span class="nav-text">高阶操作和层次结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列操作"><span class="nav-number">2.3.</span> <span class="nav-text">序列操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#filter"><span class="nav-number">2.3.1.</span> <span class="nav-text">filter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#accumulate"><span class="nav-number">2.3.2.</span> <span class="nav-text">accumulate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#enumerate"><span class="nav-number">2.3.3.</span> <span class="nav-text">enumerate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重整序列"><span class="nav-number">2.3.4.</span> <span class="nav-text">重整序列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Monad"><span class="nav-number">3.</span> <span class="nav-text">Monad</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Group"><span class="nav-number">3.1.</span> <span class="nav-text">Group</span></a></li></ol></li></ol></div>
             
 
           </div>
