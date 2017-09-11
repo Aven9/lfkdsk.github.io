@@ -1,0 +1,805 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="源码阅读," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#x4ECE;&amp;#x4E00;&amp;#x4E2A;&amp;#x7B80;&amp;#x5355;&amp;#x7684;&amp;#x4F8B;&amp;#x5B50;&amp;#x5F00;&amp;#x59CB;12345678910111213141516171819202122232425262728293031Observable         .just(&amp;quot;lfkdsk&amp;quot;, &amp;quot;just-we&amp;quot;)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rxjava 2 源码分析">
+<meta property="og:url" content="https://lfkdsk.github.io/2017/09/04/read-source-code-rxjava2/index.html">
+<meta property="og:site_name" content="若梦浮生">
+<meta property="og:description" content="&amp;#x4ECE;&amp;#x4E00;&amp;#x4E2A;&amp;#x7B80;&amp;#x5355;&amp;#x7684;&amp;#x4F8B;&amp;#x5B50;&amp;#x5F00;&amp;#x59CB;12345678910111213141516171819202122232425262728293031Observable         .just(&amp;quot;lfkdsk&amp;quot;, &amp;quot;just-we&amp;quot;)">
+<meta property="og:image" content="https://lfkdsk.github.io/2017/09/04/read-source-code-rxjava2/img/just.png">
+<meta property="og:image" content="https://lfkdsk.github.io/2017/09/04/read-source-code-rxjava2/img/disposable.png">
+<meta property="og:image" content="https://lfkdsk.github.io/2017/09/04/read-source-code-rxjava2/img/subscribe.png">
+<meta property="og:updated_time" content="2017-09-05T09:54:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Rxjava 2 源码分析">
+<meta name="twitter:description" content="&amp;#x4ECE;&amp;#x4E00;&amp;#x4E2A;&amp;#x7B80;&amp;#x5355;&amp;#x7684;&amp;#x4F8B;&amp;#x5B50;&amp;#x5F00;&amp;#x59CB;12345678910111213141516171819202122232425262728293031Observable         .just(&amp;quot;lfkdsk&amp;quot;, &amp;quot;just-we&amp;quot;)">
+<meta name="twitter:image" content="https://lfkdsk.github.io/2017/09/04/read-source-code-rxjava2/img/just.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://lfkdsk.github.io/2017/09/04/read-source-code-rxjava2/"/>
+
+
+
+
+
+  <title> Rxjava 2 源码分析 | 若梦浮生 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">若梦浮生</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sicp">
+          <a href="/sicp" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-beer"></i> <br />
+            
+            魔法
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-mine">
+          <a href="/mine/index/lfkdsk-2017-8-12.pdf" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fire"></i> <br />
+            
+            简历
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://lfkdsk.github.io/2017/09/04/read-source-code-rxjava2/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘丰恺">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/justwe.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="若梦浮生">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="若梦浮生" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Rxjava 2 源码分析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-04T14:19:16+08:00">
+                2017-09-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/09/04/read-source-code-rxjava2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/04/read-source-code-rxjava2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="&#x4ECE;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#x5F00;&#x59CB;"><a href="#&#x4ECE;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#x5F00;&#x59CB;" class="headerlink" title="&#x4ECE;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#x5F00;&#x59CB;"></a>&#x4ECE;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#x5F00;&#x59CB;</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Observable</span><br><span class="line">         .just(<span class="string">&quot;lfkdsk&quot;</span>, <span class="string">&quot;just-we&quot;</span>)</span><br><span class="line">         .subscribeOn(Schedulers.io())</span><br><span class="line">         .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">         .subscribe(<span class="keyword">new</span> Observer&lt;String&gt;() {</span><br><span class="line">             <span class="meta">@Override</span></span><br><span class="line">             <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSubscribe</span><span class="params">(Disposable d)</span> </span>{</span><br><span class="line">                 Logger.d(testTAG(), <span class="string">&quot; onSubscribe : &quot;</span> + d.isDisposed());</span><br><span class="line">             }</span><br><span class="line"></span><br><span class="line">             <span class="meta">@Override</span></span><br><span class="line">             <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(String value)</span> </span>{</span><br><span class="line">                 mTextView.append(<span class="string">&quot; onNext : value : &quot;</span> + value);</span><br><span class="line">                 mTextView.append(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">                 Logger.d(testTAG(), <span class="string">&quot; onNext : value : &quot;</span> + value);</span><br><span class="line">             }</span><br><span class="line"></span><br><span class="line">             <span class="meta">@Override</span></span><br><span class="line">             <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>{</span><br><span class="line">                 mTextView.append(<span class="string">&quot; onError : &quot;</span> + e.getMessage());</span><br><span class="line">                 mTextView.append(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">                 Logger.d(testTAG(), <span class="string">&quot; onError : &quot;</span> + e.getMessage());</span><br><span class="line">             }</span><br><span class="line"></span><br><span class="line">             <span class="meta">@Override</span></span><br><span class="line">             <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onComplete</span><span class="params">()</span> </span>{</span><br><span class="line">                 mTextView.append(<span class="string">&quot; onComplete&quot;</span>);</span><br><span class="line">                 mTextView.append(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">                 Logger.d(testTAG(), <span class="string">&quot; onComplete&quot;</span>);</span><br><span class="line">             }</span><br><span class="line">         });</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x4E2A;&#x4E1C;&#x897F;&#x548C;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x5728; <em>Rxjava1</em> &#x4E2D;&#x770B;&#x5230;&#x7684;&#x6700;&#x7B80;&#x5355;&#x7684;&#x884C;&#x4E3A;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x8BBE;&#x5B9A;&#x4E0A;&#x4E0B;&#x6E38;&#xFF0C;&#x8BBE;&#x5B9A;&#x4E86;&#x4E0A;&#x4E0B;&#x6E38;&#x7684;&#x7EBF;&#x7A0B;&#x8C03;&#x5EA6;&#x5668;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x6765;&#x7B80;&#x5355;&#x7684;&#x6765;&#x5206;&#x6790;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x662F;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<h3 id="Just-Operator"><a href="#Just-Operator" class="headerlink" title="Just Operator"></a>Just Operator</h3><p>&#x7B80;&#x5355;&#x7684;&#x6765;&#x770B;&#x8FD9;&#x4E2A; <em>just</em> &#x64CD;&#x4F5C;&#x7B26;&#xFF0C;Just &#x64CD;&#x4F5C;&#x7B26;&#x5176;&#x5B9E;&#x5C31;&#x662F; From &#x7CFB;&#x5217;&#x64CD;&#x4F5C;&#x7B26;&#x7684;&#x4E00;&#x4E2A;&#x5C01;&#x88C5;&#xFF0C;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684; API &#x53BB;&#x4F7F;&#x7528;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86; <code>1 - 10</code> &#x4E2A;&#x6570;&#x636E;&#x7684; API &#xFF1A;</p>
+<p><img src="/2017/09/04/read-source-code-rxjava2/img/just.png" alt="just"></p>
+<p>&#x91CC;&#x9762;&#x5C31;&#x662F;&#x505A;&#x4E86;&#x4E00;&#x4E2A; <code>&#x7A7A;&#x68C0;&#x67E5;</code> &#x7136;&#x540E;&#x5305;&#x88C5;&#x8FDB;&#x4E86; From &#x64CD;&#x4F5C;&#x7B26;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@CheckReturnValue</span></span><br><span class="line"><span class="meta">@SchedulerSupport</span>(SchedulerSupport.NONE)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Observable&lt;T&gt; <span class="title">fromArray</span><span class="params">(T... items)</span> </span>{</span><br><span class="line">    ObjectHelper.requireNonNull(items, <span class="string">&quot;items is null&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (items.length == <span class="number">0</span>) {</span><br><span class="line">        <span class="keyword">return</span> empty();</span><br><span class="line">    } <span class="keyword">else</span></span><br><span class="line">    <span class="keyword">if</span> (items.length == <span class="number">1</span>) {</span><br><span class="line">        <span class="keyword">return</span> just(items[<span class="number">0</span>]);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> RxJavaPlugins.onAssembly(<span class="keyword">new</span> ObservableFromArray&lt;T&gt;(items));</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="meta">@CheckReturnValue</span></span><br><span class="line"><span class="meta">@SchedulerSupport</span>(SchedulerSupport.NONE)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Observable&lt;T&gt; <span class="title">just</span><span class="params">(T item)</span> </span>{</span><br><span class="line">    ObjectHelper.requireNonNull(item, <span class="string">&quot;The item is null&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> RxJavaPlugins.onAssembly(<span class="keyword">new</span> ObservableJust&lt;T&gt;(item));</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">&quot;unchecked&quot;</span>)</span><br><span class="line"><span class="meta">@CheckReturnValue</span></span><br><span class="line"><span class="meta">@SchedulerSupport</span>(SchedulerSupport.NONE)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Observable&lt;T&gt; <span class="title">just</span><span class="params">(T item1, T item2)</span> </span>{</span><br><span class="line">    ObjectHelper.requireNonNull(item1, <span class="string">&quot;The first item is null&quot;</span>);</span><br><span class="line">    ObjectHelper.requireNonNull(item2, <span class="string">&quot;The second item is null&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> fromArray(item1, item2);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x91CC;&#x9762;&#x7684; RxjavaPlugins &#x662F;&#x7528;&#x6765;&#x96C6;&#x6210;&#x4E4B;&#x524D;&#x7684;&#x4E00;&#x4E9B; Hooks &#x64CD;&#x4F5C;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x6309;&#x4E0B;&#x4E0D;&#x8868;&#xFF0C;&#x8FD9;&#x91CC;&#x9762;&#x4F20;&#x8FDB;&#x53BB;&#x4E86;&#x4E0D;&#x5C11; Observable &#x7684;&#x5305;&#x88C5;&#x7C7B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4ED4;&#x7EC6;&#x7684;&#x6765;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x3002;&#x6BD4;&#x5982; ObservableJust &#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Represents a constant scalar value.</span><br><span class="line"> * <span class="doctag">@param</span> &lt;T&gt; the value type</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">ObservableJust</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Observable</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">ScalarCallable</span>&lt;<span class="title">T</span>&gt; </span>{</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> T value;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ObservableJust</span><span class="params">(<span class="keyword">final</span> T value)</span> </span>{</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">subscribeActual</span><span class="params">(Observer&lt;? <span class="keyword">super</span> T&gt; s)</span> </span>{</span><br><span class="line">        ScalarDisposable&lt;T&gt; sd = <span class="keyword">new</span> ScalarDisposable&lt;T&gt;(s, value);</span><br><span class="line">        s.onSubscribe(sd);</span><br><span class="line">        sd.run();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">call</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x6BD4;&#x5982;&#x8FD9;&#x4E2A;&#x662F; Just Observable &#x7684;&#x4E00;&#x4E2A;&#x5305;&#x88C5;&#x7C7B;&#xFF0C;&#x8FD9;&#x91CC;&#x9762;&#x8FD8;&#x63D0;&#x5230;&#x4E86;&#x4E00;&#x4E9B; Scalar &#x7CFB;&#x5217;&#x7684;&#x64CD;&#x4F5C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5148;&#x4E0D;&#x5206;&#x6790;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x91CC;&#x4E5F;&#x80FD;&#x770B;&#x51FA;&#x4E00;&#x4E9B;&#x4E1C;&#x897F;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x521A;&#x624D;&#x6211;&#x4EEC;&#x7684; Observer &#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;&#x56DE;&#x8C03; <em>onSubscribe</em> &#x8FD9;&#x4E2A;&#x56DE;&#x8C03;&#xFF0C;&#x9996;&#x5148;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x4F1A;&#x53D1;&#x73B0; Rxjava 2 &#x589E;&#x52A0;&#x7684;&#x4E00;&#x7CFB;&#x5217;&#x5BF9;&#x8C61;&#x2014;&#x2014; Disposable &#x4ECE;&#x540D;&#x5B57;&#x4E0A;&#x6765;&#x770B;&#x662F;&#x4E00;&#x79CD;&#x4E00;&#x6B21;&#x6027;&#x7684;&#x5BF9;&#x8C61;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Represents a disposable resource.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Disposable</span> </span>{</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Dispose the resource, the operation should be idempotent.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dispose</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Returns true if this resource has been disposed.</span><br><span class="line">     * <span class="doctag">@return</span> true if this resource has been disposed</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isDisposed</span><span class="params">()</span></span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x4ECE;&#x4EE3;&#x7801;&#x4E2D;&#x6211;&#x4EEC;&#x4E5F;&#x662F;&#x80FD;&#x770B;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x53EA;&#x6709;&#x5224;&#x65AD;&#x662F;&#x5426;&#x4F7F;&#x7528;&#x548C;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x7684; API&#xFF0C;&#x6211;&#x4EEC;&#x4E0A;&#x9762;&#x7684;&#x6570;&#x636E;&#x4E5F;&#x88AB;&#x5305;&#x88C5;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x8FD9;&#x6837;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x4E14;&#x8FD8;&#x628A;&#x5305;&#x88C5;&#x7684;&#x4E1C;&#x897F;&#x4F20;&#x8FDB;&#x4E86; onSubscribe &#x8FD9;&#x4E2A;&#x56DE;&#x8C03;&#x4E2D;&#x3002;</p>
+<h3 id="Subscribe"><a href="#Subscribe" class="headerlink" title="Subscribe"></a>Subscribe</h3><p>&#x8FD9;&#x4E2A;&#x56DE;&#x8C03;&#x6211;&#x4EEC;&#x7ED3;&#x5408;&#x6CE8;&#x91CA;&#x5C31;&#x5F88;&#x660E;&#x767D;&#x662F;&#x5E72;&#x4EC0;&#x4E48;&#x7684;&#x4E86;&#xFF0C;&#x662F;&#x5728;&#x6574;&#x4E2A;&#x6D41;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E0A;&#x6E38;&#x548C;&#x4E0B;&#x6E38;&#x7684; Observable &#x548C; Observer &#x5728;&#x7ED3;&#x5408;&#x7684;&#x8FC7;&#x7A0B;&#x5F00;&#x59CB;&#x5148;&#x88AB;&#x4F7F;&#x7528;&#x7684;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Operator implementations (both source and intermediate) should implement this method that</span><br><span class="line"> * performs the necessary business logic.</span><br><span class="line"> * &lt;p&gt;There is no need to call any of the plugin hooks on the current Observable instance or</span><br><span class="line"> * the Subscriber.</span><br><span class="line"> * <span class="doctag">@param</span> observer the incoming Observer, never null</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">subscribeActual</span><span class="params">(Observer&lt;? <span class="keyword">super</span> T&gt; observer)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>&#x6CE8;&#x91CA;&#x91CC;&#x9762;&#x544A;&#x8BC9;&#x6211;&#x4EEC;&#x4E86;&#xFF0C;&#x6240;&#x6709;&#x7684; Operator &#x90FD;&#x8981;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF08;&#x6570;&#x636E;&#x6E90;&#x8FD8;&#x662F;&#x4E2D;&#x95F4;&#x8FC7;&#x7A0B;&#xFF09;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5904;&#x7406;&#x4E86; Operator &#x7684;&#x903B;&#x8F91;&#x8FC7;&#x7A0B;&#xFF0C;&#x6CE8;&#x91CA;&#x4E5F;&#x8BF4;&#x4E86;&#x8FD9;&#x91CC;&#x4E0D;&#x5E94;&#x8BE5;&#x4F7F;&#x7528; Plugin Hooks &#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x6211;&#x4EEC;&#x5728; <strong>subscribe</strong> &#x51FD;&#x6570;&#x4E2D;&#x80FD;&#x770B;&#x5230;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x662F;&#x600E;&#x4E48;&#x88AB;&#x4F7F;&#x7528;&#x7684;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@SchedulerSupport</span>(SchedulerSupport.NONE)</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(Observer&lt;? <span class="keyword">super</span> T&gt; observer)</span> </span>{</span><br><span class="line">    ObjectHelper.requireNonNull(observer, <span class="string">&quot;observer is null&quot;</span>);</span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        observer = RxJavaPlugins.onSubscribe(<span class="keyword">this</span>, observer);</span><br><span class="line"></span><br><span class="line">        ObjectHelper.requireNonNull(observer, <span class="string">&quot;Plugin returned null Observer&quot;</span>);</span><br><span class="line"></span><br><span class="line">        subscribeActual(observer);</span><br><span class="line">    } <span class="keyword">catch</span> (NullPointerException e) { <span class="comment">// NOPMD</span></span><br><span class="line">        <span class="keyword">throw</span> e;</span><br><span class="line">    } <span class="keyword">catch</span> (Throwable e) {</span><br><span class="line">        Exceptions.throwIfFatal(e);</span><br><span class="line">        <span class="comment">// can&apos;t call onError because no way to know if a Disposable has been set or not</span></span><br><span class="line">        <span class="comment">// can&apos;t call onSubscribe because the call might have set a Subscription already</span></span><br><span class="line">        RxJavaPlugins.onError(e);</span><br><span class="line"></span><br><span class="line">        NullPointerException npe = <span class="keyword">new</span> NullPointerException(<span class="string">&quot;Actually not, but can&apos;t throw other exceptions due to RS&quot;</span>);</span><br><span class="line">        npe.initCause(e);</span><br><span class="line">        <span class="keyword">throw</span> npe;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0; subscribeActual &#x7684;&#x56DE;&#x8C03;&#x662F;&#x5728;&#x6211;&#x4EEC;&#x4E0A;&#x4E0B;&#x6E38;&#x7BA1;&#x9053;&#x8FDE;&#x63A5;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x8FDB;&#x884C;&#x7684;&#x3002;&#x7136;&#x540E;&#x6211;&#x4EEC;&#x5728;&#x6574;&#x4E2A;&#x6D41;&#x7A0B;&#x7684;&#x8FC7;&#x7A0B;&#x4E4B;&#x4E2D;&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;&#x5404;&#x4E2A; Operator &#x50CF;&#x662F;&#x5404;&#x90E8;&#x5206;&#x7684;&#x7EC4;&#x4EF6;&#x4E00;&#x6837;&#xFF0C;&#x5206;&#x95E8;&#x522B;&#x7C7B;&#x7684;&#x5BF9; subscribe &#x7684;&#x8C03;&#x7528;&#x8FDB;&#x884C;&#x7BA1;&#x63A7;&#x7684;&#xFF08;&#x8FD9;&#x91CC;&#x6211;&#x5BF9;&#x8FD9;&#x4E2A;&#x4E1C;&#x897F;&#x7684;&#x662F;&#x5B9E;&#x73B0;&#x6709;&#x4E9B;&#x6000;&#x7591;&#xFF0C;&#x662F;&#x4E0D;&#x662F;&#x6709;&#x4EC0;&#x4E48;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x5F0F;&#x53BB;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF09;&#x3002;</p>
+<h2 id="&#x521D;&#x63A2;&#x94FE;&#x8DEF;"><a href="#&#x521D;&#x63A2;&#x94FE;&#x8DEF;" class="headerlink" title="&#x521D;&#x63A2;&#x94FE;&#x8DEF;"></a>&#x521D;&#x63A2;&#x94FE;&#x8DEF;</h2><p>&#x6211;&#x4EEC;&#x8FD9;&#x4E2A; Disposable &#x4EE3;&#x66FF;&#x4E86;&#x4E4B;&#x524D;&#x7684; Subscription &#x7684;&#x4F5C;&#x7528;&#x80FD;&#x5BF9;&#x6211;&#x4EEC;&#x7684;&#x8BF7;&#x6C42;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x53D6;&#x6D88;&#x64CD;&#x4F5C;&#x4E4B;&#x7C7B;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4E5F;&#x662F;&#x7528;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;&#x7684; Demo &#x6765;&#x8FDB;&#x884C;&#x5B66;&#x4E60;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> Disposable disposable;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">testWork</span><span class="params">()</span> </span>{</span><br><span class="line"></span><br><span class="line">    Observable</span><br><span class="line">            .create(<span class="keyword">new</span> ObservableOnSubscribe&lt;String&gt;() {</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(@NonNull ObservableEmitter&lt;String&gt; e)</span> <span class="keyword">throws</span> Exception </span>{</span><br><span class="line">                    e.onNext(<span class="string">&quot;lfkdsk&quot;</span>);</span><br><span class="line"></span><br><span class="line">                    e.onNext(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"></span><br><span class="line">                    SystemClock.sleep(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">                    disposable.dispose();</span><br><span class="line"></span><br><span class="line">                    e.onNext(<span class="string">&quot;World&quot;</span>);</span><br><span class="line"></span><br><span class="line">                    e.onComplete();</span><br><span class="line">                }</span><br><span class="line">            })</span><br><span class="line">            .subscribeOn(Schedulers.io())</span><br><span class="line">            .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">            .subscribe(<span class="keyword">new</span> Observer&lt;String&gt;() {</span><br><span class="line"></span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSubscribe</span><span class="params">(@NonNull Disposable d)</span> </span>{</span><br><span class="line">                    disposable = d;</span><br><span class="line">                    mTextView.append(<span class="string">&quot;bind on subscribe \n&quot;</span>);</span><br><span class="line">                }</span><br><span class="line"></span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(@NonNull String s)</span> </span>{</span><br><span class="line">                    mTextView.append(s);</span><br><span class="line">                    mTextView.append(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">                }</span><br><span class="line"></span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(@NonNull Throwable e)</span> </span>{</span><br><span class="line"></span><br><span class="line">                }</span><br><span class="line"></span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onComplete</span><span class="params">()</span> </span>{</span><br><span class="line">                    mTextView.append(<span class="string">&quot; onComplete &quot;</span>);</span><br><span class="line">                }</span><br><span class="line">            });</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53C8;&#x641E;&#x4E86;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684; Demo&#xFF0C;&#x7D27;&#x63A5;&#x7740;&#x6765;&#x4ECB;&#x7ECD;&#x6211;&#x4EEC;&#x521A;&#x624D;&#x4F7F;&#x7528;&#x8FC7;&#x7684; Disposable &#x5230;&#x5E95;&#x662F;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#x7684;&#xFF0C;&#x6700;&#x540E;&#x663E;&#x793A;&#x7684;&#x6548;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="/2017/09/04/read-source-code-rxjava2/img/disposable.png" alt="disposable"></p>
+<h3 id="Create-Operator"><a href="#Create-Operator" class="headerlink" title="Create Operator"></a>Create Operator</h3><p>&#x6211;&#x4EEC;&#x5728;&#x8FD9;&#x91CC;&#x5C31;&#x662F;&#x628A; Disposable &#x7F13;&#x5B58;&#x8D77;&#x6765;&#x4E86;&#xFF0C;&#x7136;&#x540E;&#x8BBE;&#x5B9A;&#x4E86;&#x4E00;&#x4E2A; <em>sleep</em> &#x8BA9;&#x6570;&#x636E;&#x5148;&#x4ECE;&#x7BA1;&#x9053;&#x6D41;&#x8FC7;&#x53BB;&#xFF0C;&#x7136;&#x540E;&#x8BA9;&#x6574;&#x4E2A; Disposable &#x53D6;&#x6D88;&#x6389;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x6837;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x7EC8;&#x6B62;&#x4E86;&#x8C03;&#x7528;&#x4E4B;&#x540E;&#x7684;&#x4FE1;&#x606F;&#x6D41;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x4F7F;&#x7528; <code>just</code> &#x8FD9;&#x4E2A; API&#xFF0C;<code>just</code> &#x6CA1;&#x529E;&#x6CD5;&#x624B;&#x52A8;&#x7684;&#x63A7;&#x5236;&#x6211;&#x4EEC;&#x7684; <code>onNext</code> &#x7684;&#x6D41;&#x7A0B;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x4F7F;&#x7528; <code>create</code> API&#xFF0C;&#x8FD9;&#x91CC;&#x7684; <code>create</code> API &#x548C;&#x4E4B;&#x524D;&#x7684; <em>Rxjava1</em> &#x4E2D;&#x7684;&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x533A;&#x522B;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@CheckReturnValue</span></span><br><span class="line"><span class="meta">@SchedulerSupport</span>(SchedulerSupport.NONE)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Observable&lt;T&gt; <span class="title">create</span><span class="params">(ObservableOnSubscribe&lt;T&gt; source)</span> </span>{</span><br><span class="line">    ObjectHelper.requireNonNull(source, <span class="string">&quot;source is null&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> RxJavaPlugins.onAssembly(<span class="keyword">new</span> ObservableCreate&lt;T&gt;(source));</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x63A5;&#x53D7;&#x7684;&#x5185;&#x5BB9;&#x6362;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684; Observable &#x7684;&#x5305;&#x88C5;&#x7C7B;&#xFF0C;&#x5176;&#x4F59;&#x7684;&#x90E8;&#x5206;&#x4E5F;&#x662F;&#x901A;&#x8FC7;&#x53E6;&#x4E00;&#x4E2A; <code>Create</code> &#x7684;&#x5305;&#x88C5;&#x7C7B;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x5206;&#x6790;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * A functional interface that has a {<span class="doctag">@code</span> subscribe()} method that receives</span><br><span class="line"> * an instance of an {<span class="doctag">@link</span> ObservableEmitter} instance that allows pushing</span><br><span class="line"> * events in a cancellation-safe manner.</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@param</span> &lt;T&gt; the value type pushed</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ObservableOnSubscribe</span>&lt;<span class="title">T</span>&gt; </span>{</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Called for each Observer that subscribes.</span><br><span class="line">     * <span class="doctag">@param</span> e the safe emitter instance, never null</span><br><span class="line">     * <span class="doctag">@throws</span> Exception on error</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">subscribe</span><span class="params">(ObservableEmitter&lt;T&gt; e)</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p><em>Create API</em> &#x4F20;&#x8FDB;&#x53BB;&#x4E86;&#x4E00;&#x4E2A; ObservableOnSubscribe &#x7684;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x63A5;&#x53D7;&#x4E00;&#x4E2A; ObservableEmitter &#x5BF9;&#x8C61;&#xFF0C;&#x6CE8;&#x91CA;&#x4E2D;&#x8FD8;&#x63D0;&#x5230;&#x65F6;&#x5BF9;&#x6BCF;&#x4E00;&#x4E2A;&#x8BA2;&#x9605;&#x7684; Observer &#x8C03;&#x7528;&#x3002;</p>
+<h4 id="Emitter"><a href="#Emitter" class="headerlink" title="Emitter"></a>Emitter</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Base interface for emitting signals in a push-fashion in various generator-like source</span><br><span class="line"> * operators (create, generate).</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@param</span> &lt;T&gt; the value type emitted</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Emitter</span>&lt;<span class="title">T</span>&gt; </span>{</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Signal a normal value.</span><br><span class="line">     * <span class="doctag">@param</span> value the value to signal, not null</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onNext</span><span class="params">(T value)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Signal a Throwable exception.</span><br><span class="line">     * <span class="doctag">@param</span> error the Throwable to signal, not null</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable error)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Signal a completion.</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onComplete</span><span class="params">()</span></span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x63A5;&#x89E6;&#x7684;&#x53D1;&#x5C04;&#x5668;&#x7684;&#x63A5;&#x53E3;&#x63D0;&#x4F9B;&#x4E86;&#x6211;&#x4EEC;&#x975E;&#x5E38;&#x719F;&#x6089;&#x7684; API &#x8C03;&#x7528;&#xFF0C;&#x8FD9;&#x90FD;&#x662F;&#x6211;&#x4EEC;&#x975E;&#x5E38;&#x719F;&#x6089;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;ObservableEmitter &#x7C7B;&#x5BF9;&#x5B83;&#x8FDB;&#x884C;&#x4E86;&#x4E00;&#x4E9B;&#x6269;&#x5145;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Abstraction over an RxJava {<span class="doctag">@link</span> Observer} that allows associating</span><br><span class="line"> * a resource with it.</span><br><span class="line"> * &lt;p&gt;</span><br><span class="line"> * The onNext, onError and onComplete methods should be called</span><br><span class="line"> * in a sequential manner, just like the Observer&apos;s methods.</span><br><span class="line"> * Use {<span class="doctag">@link</span> #serialize()} if you want to ensure this.</span><br><span class="line"> * The other methods are thread-safe.</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@param</span> &lt;T&gt; the value type to emit</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ObservableEmitter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Emitter</span>&lt;<span class="title">T</span>&gt; </span>{</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Sets a Disposable on this emitter; any previous Disposable</span><br><span class="line">     * or Cancellation will be unsubscribed/cancelled.</span><br><span class="line">     * <span class="doctag">@param</span> d the disposable, null is allowed</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setDisposable</span><span class="params">(Disposable d)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Sets a Cancellable on this emitter; any previous Disposable</span><br><span class="line">     * or Cancellation will be unsubscribed/cancelled.</span><br><span class="line">     * <span class="doctag">@param</span> c the cancellable resource, null is allowed</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setCancellable</span><span class="params">(Cancellable c)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Returns true if the downstream disposed the sequence.</span><br><span class="line">     * <span class="doctag">@return</span> true if the downstream disposed the sequence</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isDisposed</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * Ensures that calls to onNext, onError and onComplete are properly serialized.</span><br><span class="line">     * <span class="doctag">@return</span> the serialized ObservableEmitter</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function">ObservableEmitter&lt;T&gt; <span class="title">serialize</span><span class="params">()</span></span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x5269;&#x4E0B;&#x7684; API &#x5B9E;&#x73B0;&#x90FD;&#x662F;&#x5173;&#x4E8E; Disposable &#x548C; Cancellable &#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x5E8F;&#x5217;&#x5316;&#x7684; serialize &#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x91CC;&#x4E3A;&#x4E86;&#x5B66;&#x4E60;&#x8FD9;&#x73A9;&#x610F;&#x7684;&#x5B9E;&#x73B0;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53BB;&#x770B;&#x4E00;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x4E00;&#x4E2A;&#x5728; <em>ObservableCreate</em> &#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CreateEmitter</span>&lt;<span class="title">T</span>&gt;</span><br><span class="line"><span class="keyword">extends</span> <span class="title">AtomicReference</span>&lt;<span class="title">Disposable</span>&gt;</span><br><span class="line"><span class="keyword">implements</span> <span class="title">ObservableEmitter</span>&lt;<span class="title">T</span>&gt;, <span class="title">Disposable</span> </span>{</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">3434801548987643227L</span>;</span><br><span class="line">    <span class="keyword">final</span> Observer&lt;? <span class="keyword">super</span> T&gt; observer;</span><br><span class="line"></span><br><span class="line">    CreateEmitter(Observer&lt;? <span class="keyword">super</span> T&gt; observer) {</span><br><span class="line">        <span class="keyword">this</span>.observer = observer;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(T t)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (t == <span class="keyword">null</span>) {</span><br><span class="line">            onError(<span class="keyword">new</span> NullPointerException(<span class="string">&quot;onNext called with null. Null values are generally not allowed in 2.x operators and sources.&quot;</span>));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (!isDisposed()) {</span><br><span class="line">            observer.onNext(t);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable t)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (t == <span class="keyword">null</span>) {</span><br><span class="line">            t = <span class="keyword">new</span> NullPointerException(<span class="string">&quot;onError called with null. Null values are generally not allowed in 2.x operators and sources.&quot;</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (!isDisposed()) {</span><br><span class="line">            <span class="keyword">try</span> {</span><br><span class="line">                observer.onError(t);</span><br><span class="line">            } <span class="keyword">finally</span> {</span><br><span class="line">                dispose();</span><br><span class="line">            }</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            RxJavaPlugins.onError(t);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onComplete</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (!isDisposed()) {</span><br><span class="line">            <span class="keyword">try</span> {</span><br><span class="line">                observer.onComplete();</span><br><span class="line">            } <span class="keyword">finally</span> {</span><br><span class="line">                dispose();</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDisposable</span><span class="params">(Disposable d)</span> </span>{</span><br><span class="line">        DisposableHelper.set(<span class="keyword">this</span>, d);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCancellable</span><span class="params">(Cancellable c)</span> </span>{</span><br><span class="line">        setDisposable(<span class="keyword">new</span> CancellableDisposable(c));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ObservableEmitter&lt;T&gt; <span class="title">serialize</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SerializedEmitter&lt;T&gt;(<span class="keyword">this</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dispose</span><span class="params">()</span> </span>{</span><br><span class="line">        DisposableHelper.dispose(<span class="keyword">this</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isDisposed</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> DisposableHelper.isDisposed(get());</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x672C;&#x8EAB;&#x6574;&#x4E2A;&#x7C7B;&#x662F; <em>AtomicReference</em> &#x7684;&#x5B50;&#x7C7B;&#xFF0C;&#x672C;&#x8EAB;&#x652F;&#x6301;&#x539F;&#x5B50;&#x6027;&#x7684;&#x5BF9;&#x8C61;&#x64CD;&#x4F5C;&#xFF0C;&#x51E0;&#x4E2A;&#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x7684;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#x53EF;&#x8BF4;&#x7684;&#x4E5F;&#x4E0D;&#x591A;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x770B; <code>dispose</code> &#x76F8;&#x5173;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;DisposableHelper &#x91CC;&#x9762;&#x7684;&#x5305;&#x88C5;&#x64CD;&#x4F5C;&#xFF0C;&#x90FD;&#x662F;&#x7528;&#x6765;&#x63A7;&#x5236;&#x539F;&#x5B50;&#x6027;&#x7684;&#x4E00;&#x5C42;&#x5305;&#x88C5;&#x3002;</p>
+<p>&#x901A;&#x8FC7;<em>CreateEmitter</em> &#x4E2D;&#x7684;&#x90E8;&#x5206; API&#xFF0C;&#x6211;&#x4EEC;&#x80FD;&#x770B;&#x51FA;&#x6765;&#x6709;&#x4E00;&#x4E9B; onNext &#x548C; onComplete &#x7684;&#x64CD;&#x4F5C;&#x4E2D;&#x90FD;&#x4F1A;&#x5224;&#x65AD; <em>Disposable.isDisposed</em> &#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x8FD9;&#x4E5F;&#x5C31;&#x662F;&#x77E5;&#x9053;&#x6211;&#x4EEC;&#x4E3A;&#x4EC0;&#x4E48;&#x80FD;&#x963B;&#x65AD;&#x6211;&#x4EEC;&#x7684;&#x7BA1;&#x9053;&#x6D41;&#x901A;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x4EEC;&#x4E5F;&#x77E5;&#x9053;&#x4E86;&#x6211;&#x4EEC;&#x4E3A;&#x5565; Error &#x548C; Complete &#x53EA;&#x4F1A;&#x6709;&#x4E00;&#x6761;&#x94FE;&#x8DEF;&#x88AB;&#x8C03;&#x7528;&#x3002;</p>
+<h4 id="Create-&#x64CD;&#x4F5C;"><a href="#Create-&#x64CD;&#x4F5C;" class="headerlink" title="Create &#x64CD;&#x4F5C;"></a>Create &#x64CD;&#x4F5C;</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">ObservableCreate</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Observable</span>&lt;<span class="title">T</span>&gt; </span>{</span><br><span class="line">    <span class="keyword">final</span> ObservableOnSubscribe&lt;T&gt; source;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ObservableCreate</span><span class="params">(ObservableOnSubscribe&lt;T&gt; source)</span> </span>{</span><br><span class="line">        <span class="keyword">this</span>.source = source;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">subscribeActual</span><span class="params">(Observer&lt;? <span class="keyword">super</span> T&gt; observer)</span> </span>{</span><br><span class="line">        CreateEmitter&lt;T&gt; parent = <span class="keyword">new</span> CreateEmitter&lt;T&gt;(observer);</span><br><span class="line">        observer.onSubscribe(parent);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            source.subscribe(parent);</span><br><span class="line">        } <span class="keyword">catch</span> (Throwable ex) {</span><br><span class="line">            Exceptions.throwIfFatal(ex);</span><br><span class="line">            parent.onError(ex);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x91CC;&#x9762;&#x5C31;&#x662F; <em>ObservableCreate</em> &#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#x7684; <code>subscribeActual</code> &#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x80FD;&#x4EE5; <code>&#x9012;&#x5F52;</code> &#x6216;&#x8005;&#x8BF4;&#x662F; <code>&#x5305;&#x88C5;</code> &#x7684;&#x89D2;&#x5EA6;&#x6765;&#x601D;&#x8003;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x770B;&#x8FD9;&#x4E9B;&#x4EE3;&#x7801;&#x4E5F;&#x662F;&#x4F1A;&#x5BB9;&#x6613;&#x5F88;&#x591A;&#xFF1A;</p>
+<p><img src="/2017/09/04/read-source-code-rxjava2/img/subscribe.png" alt="subscribe"></p>
+<p>&#x6211;&#x4EEC;&#x53BB;&#x63CF;&#x8FF0;&#x6211;&#x4EEC;&#x4E0A;&#x9762;&#x7684; Demo &#x7A0B;&#x5E8F;&#x662F;&#x600E;&#x4E48;&#x7531; <strong>Observable &#x7684;&#x5305;&#x88C5;&#x7C7B;</strong> &#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Observable.create(...)</span><br><span class="line">  		  .subscribeOn(...)</span><br><span class="line">          .observeOn(...)</span><br><span class="line">          .subscribe(...)</span><br><span class="line">  <span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+<p>&#x6211;&#x4EEC;&#x7684;&#x6574;&#x4E2A;&#x6D41;&#x7A0B;&#x7684;&#x5305;&#x88C5;&#x5C31;&#x662F;&#x7C7B;&#x4F3C;&#x8FD9;&#x6837;&#x7684;&#xFF0C;&#x518D;&#x88AB;&#x521B;&#x5EFA;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x5C31;&#x662F;&#x4E00;&#x5C42;&#x5C42;&#x7684;&#x5305;&#x88C5;&#x548C;&#x9012;&#x5F52;&#x7684;&#x8C03;&#x7528;&#xFF0C;&#x6700;&#x5148;&#x662F; <em>Create</em> &#x7136;&#x540E;&#x662F; <em>SubscribeOn</em> &#x7136;&#x540E;&#x518D;&#x662F;&#x6700;&#x540E;&#x7684; <em>ObserveOn</em> &#x5305;&#x88C5;&#x7C7B;&#xFF0C;&#x7136;&#x540E;&#x5728; <em>subscribe</em> &#x7684;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x7684; API <code>subscribeActual</code> &#x5C31;&#x4F1A;&#x4EE5;&#x8FD9;&#x6837;&#x7684;&#x5F62;&#x5F0F; <strong>&#x5012;&#x53D9;&#x7684;&#x65B9;&#x5F0F;</strong> &#x53BB;&#x8C03;&#x7528;&#x7684;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x9762;&#x4E5F;&#x662F;&#x8FD9;&#x6837;&#x7684;&#x6211;&#x4EEC;&#x628A;&#x4E4B;&#x524D;&#x7684;&#xFF08;&#x4ECE;&#x8C03;&#x7528;&#x89D2;&#x5EA6;&#x4E0A;&#x662F;&#x540E;&#x9762;&#x7684;&#xFF09;&#x5305;&#x88C5;&#x597D;&#x7684; Observer &#x7EE7;&#x7EED;&#x5305;&#x88C5;&#x6210; CreateEmitter &#x6570;&#x636E;&#x6E90;&#x53D1;&#x5C04;&#x5668;&#xFF0C;&#x8FD9;&#x91CC;&#x9762;&#x7684; parent &#x4FDD;&#x5B58;&#x597D;&#xFF0C;&#x7136;&#x540E;&#x56E0;&#x4E3A; <em>Observable.create</em> &#x672C;&#x8EAB;&#x662F;&#x6570;&#x636E;&#x6E90;&#x7684;&#x4E00;&#x4E2A;&#x5F00;&#x5934;&#xFF0C;&#x4F46;&#x662F;&#x518D;&#x5012;&#x8C03;&#x7528;&#x7740;&#x56DE;&#x6765;&#x7684;&#x8FC7;&#x7A0B;&#x5176;&#x5B9E;&#x662F;&#x8C03;&#x7528;&#x7684;&#x7EC8;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x8FD9;&#x4E2A;&#x7EC8;&#x70B9;&#x91CC;&#x6211;&#x4EEC;&#x8C03;&#x7528;&#x4E86; <em>Observable.subscribe</em> &#xFF0C;&#x542F;&#x52A8;&#x4E86;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x3002;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持是对我创作最大的鼓励！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.png" alt="刘丰恺 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/源码阅读/" rel="tag"># 源码阅读</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/24/read-retrofit/" rel="next" title="Retrofit 实现分析">
+                <i class="fa fa-chevron-left"></i> Retrofit 实现分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/04/read-source-code-rxjava-2/" rel="prev" title="Rxjava 2 源码分析">
+                Rxjava 2 源码分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/09/04/read-source-code-rxjava2/"
+           data-title="Rxjava 2 源码分析" data-url="https://lfkdsk.github.io/2017/09/04/read-source-code-rxjava2/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/justwe.jpg"
+               alt="刘丰恺" />
+          <p class="site-author-name" itemprop="name">刘丰恺</p>
+          <p class="site-description motion-element" itemprop="description">人生天地间 忽如远行客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">59</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/lfkdsk" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2443510260" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/liu-feng-kai-89/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#从一个简单的例子开始"><span class="nav-number">1.</span> <span class="nav-text">从一个简单的例子开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Just-Operator"><span class="nav-number">1.1.</span> <span class="nav-text">Just Operator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subscribe"><span class="nav-number">1.2.</span> <span class="nav-text">Subscribe</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初探链路"><span class="nav-number">2.</span> <span class="nav-text">初探链路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-Operator"><span class="nav-number">2.1.</span> <span class="nav-text">Create Operator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Emitter"><span class="nav-number">2.1.1.</span> <span class="nav-text">Emitter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-操作"><span class="nav-number">2.1.2.</span> <span class="nav-text">Create 操作</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘丰恺</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lfkdsk"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
