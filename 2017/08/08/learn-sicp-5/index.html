@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="人生天地间 忽如远行客">
+<meta name="description" content="&amp;#x5728;&amp;#x7B2C;&amp;#x4E8C;&amp;#x7AE0;&amp;#x6211;&amp;#x4EEC;&amp;#x5B66;&amp;#x5230;&amp;#x7684;&amp;#x548C; &amp;#x6570;&amp;#x636E;&amp;#x62BD;&amp;#x8C61; &amp;#x76F8;&amp;#x5173;&amp;#x7684;&amp;#x77E5;&amp;#x8BC6;&amp;#x6307;&amp;#x51FA;&amp;#xFF0C;&amp;#x5982;&amp;#x679C;&amp;#x60F">
 <meta property="og:type" content="article">
-<meta property="og:title" content="0x05:SICP 的魔法 - 模拟、并发与流">
+<meta property="og:title" content="0x05:SICP 的魔法 - 模拟实例、并发与流">
 <meta property="og:url" content="https://lfkdsk.github.io/2017/08/08/learn-sicp-5/index.html">
 <meta property="og:site_name" content="若梦浮生">
-<meta property="og:description" content="人生天地间 忽如远行客">
-<meta property="og:updated_time" content="2017-09-20T11:21:53.000Z">
+<meta property="og:description" content="&amp;#x5728;&amp;#x7B2C;&amp;#x4E8C;&amp;#x7AE0;&amp;#x6211;&amp;#x4EEC;&amp;#x5B66;&amp;#x5230;&amp;#x7684;&amp;#x548C; &amp;#x6570;&amp;#x636E;&amp;#x62BD;&amp;#x8C61; &amp;#x76F8;&amp;#x5173;&amp;#x7684;&amp;#x77E5;&amp;#x8BC6;&amp;#x6307;&amp;#x51FA;&amp;#xFF0C;&amp;#x5982;&amp;#x679C;&amp;#x60F">
+<meta property="og:updated_time" content="2017-09-20T11:55:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="0x05:SICP 的魔法 - 模拟、并发与流">
-<meta name="twitter:description" content="人生天地间 忽如远行客">
+<meta name="twitter:title" content="0x05:SICP 的魔法 - 模拟实例、并发与流">
+<meta name="twitter:description" content="&amp;#x5728;&amp;#x7B2C;&amp;#x4E8C;&amp;#x7AE0;&amp;#x6211;&amp;#x4EEC;&amp;#x5B66;&amp;#x5230;&amp;#x7684;&amp;#x548C; &amp;#x6570;&amp;#x636E;&amp;#x62BD;&amp;#x8C61; &amp;#x76F8;&amp;#x5173;&amp;#x7684;&amp;#x77E5;&amp;#x8BC6;&amp;#x6307;&amp;#x51FA;&amp;#xFF0C;&amp;#x5982;&amp;#x679C;&amp;#x60F">
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <title> 0x05:SICP 的魔法 - 模拟、并发与流 | 若梦浮生 </title>
+  <title> 0x05:SICP 的魔法 - 模拟实例、并发与流 | 若梦浮生 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -292,7 +292,7 @@
             
             
               
-                0x05:SICP 的魔法 - 模拟、并发与流
+                0x05:SICP 的魔法 - 模拟实例、并发与流
               
             
           </h1>
@@ -353,7 +353,27 @@
       
 
       
-        
+        <p>&#x5728;&#x7B2C;&#x4E8C;&#x7AE0;&#x6211;&#x4EEC;&#x5B66;&#x5230;&#x7684;&#x548C; <strong>&#x6570;&#x636E;&#x62BD;&#x8C61;</strong> &#x76F8;&#x5173;&#x7684;&#x77E5;&#x8BC6;&#x6307;&#x51FA;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x6784;&#x9020;&#x6570;&#x636E;&#x62BD;&#x8C61;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E24;&#x4E2A;&#x90E8;&#x5206;&#xFF1A;</p>
+<ol>
+<li>&#x521B;&#x5EFA;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5305;&#x542B;&#x6570;&#x636E;</li>
+<li>&#x521B;&#x5EFA;&#x9009;&#x62E9;&#x51FD;&#x6570; <strong>&#x5206;&#x6D3E;</strong> &#x6570;&#x636E;</li>
+</ol>
+<p>&#x4F46;&#x662F;&#x5728;&#x7ECF;&#x8FC7;&#x4E86;&#x89E3;&#x4E86;&#x7B2C;&#x4E09;&#x7AE0;&#x76F8;&#x5173;&#x7684; <em>&#x6A21;&#x5757;&#x5316;&#x3001;&#x72B6;&#x6001;&#x3001;&#x73AF;&#x5883;</em> &#x7684;&#x77E5;&#x8BC6;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x8BA4;&#x8BC6;&#x5230;&#x4E86;&#x65B0;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5728;&#x5B9E;&#x9645;&#x7F16;&#x7A0B;&#x4E4B;&#x4E2D;&#xFF0C;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x7A0B;&#x5E8F;&#x7684;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x7F16;&#x7A0B;&#xFF0C;&#x90A3;&#x4E48;&#x7A0B;&#x5E8F;&#x4E2D;&#x5C31;&#x8981;&#x6839;&#x636E;&#x6211;&#x4EEC;&#x7684;&#x73AF;&#x5883;&#x6C42;&#x503C;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x5728;&#x91CD;&#x65B0;&#x8BBE;&#x8BA1;&#x548C;&#x6A21;&#x62DF;&#x7CFB;&#x7EDF;&#x5927;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x8981;&#x591A;&#x8003;&#x8651;&#x51E0;&#x70B9;&#x4E86;&#xFF1A;</p>
+<ol>
+<li>&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#x6211;&#x4EEC;&#x5E26;&#x72B6;&#x6001;&#x7684;&#x6570;&#x636E;&#x62BD;&#x8C61;</li>
+<li>&#x521B;&#x5EFA; <strong>&#x6539;&#x53D8;&#x51FD;&#x6570;(mutator)</strong> &#x53BB;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x91CD;&#x65B0;&#x4FEE;&#x6539;</li>
+</ol>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x90E8;&#x5206;&#x662F;&#x51E0;&#x4E2A;&#x975E;&#x5E38;&#x6709;&#x8DA3;&#x7684;&#x5B9E;&#x4F8B;&#x5B66;&#x4E60;&#xFF0C;&#x5305;&#x62EC;&#x5BF9;&#x8868;&#x683C;&#xFF0C;&#x961F;&#x5217;&#x548C;&#x6570;&#x5B57;&#x7535;&#x8DEF;&#x7684;&#x6A21;&#x62DF;&#x3002;&#x8FD9;&#x91CC;&#x9762;&#x524D;&#x9762;&#x7684;&#x8868;&#x683C;&#x3001;&#x961F;&#x5217;&#x7684;&#x77E5;&#x8BC6;&#x90FD;&#x6BD4;&#x8F83;&#x7684;&#x7B80;&#x5355;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4E3B;&#x8981;&#x5173;&#x6CE8;&#x8FD9;&#x4E2A; <em>&#x6570;&#x5B57;&#x7535;&#x8DEF;&#x6A21;&#x62DF;</em> &#x7684;&#x5B66;&#x4E60;&#x3002;</p>
+<blockquote>
+<p>Tips &#x57FA;&#x4E8E;&#x6539;&#x53D8;&#x51FD;&#x6570;&#x7684;&#x65B0; API&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x6570;&#x636E;&#x4F9D;&#x8D56; <strong>&#x5E8F;&#x5BF9;</strong> &#x8FDB;&#x884C;&#x6784;&#x9020;&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x7684;&#x6539;&#x9020;&#x51FD;&#x6570;&#x9700;&#x8981;&#x548C;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7C7B;&#x4F3C;&#x7684;&#x7ED3;&#x6784;</p>
+<ul>
+<li><code>set-car!</code>  &#x4FEE;&#x6539;&#x5E8F;&#x5BF9;&#x4E2D;&#x7684;&#x9996;&#x9879;</li>
+<li><code>set-cdr!</code>  &#x4FEE;&#x6539;&#x5E8F;&#x5BF9;&#x4E2D;&#x7684;&#x7B2C;&#x4E8C;&#x9879;</li>
+</ul>
+</blockquote>
+<h2 id="&#x6570;&#x5B57;&#x7535;&#x8DEF;&#x6A21;&#x62DF;"><a href="#&#x6570;&#x5B57;&#x7535;&#x8DEF;&#x6A21;&#x62DF;" class="headerlink" title="&#x6570;&#x5B57;&#x7535;&#x8DEF;&#x6A21;&#x62DF;"></a>&#x6570;&#x5B57;&#x7535;&#x8DEF;&#x6A21;&#x62DF;</h2><p>&#x5728;&#x6784;&#x5EFA;&#x590D;&#x6742;&#x7684;&#x7CFB;&#x7EDF;&#x4E4B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x6700;&#x5148;&#x9762;&#x5BF9;&#x7684;&#x90E8;&#x5206;&#x5C31;&#x662F;&#x5173;&#x4E8E; <em>&#x540C;&#x4E00;&#x6027;</em> &#x7684;&#x77E5;&#x8BC6;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x77E5;&#x8BC6;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5728;&#x4E0A;&#x4E00;&#x7AE0;&#x7684; <strong>&#x540C;&#x4E00;&#x6027;&#x53D1;&#x751F;&#x4E86;&#x53D8;&#x5316;</strong> &#x7684;&#x90A3;&#x4E2A;&#x5C0F;&#x8282;&#x4E2D;&#x7B80;&#x5355;&#x7684;&#x8BA8;&#x8BBA;&#x8FC7;&#x4E00;&#x6B21;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x4E2A;&#x518D;&#x91CD;&#x65B0;&#x8BA8;&#x8BBA;&#x4E00;&#x4E0B; <strong>&#x5171;&#x4EAB;&#x548C;&#x76F8;&#x7B49;</strong> &#x7684;&#x77E5;&#x8BC6;&#x3002;</p>
+<h3 id="&#x5171;&#x4EAB;&#x548C;&#x76F8;&#x7B49;"><a href="#&#x5171;&#x4EAB;&#x548C;&#x76F8;&#x7B49;" class="headerlink" title="&#x5171;&#x4EAB;&#x548C;&#x76F8;&#x7B49;"></a>&#x5171;&#x4EAB;&#x548C;&#x76F8;&#x7B49;</h3><p>&#x5F88;&#x591A;</p>
+
       
     </div>
 
@@ -440,7 +460,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2017/08/08/learn-sicp-5/"
-           data-title="0x05:SICP 的魔法 - 模拟、并发与流" data-url="https://lfkdsk.github.io/2017/08/08/learn-sicp-5/">
+           data-title="0x05:SICP 的魔法 - 模拟实例、并发与流" data-url="https://lfkdsk.github.io/2017/08/08/learn-sicp-5/">
       </div>
     
   </div>
@@ -464,8 +484,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/justwe.jpg"
@@ -540,6 +569,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数字电路模拟"><span class="nav-number">1.</span> <span class="nav-text">数字电路模拟</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#共享和相等"><span class="nav-number">1.1.</span> <span class="nav-text">共享和相等</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
