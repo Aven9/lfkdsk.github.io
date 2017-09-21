@@ -400,7 +400,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://lfkdsk.github.io/2017/09/04/read-source-code-rxjava2-1/">
+  <link itemprop="mainEntityOfPage" href="https://lfkdsk.github.io/2017/09/04/read-source-code-rxjava2/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="刘丰恺">
@@ -425,8 +425,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/09/04/read-source-code-rxjava2-1/" itemprop="url">
-                  Rxjava 2 源码分析 (2)
+                <a class="post-title-link" href="/2017/09/04/read-source-code-rxjava2/" itemprop="url">
+                  Rxjava 2 源码分析
                 </a>
               
             
@@ -456,8 +456,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/09/04/read-source-code-rxjava2-1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/04/read-source-code-rxjava2-1/" itemprop="commentCount"></span>
+                <a href="/2017/09/04/read-source-code-rxjava2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/04/read-source-code-rxjava2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -485,12 +485,11 @@
       
         
           
-          &#x7EBF;&#x7A0B;&#x5207;&#x6362;&#x7684;&#x5B9E;&#x73B0;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x518D;&#x6765;&#x770B;&#x4E00;&#x4E2A; Demo &#x91CC;&#x9762;&#x4E3A;&#x4E86;&#x770B;&#x7EBF;&#x7A0B;&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x53D8;&#x5316;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E9B; Next &#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x7136;&#x540E;&#x6253;&#x5370;&#x4E86;&#x5F88;&#x591A;&#x7684;&#x65E5;&#x5FD7;&#xFF1A;
-12345678910111213141516171819202122232425262728293031323334353637383940
+          &#x4ECE;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#x5F00;&#x59CB;12345678910111213141516171819202122232425262728293031Observable         .just(&quot;lfkdsk&quot;, &quot;just-we&quot;)         .subscribeOn(Schedulers.io())         .observeOn(AndroidSchedulers.mainThread())         .subscribe(new Observer&lt;String&gt;() {             @Override             public void onSubscribe(Disposable d) {                 Logger.d(testTAG(), &quot; onSubscribe : &quot; + d.isDisposed());      
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/09/04/read-source-code-rxjava2-1/#more" rel="contents">
+            <a class="btn" href="/2017/09/04/read-source-code-rxjava2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -661,7 +660,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://lfkdsk.github.io/2017/09/04/read-source-code-rxjava2/">
+  <link itemprop="mainEntityOfPage" href="https://lfkdsk.github.io/2017/09/04/read-source-code-rxjava2-1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="刘丰恺">
@@ -686,8 +685,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/09/04/read-source-code-rxjava2/" itemprop="url">
-                  Rxjava 2 源码分析
+                <a class="post-title-link" href="/2017/09/04/read-source-code-rxjava2-1/" itemprop="url">
+                  Rxjava 2 源码分析 (2)
                 </a>
               
             
@@ -717,8 +716,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/09/04/read-source-code-rxjava2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/04/read-source-code-rxjava2/" itemprop="commentCount"></span>
+                <a href="/2017/09/04/read-source-code-rxjava2-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/04/read-source-code-rxjava2-1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -746,11 +745,12 @@
       
         
           
-          &#x4ECE;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#x5F00;&#x59CB;12345678910111213141516171819202122232425262728293031Observable         .just(&quot;lfkdsk&quot;, &quot;just-we&quot;)         .subscribeOn(Schedulers.io())         .observeOn(AndroidSchedulers.mainThread())         .subscribe(new Observer&lt;String&gt;() {             @Override             public void onSubscribe(Disposable d) {                 Logger.d(testTAG(), &quot; onSubscribe : &quot; + d.isDisposed());      
+          &#x7EBF;&#x7A0B;&#x5207;&#x6362;&#x7684;&#x5B9E;&#x73B0;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x518D;&#x6765;&#x770B;&#x4E00;&#x4E2A; Demo &#x91CC;&#x9762;&#x4E3A;&#x4E86;&#x770B;&#x7EBF;&#x7A0B;&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x53D8;&#x5316;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E9B; Next &#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x7136;&#x540E;&#x6253;&#x5370;&#x4E86;&#x5F88;&#x591A;&#x7684;&#x65E5;&#x5FD7;&#xFF1A;
+12345678910111213141516171819202122232425262728293031323334353637383940
           ...
           <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/09/04/read-source-code-rxjava2/#more" rel="contents">
+            <a class="btn" href="/2017/09/04/read-source-code-rxjava2-1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
